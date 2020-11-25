@@ -4,10 +4,5 @@ import { selectDummy } from "../../store/dummy/selectors";
 
 export default function Home() {
   const dummy = useSelector(selectDummy);
-  return (
-    <div>
-      {dummy.attr1}
-      {dummy.attr2}
-    </div>
-  );
+  return <div>{dummy.attr1}</div>;
 }
