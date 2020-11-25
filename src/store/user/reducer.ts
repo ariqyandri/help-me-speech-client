@@ -2,8 +2,6 @@ import { Action } from "./types";
 
 const initialState = {
   token: localStorage.getItem("token"),
-  name: null,
-  email: null,
 };
 
 export default (state = initialState, action: Action) => {
