@@ -4,6 +4,8 @@ export type User = {
   firstName: string | null;
   lastName: string | null;
   email: string | null;
+  createdAt: any;
+  updatedAt: any;
 };
 
 export type Action =
@@ -13,6 +15,6 @@ export type Action =
     }
   | {
       type: "TOKEN_STILL_VALID";
-      payload: any;
+      payload: User;
     }
   | { type: "LOG_OUT" };
