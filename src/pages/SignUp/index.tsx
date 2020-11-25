@@ -6,9 +6,11 @@ import { selectToken } from "../../store/user/selectors";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, Link } from "react-router-dom";
 import { Col } from "react-bootstrap";
-import { login } from "../../store/user/action";
+import { signUp } from "../../store/user/action";
 
-export default function Login() {
+export default function SignUp() {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
@@ -24,16 +26,38 @@ export default function Login() {
   function submitForm(event: any) {
     event.preventDefault();
 
-    dispatch(login(email, password));
+    dispatch(signUp(firstName, lastName, email, password));
 
     setEmail("");
     setPassword("");
+    setFirstName("");
+    setLastName("");
   }
 
   return (
     <Container>
       <Form as={Col} md={{ span: 6, offset: 3 }} className="mt-5">
-        <h1 className="mt-5 mb-5">Login</h1>
+        <h1 className="mt-5 mb-5">Signup</h1>
+        <Form.Group controlId="formBasicName">
+          <Form.Label>First Name</Form.Label>
+          <Form.Control
+            value={firstName}
+            onChange={(event) => setFirstName(event.target.value)}
+            type="text"
+            placeholder="Enter first name"
+            required
+          />
+        </Form.Group>
+        <Form.Group controlId="formBasicName">
+          <Form.Label>Last Name</Form.Label>
+          <Form.Control
+            value={lastName}
+            onChange={(event) => setLastName(event.target.value)}
+            type="text"
+            placeholder="Enter last name"
+            required
+          />
+        </Form.Group>
         <Form.Group controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
           <Form.Control
@@ -43,8 +67,10 @@ export default function Login() {
             placeholder="Enter email"
             required
           />
+          <Form.Text className="text-muted">
+            We'll never share your email with anyone else.
+          </Form.Text>
         </Form.Group>
-
         <Form.Group controlId="formBasicPassword">
           <Form.Label>Password</Form.Label>
           <Form.Control
@@ -57,12 +83,10 @@ export default function Login() {
         </Form.Group>
         <Form.Group className="mt-5">
           <Button variant="primary" type="submit" onClick={submitForm}>
-            Log in
+            Sign up
           </Button>
         </Form.Group>
-        <Link to="/signup" style={{ textAlign: "center" }}>
-          Click here to sign up
-        </Link>
+        <Link to="/login">Click here to log in</Link>
       </Form>
     </Container>
   );
