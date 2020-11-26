@@ -1,7 +1,13 @@
-import { Action } from "./types";
+import { Action, User } from "./types";
 
-const initialState = {
+const initialState: User = {
   token: localStorage.getItem("token"),
+  id: null,
+  firstName: null,
+  lastName: null,
+  email: null,
+  createdAt: null,
+  updatedAt: null,
 };
 
 export default (state = initialState, action: Action) => {

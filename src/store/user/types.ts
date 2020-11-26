@@ -1,5 +1,5 @@
 export type User = {
-  token: string;
+  token: any;
   id: number | null;
   firstName: string | null;
   lastName: string | null;
