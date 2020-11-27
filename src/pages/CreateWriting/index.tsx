@@ -22,7 +22,7 @@ export default function CreateWriting() {
     content: "",
     imageUrl: null,
     videoUrl: null,
-    categoryId: 0,
+    categoryId: 1,
   });
 
   const handleChange = (event: any) => {
@@ -39,7 +39,6 @@ export default function CreateWriting() {
           rows={4}
           value={value.title}
           onChange={handleChange}
-          defaultValue="Default Value"
           variant="outlined"
         />
         <TextField
@@ -49,13 +48,12 @@ export default function CreateWriting() {
           rows={4}
           value={value.content}
           onChange={handleChange}
-          defaultValue="Default Value"
           variant="outlined"
         />{" "}
         <Select
           label="category"
           name="category"
-          value={value}
+          value={value.categoryId}
           onChange={handleChange}
         >
           <MenuItem value={1}>
