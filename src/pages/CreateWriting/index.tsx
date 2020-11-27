@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import { Writing } from "./types";
-import { MenuItem, Select } from "@material-ui/core";
+import { Button, MenuItem, Select } from "@material-ui/core";
+import { useDispatch } from "react-redux";
+import { postWriting } from "../../store/writing/action";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -16,6 +18,7 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 export default function CreateWriting() {
+  const dispatch = useDispatch();
   const classes = useStyles();
   const [value, setValue] = useState<Writing>({
     title: "",
@@ -27,6 +30,9 @@ export default function CreateWriting() {
 
   const handleChange = (event: any) => {
     setValue({ ...value, [event.target.name]: event.target.value });
+  };
+  const handleClick = () => {
+    dispatch(postWriting(value));
   };
 
   return (
@@ -66,6 +72,7 @@ export default function CreateWriting() {
           <MenuItem value={6}>Blog</MenuItem>
         </Select>
       </div>
+      <Button onClick={handleClick}>Submit</Button>
     </form>
   );
 }
