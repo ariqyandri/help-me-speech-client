@@ -37,7 +37,7 @@ export default function CreateWriting() {
           name="title"
           multiline
           rows={4}
-          value={value}
+          value={value.title}
           onChange={handleChange}
           defaultValue="Default Value"
           variant="outlined"
@@ -47,7 +47,7 @@ export default function CreateWriting() {
           name="content"
           multiline
           rows={4}
-          value={value}
+          value={value.content}
           onChange={handleChange}
           defaultValue="Default Value"
           variant="outlined"
