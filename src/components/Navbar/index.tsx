@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 import Toolbar from "@material-ui/core/Toolbar";
 import { NavLink } from "./type";
-import { Button, List, ListItem, ListItemText } from "@material-ui/core";
+import { List, ListItem, ListItemText } from "@material-ui/core";
 import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -56,13 +56,10 @@ export default function DenseAppBar() {
               key={title}
             >
               <Link to={path} className={classes.linkText}>
-                <ListItemText primary={title} />{" "}
+                <ListItemText primary={title} />
               </Link>
             </ListItem>
           ))}
-          <Button href="/login" color="inherit">
-            Log In
-          </Button>
         </List>
       </Toolbar>
     </div>
