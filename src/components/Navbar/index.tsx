@@ -38,6 +38,7 @@ export default function DenseAppBar() {
     { id: 1, title: "Home", path: "/" },
     { id: 2, title: "Login", path: "/login" },
     { id: 3, title: "Sign Up", path: "/signup" },
+    { id: 4, title: "Create Writing", path: "/writing/create" },
   ];
 
   return (
