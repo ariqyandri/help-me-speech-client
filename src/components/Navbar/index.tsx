@@ -3,6 +3,10 @@ import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 import Toolbar from "@material-ui/core/Toolbar";
 import { List, ListItem, ListItemText } from "@material-ui/core";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { selectToken } from "../../store/user/selectors";
+import { LoggedIn } from "./LoggedIn";
+import { LoggedOut } from "./LoggedOut";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -23,6 +27,7 @@ const useStyles = makeStyles((theme: Theme) =>
 
 export default function DenseAppBar() {
   const classes = useStyles();
+  const token = useSelector(selectToken);
   const [selectedIndex, setSelectedIndex] = useState(1);
 
   const handleListItemClick = (
@@ -34,6 +39,7 @@ export default function DenseAppBar() {
   };
   console.log(selectedIndex);
 
+  const navLinks = token ? LoggedIn : LoggedOut;
 
   return (
     <div className={classes.root}>
