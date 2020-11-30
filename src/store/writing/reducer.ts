@@ -11,7 +11,7 @@ const initialState: Writing = {
   updatedAt: null,
 };
 
-export default (state = initialState, action: Action) => {
+const writingReducer = (state = initialState, action: Action) => {
   switch (action.type) {
     case "CREATE_WRITING":
       return { ...action.payload };
@@ -19,3 +19,5 @@ export default (state = initialState, action: Action) => {
       return state;
   }
 };
+
+export default writingReducer;
