@@ -1,4 +1,3 @@
-import reducer from "../dummy/reducer";
 import { Action, User } from "./types";
 
 const initialState: User = {
