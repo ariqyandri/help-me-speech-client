@@ -1,20 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { fetchMyWritings } from "../../store/myWritings/action";
 
 export default function MyWritings() {
   const dispatch = useDispatch();
 
-  const handleClick = () => {
+  useEffect(() => {
     dispatch(fetchMyWritings());
-  };
+  }, [dispatch]);
 
-  return (
-    <div>
-      My Writings
-      <div>
-        <button onClick={handleClick}>fetch my writings</button>
-      </div>
-    </div>
-  );
+  return <div>My Writings</div>;
 }
