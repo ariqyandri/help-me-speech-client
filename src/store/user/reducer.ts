@@ -1,3 +1,4 @@
+import reducer from "../dummy/reducer";
 import { Action, User } from "./types";
 
 const initialState: User = {
@@ -10,7 +11,7 @@ const initialState: User = {
   updatedAt: null,
 };
 
-export default (state = initialState, action: Action) => {
+const userReducer = (state = initialState, action: Action) => {
   switch (action.type) {
     case "LOGIN_SUCCESS":
       localStorage.setItem("token", action.payload.token);
@@ -24,3 +25,5 @@ export default (state = initialState, action: Action) => {
       return state;
   }
 };
+
+export default userReducer;
