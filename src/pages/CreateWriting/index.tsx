@@ -55,10 +55,10 @@ export default function CreateWriting() {
           value={value.content}
           onChange={handleChange}
           variant="outlined"
-        />{" "}
+        />
         <Select
           label="category"
-          name="category"
+          name="categoryId"
           value={value.categoryId}
           onChange={handleChange}
         >
