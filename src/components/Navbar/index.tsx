@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 import Toolbar from "@material-ui/core/Toolbar";
-import { NavLink } from "./type";
 import { List, ListItem, ListItemText } from "@material-ui/core";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { selectToken } from "../../store/user/selectors";
+import { LoggedIn } from "./LoggedIn";
+import { LoggedOut } from "./LoggedOut";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -24,6 +27,7 @@ const useStyles = makeStyles((theme: Theme) =>
 
 export default function DenseAppBar() {
   const classes = useStyles();
+  const token = useSelector(selectToken);
   const [selectedIndex, setSelectedIndex] = useState(1);
 
   const handleListItemClick = (
@@ -34,12 +38,8 @@ export default function DenseAppBar() {
     setSelectedIndex(index);
   };
   console.log(selectedIndex);
-  const navLinks: NavLink = [
-    { id: 1, title: "Home", path: "/" },
-    { id: 2, title: "Login", path: "/login" },
-    { id: 3, title: "Sign Up", path: "/signup" },
-    { id: 4, title: "Create Writing", path: "/writing/create" },
-  ];
+
+  const navLinks = token ? LoggedIn : LoggedOut;
 
   return (
     <div className={classes.root}>
