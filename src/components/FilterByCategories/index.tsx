@@ -13,6 +13,7 @@ export default function FilterByCategories() {
       <ButtonGroup toggle>
         {categories.map((category: Category) => (
           <ToggleButton
+            key={category.id}
             type="radio"
             variant="primary"
             value={category.id}
