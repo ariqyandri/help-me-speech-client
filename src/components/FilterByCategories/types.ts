@@ -5,9 +5,4 @@ export type Category = {
   imageUrl: string | null;
   createdAt: any;
   updatedAt: any;
-} | null;
-
-export type Action = {
-  type: "FETCH_CATEGORIES";
-  payload: Category[];
 };
