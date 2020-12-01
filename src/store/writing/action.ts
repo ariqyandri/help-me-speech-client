@@ -3,7 +3,11 @@ import axios from "axios";
 import { selectToken } from "../user/selectors";
 import { PostWriting, Writing } from "./types";
 import { Action } from "./types";
-import { appDoneLoading, appLoading } from "../appState/action";
+import {
+  appDoneLoading,
+  appLoading,
+  showMessageWithTimeout,
+} from "../appState/action";
 
 export const createWriting = (writing: Writing): Action => {
   return {
@@ -21,6 +25,7 @@ export const postWriting = (value: PostWriting) => {
         headers: { Authorization: `Bearer ${token}` },
       });
       dispatch(createWriting(response.data));
+      dispatch(showMessageWithTimeout("success", true, `Success!`, 2000));
       dispatch(appDoneLoading());
     } catch (error) {
       if (error.response) {
