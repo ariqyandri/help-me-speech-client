@@ -10,11 +10,13 @@ import Navbar from "./components/Navbar/index";
 import Message from "./components/Message";
 import { useDispatch } from "react-redux";
 import { getUserWithStoredToken } from "./store/user/action";
+import { fetchCategories } from "./store/categories/action";
 
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getUserWithStoredToken());
+    dispatch(fetchCategories());
   }, [dispatch]);
   return (
     <div className="App">
