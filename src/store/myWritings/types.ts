@@ -1,13 +1,15 @@
 export type Writing = {
-  title: string | null;
-  content: string | null;
+  id: number;
+  title: string;
+  content: string;
   imageUrl: string | null;
   videoUrl: string | null;
-  userId: number | null;
-  categoryId: number | null;
+  userId: number;
+  categoryId: number;
+  description: string | null;
   createdAt: any;
   updatedAt: any;
-};
+} | null;
 
 export type PostWriting = {
   title: string;
@@ -17,7 +19,11 @@ export type PostWriting = {
   categoryId: number;
 };
 
-export type Action = {
-  type: "FETCH_MY_WRITINGS";
-  payload: Writing[];
-};
+export type Action =
+  | {
+      type: "FETCH_MY_WRITINGS";
+      payload: Writing[];
+    }
+  | {
+      type: "CREATE_DESCRIPTION";
+    };

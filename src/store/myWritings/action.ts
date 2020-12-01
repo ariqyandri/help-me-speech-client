@@ -12,6 +12,12 @@ export const displayMyWritings = (writing: Writing[]): Action => {
   };
 };
 
+export const createDescription = () => {
+  return {
+    type: "CREATE_DESCRIPTION",
+  };
+};
+
 export const fetchMyWritings = () => {
   return async (dispatch: any, getState: any) => {
     const token = selectToken(getState());
@@ -21,6 +27,7 @@ export const fetchMyWritings = () => {
         headers: { Authorization: `Bearer ${token}` },
       });
       dispatch(displayMyWritings(response.data));
+      dispatch(createDescription());
       dispatch(appDoneLoading());
     } catch (error) {
       if (error.response) {
