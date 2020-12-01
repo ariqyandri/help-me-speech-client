@@ -3,9 +3,11 @@ import dummy from "./dummy/reducer";
 import user from "./user/reducer";
 import writing from "./writing/reducer";
 import myWritings from "./myWritings/reducer";
+import appState from "./appState/reducer";
 
 export default combineReducers({
   dummy,
+  appState,
   user,
   writing,
   myWritings,
