@@ -4,7 +4,7 @@ import { selectMessage } from "../../store/appState/selectors";
 import { Alert } from "react-bootstrap";
 import { clearMessage } from "../../store/appState/action";
 
-export default function MessageBox() {
+export default function Message() {
   const message = useSelector(selectMessage);
   const dispatch = useDispatch();
   const showMessage = message !== null;
