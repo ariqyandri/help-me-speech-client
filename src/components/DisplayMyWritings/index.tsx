@@ -20,7 +20,7 @@ export default function DisplayMyWritings(props: Props) {
           <Card.Subtitle className="mb-2 text-muted">
             {props.myWriting.createdAt}
           </Card.Subtitle>
-          <Card.Text>{props.myWriting.content}</Card.Text>
+          <Card.Text>{props.myWriting.description}</Card.Text>
           <Badge pill variant="primary">
             {props.myWriting.categoryId}
           </Badge>

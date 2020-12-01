@@ -27,6 +27,7 @@ export const fetchMyWritings = () => {
         headers: { Authorization: `Bearer ${token}` },
       });
       dispatch(displayMyWritings(response.data));
+      dispatch(createDescription());
       dispatch(appDoneLoading());
     } catch (error) {
       if (error.response) {
