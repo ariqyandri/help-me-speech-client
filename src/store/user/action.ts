@@ -2,7 +2,11 @@ import { apiUrl } from "../../config/constants";
 import axios from "axios";
 import { selectToken } from "./selectors";
 import { User } from "./types";
-import { appDoneLoading, appLoading } from "../appState/action";
+import {
+  appDoneLoading,
+  appLoading,
+  showMessageWithTimeout,
+} from "../appState/action";
 
 const loginSuccess = (userWithToken: User) => {
   return {
@@ -35,6 +39,14 @@ export const signUp = (
       });
 
       dispatch(loginSuccess(response.data));
+      dispatch(
+        showMessageWithTimeout(
+          "success",
+          true,
+          ` Hi ${firstName}, you have successfully created an account!`,
+          2000
+        )
+      );
       dispatch(appDoneLoading());
     } catch (error) {
       if (error.response) {
@@ -56,6 +68,14 @@ export const login = (email: string, password: string) => {
         password,
       });
       dispatch(loginSuccess(response.data));
+      dispatch(
+        showMessageWithTimeout(
+          "success",
+          true,
+          ` Welcome back ${response.data.firstName}!`,
+          2000
+        )
+      );
       dispatch(appDoneLoading());
     } catch (error) {
       if (error.response) {
