@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import DisplayMyWritings from "../../components/DisplayMyWritings";
+import FilterByCategories from "../../components/FilterByCategories";
 import Loading from "../../components/Loading";
 import { selectAppLoading } from "../../store/appState/selectors";
 import { fetchMyWritings } from "../../store/myWritings/action";
@@ -18,6 +19,7 @@ export default function MyWritings() {
   return (
     <div>
       <h1>My Writings</h1>
+      {loading ? <Loading /> : <FilterByCategories />}
       {loading ? (
         <Loading />
       ) : (
