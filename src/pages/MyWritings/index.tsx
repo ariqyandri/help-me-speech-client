@@ -22,7 +22,7 @@ export default function MyWritings() {
         <Loading />
       ) : (
         myWritings.map((writing: Writing) => {
-          return <DisplayMyWritings myWriting={writing} />;
+          return <DisplayMyWritings key={writing.id} myWriting={writing} />;
         })
       )}
     </div>
