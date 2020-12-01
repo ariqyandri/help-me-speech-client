@@ -14,8 +14,8 @@ export default function MyWritings() {
   const myWritings = useSelector(selectMyWritings);
   const [categoryId, setCategoryId] = useState<number>(0);
   useEffect(() => {
-    dispatch(fetchMyWritings());
-  }, [dispatch]);
+    dispatch(fetchMyWritings(categoryId));
+  }, [dispatch, categoryId]);
 
   return (
     <div>
