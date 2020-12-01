@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import DisplayMyWritings from "../../components/DisplayMyWritings";
 import FilterByCategories from "../../components/FilterByCategories";
@@ -12,6 +12,7 @@ export default function MyWritings() {
   const dispatch = useDispatch();
   const loading = useSelector(selectAppLoading);
   const myWritings = useSelector(selectMyWritings);
+  const [categoryId, setCategoryId] = useState<number>(0);
   useEffect(() => {
     dispatch(fetchMyWritings());
   }, [dispatch]);
@@ -19,7 +20,7 @@ export default function MyWritings() {
   return (
     <div>
       <h1>My Writings</h1>
-      {loading ? <Loading /> : <FilterByCategories />}
+      <FilterByCategories id={categoryId} setId={setCategoryId} />
       {loading ? (
         <Loading />
       ) : (

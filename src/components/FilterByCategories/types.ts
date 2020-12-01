@@ -6,3 +6,8 @@ export type Category = {
   createdAt: any;
   updatedAt: any;
 };
+
+export type Props = {
+  id: number;
+  setId: any;
+};
