@@ -9,4 +9,4 @@ export type Writing = {
   updatedAt: any;
 };
 
-export type Props = Writing;
+export type Props = { myWriting: Writing };
