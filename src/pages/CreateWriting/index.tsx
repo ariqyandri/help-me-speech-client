@@ -1,78 +1,72 @@
 import React, { useState } from "react";
-import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
-import TextField from "@material-ui/core/TextField";
-import { Writing } from "./types";
-import { Button, MenuItem, Select } from "@material-ui/core";
+import { Button, Form } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { postWriting } from "../../store/writing/action";
-
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      "& .MuiTextField-root": {
-        margin: theme.spacing(1),
-        width: "25ch",
-      },
-    },
-  })
-);
+import { Writing } from "./types";
 
 export default function CreateWriting() {
   const dispatch = useDispatch();
-  const classes = useStyles();
   const [value, setValue] = useState<Writing>({
     title: "",
     content: "",
     imageUrl: null,
     videoUrl: null,
-    categoryId: 1,
+    categoryId: 0,
   });
 
   const handleChange = (event: any) => {
     setValue({ ...value, [event.target.name]: event.target.value });
   };
-  const handleClick = () => {
+  const handleClick = (event: any) => {
+    event.preventDefault();
     dispatch(postWriting(value));
   };
 
   return (
-    <form className={classes.root} noValidate autoComplete="off">
-      <div>
-        <TextField
-          label="title"
-          name="title"
-          multiline
-          rows={4}
-          value={value.title}
-          onChange={handleChange}
-          variant="outlined"
-        />
-        <TextField
-          label="content"
-          name="content"
-          multiline
-          rows={4}
-          value={value.content}
-          onChange={handleChange}
-          variant="outlined"
-        />
-        <Select
-          label="category"
-          name="categoryId"
-          value={value.categoryId}
-          onChange={handleChange}
-        >
-          <MenuItem value={1}>
-            <em>Speech</em>
-          </MenuItem>
-          <MenuItem value={2}>Presentation</MenuItem>
-          <MenuItem value={3}>Interview</MenuItem>
-          <MenuItem value={4}>Poem</MenuItem>
-          <MenuItem value={5}>Play</MenuItem>
-          <MenuItem value={6}>Blog</MenuItem>
-        </Select>
-      </div>
-      <Button onClick={handleClick}>Submit</Button>
-    </form>
+    <div>
+      <Form>
+        <Form.Group controlId="exampleForm.ControlInput1">
+          <Form.Label>Title</Form.Label>
+          <Form.Control
+            name="title"
+            type="text"
+            value={value.title}
+            onChange={handleChange}
+            required
+          />
+        </Form.Group>
+        <Form.Group controlId="exampleForm.ControlTextarea1">
+          <Form.Label>Content</Form.Label>
+          <Form.Control
+            name="content"
+            as="textarea"
+            rows={3}
+            value={value.content}
+            onChange={handleChange}
+            required
+          />
+        </Form.Group>
+        <Form.Group controlId="exampleForm.ControlSelect1">
+          <Form.Label>Category</Form.Label>
+          <Form.Control
+            name="categoryId"
+            as="select"
+            value={value.categoryId}
+            onChange={handleChange}
+            required
+          >
+            <option value={1}>Speech</option>
+            <option value={2}>Presentation</option>
+            <option value={3}>Interview</option>
+            <option value={4}>Poem</option>
+            <option value={5}>Play</option>
+            <option value={6}>Blog</option>
+          </Form.Control>
+        </Form.Group>
+        <Button variant="primary" type="submit" onClick={handleClick}>
+          Submit
+        </Button>
+      </Form>
+    </div>
   );
 }
