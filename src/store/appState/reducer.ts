@@ -5,7 +5,7 @@ const initialState = {
   message: null,
 };
 
-export default (state = initialState, action: Action) => {
+const appStateReducer = (state = initialState, action: Action) => {
   switch (action.type) {
     case "APP_LOADING":
       return { ...state, loading: true };
@@ -23,3 +23,5 @@ export default (state = initialState, action: Action) => {
       return state;
   }
 };
+
+export default appStateReducer;
