@@ -16,6 +16,6 @@ export default function MyWriting() {
     dispatch(fetchWriting(id));
   }, [dispatch, id]);
   return (
-    <div>{!writing ? <Loading /> : <DisplayWriting aWriting={writing} />} </div>
+    <div>{!writing ? <Loading /> : <DisplayWriting aWriting={writing} />}</div>
   );
 }
