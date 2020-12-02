@@ -25,9 +25,14 @@ export default function DisplayMyWritings(props: Props) {
           <Badge pill variant="primary">
             {props.myWriting.category.name}
           </Badge>
-          <Link to={`/writing/${props.myWriting.id}`}>
+        </Card.Body>
+        <Card.Body>
+          <Link to={`/writing/view/${props.myWriting.id}`}>
             <Button variant="primary">Visit writing</Button>
           </Link>
+          <Link to={`/writing/helpmepractice/${props.myWriting.id}`}>
+            <Button variant="primary">Help Me Practice!</Button>
+          </Link>{" "}
         </Card.Body>
       </Card>
     </div>
