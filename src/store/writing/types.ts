@@ -18,6 +18,6 @@ export type PostWriting = {
 };
 
 export type Action = {
-  type: "CREATE_WRITING";
+  type: "DISPLAY_WRITING";
   payload: Writing;
 };

@@ -13,7 +13,7 @@ const initialState: Writing = {
 
 const writingReducer = (state = initialState, action: Action) => {
   switch (action.type) {
-    case "CREATE_WRITING":
+    case "DISPLAY_WRITING":
       return { ...action.payload };
     default:
       return state;
