@@ -10,14 +10,16 @@ import {
   selectTime,
   selectIsActive,
   selectSeconds,
+  selectLaps,
 } from "../../store/stopwatch/selectors";
-
+import LapTable from "../../components/LapTable/index";
 export default function StopwatchTimer() {
   const dispatch = useDispatch();
   const timeDisplay = useSelector(selectTime);
   const { hrs, min, sec } = timeDisplay;
   const seconds = useSelector(selectSeconds);
   const isActive = useSelector(selectIsActive);
+  const laps = useSelector(selectLaps);
   function handleClick() {
     dispatch(switchActive());
   }
@@ -59,6 +61,7 @@ export default function StopwatchTimer() {
           Reset
         </button>
       </div>
+      {laps ? <LapTable laps={laps} /> : null}{" "}
     </div>
   );
 }

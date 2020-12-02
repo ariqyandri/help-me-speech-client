@@ -6,13 +6,12 @@ const initialState = {
   isActive: false,
   time: { sec: 0, min: 0, hrs: 0 },
   seconds: 0,
-  lap: [],
+  laps: [],
 };
 
 const appStateReducer = (state = initialState, action: Action) => {
   switch (action.type) {
     case "SET_TIME":
-      console.log(state.time);
       return {
         ...state,
         seconds: state.seconds + 1,
@@ -25,13 +24,9 @@ const appStateReducer = (state = initialState, action: Action) => {
         ...initialState,
       };
     case "LAP":
-      console.log([
-        ...state.lap,
-        { num: state.lap.length + 1, time: state.time },
-      ]);
       return {
         ...state,
-        lap: [...state.lap, { no: state.lap.length + 1, time: state.time }],
+        laps: [...state.laps, { num: state.laps.length + 1, time: state.time }],
       };
     default:
       return state;
