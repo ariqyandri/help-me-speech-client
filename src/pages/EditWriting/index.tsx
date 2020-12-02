@@ -46,7 +46,11 @@ export default function EditWriting() {
   return (
     <div>
       <h1>Edit Writing</h1>
-      <EditWritingForm editWriting={editWriting} id={id} />
+      {loading ? (
+        <Loading />
+      ) : (
+        <EditWritingForm editWriting={editWriting} id={id} />
+      )}
     </div>
   );
 }
