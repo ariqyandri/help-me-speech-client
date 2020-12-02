@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
-import { Button, Spinner } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useHistory, useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import EditWritingForm from "../../components/EditWritingForm/index";
 import Loading from "../../components/Loading";
 import {
