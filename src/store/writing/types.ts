@@ -6,8 +6,14 @@ export type Writing = {
   videoUrl: string | null;
   userId: number | null;
   categoryId: number | null;
+  user: User | null;
   createdAt: any;
   updatedAt: any;
+};
+
+export type User = {
+  firstName: string;
+  lastName: string;
 };
 
 export type PostWriting = {

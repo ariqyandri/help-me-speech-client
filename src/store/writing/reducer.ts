@@ -8,6 +8,7 @@ const initialState: Writing = {
   videoUrl: null,
   userId: null,
   categoryId: null,
+  user: null,
   createdAt: null,
   updatedAt: null,
 };
