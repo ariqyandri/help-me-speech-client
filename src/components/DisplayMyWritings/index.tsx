@@ -23,7 +23,7 @@ export default function DisplayMyWritings(props: Props) {
           </Card.Subtitle>
           <Card.Text>{props.myWriting.description}</Card.Text>
           <Badge pill variant="primary">
-            {props.myWriting.categoryId}
+            {props.myWriting.category.name}
           </Badge>
           <Link to={`/writing/${props.myWriting.id}`}>
             <Button variant="primary">Visit writing</Button>

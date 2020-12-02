@@ -6,10 +6,15 @@ export type Writing = {
   videoUrl: string | null;
   userId: number;
   categoryId: number;
+  category: Category;
   description: string | null;
   createdAt: any;
   updatedAt: any;
 } | null;
+
+export type Category = {
+  name: string;
+};
 
 export type PostWriting = {
   title: string;
