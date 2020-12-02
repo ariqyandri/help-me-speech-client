@@ -64,7 +64,7 @@ export const updateWriting = (value: UpdateWriting, id: number) => {
       const response = await axios.put(`${apiUrl}/writing/${id}`, value, {
         headers: { Authorization: `Bearer ${token}` },
       });
-      dispatch(displayWriting(response.data));
+      dispatch(fetchWriting(response.data.id));
       dispatch(showMessageWithTimeout("success", true, `Success!`, 2000));
       dispatch(appDoneLoading());
     } catch (error) {

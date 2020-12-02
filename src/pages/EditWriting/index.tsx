@@ -1,8 +1,10 @@
 import React, { useEffect } from "react";
+import { Button, Spinner } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory, useParams } from "react-router-dom";
+import { Link, useHistory, useParams } from "react-router-dom";
 import EditWritingForm from "../../components/EditWritingForm/index";
 import Loading from "../../components/Loading";
+import { selectAppLoading } from "../../store/appState/selectors";
 import { selectToken } from "../../store/user/selectors";
 import { fetchWriting } from "../../store/writing/action";
 import { selectWriting } from "../../store/writing/selector";
@@ -15,6 +17,7 @@ export default function EditWriting() {
   if (!token) {
     history.push("/");
   }
+  const loading = useSelector(selectAppLoading);
   const params: Params = useParams();
   const id: number = parseInt(params.id);
   useEffect(() => {
@@ -37,6 +40,22 @@ export default function EditWriting() {
     <div>
       <h1>Edit Writing</h1>
       <EditWritingForm editWriting={editWriting} id={id} />
+      {loading ? (
+        <Button>
+          <Spinner
+            as="span"
+            animation="border"
+            size="sm"
+            role="status"
+            aria-hidden="true"
+          />
+          <span className="sr-only">Loading...</span>
+        </Button>
+      ) : (
+        <Link to={`/writing/${id}`}>
+          <Button variant="primary">View Writing</Button>
+        </Link>
+      )}
     </div>
   );
 }

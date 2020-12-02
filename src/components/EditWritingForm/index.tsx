@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import { updateWriting } from "../../store/writing/action";
 import { Writing, Props } from "./types";
 
 export default function EditWritingForm(props: Props) {
   const dispatch = useDispatch();
   const [value, setValue] = useState<Writing>(props.editWriting);
-
   const handleChange = (event: any) => {
     setValue({ ...value, [event.target.name]: event.target.value });
   };
@@ -18,7 +18,6 @@ export default function EditWritingForm(props: Props) {
     event.preventDefault();
     dispatch(updateWriting(value, props.id));
   };
-
   return (
     <div>
       <Form>
