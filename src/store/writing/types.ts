@@ -1,16 +1,17 @@
 export type Writing = {
-  title: string | null;
-  content: string | null;
-  private: boolean | null;
+  id: number;
+  title: string;
+  content: string;
+  private: boolean;
   imageUrl: string | null;
   videoUrl: string | null;
-  userId: number | null;
-  categoryId: number | null;
-  user: User | null;
-  category: Category | null;
+  userId: number;
+  categoryId: number;
+  user: User;
+  category: Category;
   createdAt: any;
   updatedAt: any;
-};
+} | null;
 
 export type User = {
   firstName: string;
