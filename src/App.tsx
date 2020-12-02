@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getUserWithStoredToken, logOut } from "./store/user/action";
 import { fetchCategories } from "./store/categories/action";
 import { selectToken } from "./store/user/selectors";
+import MyWriting from "./pages/MyWriting/index";
 
 function App() {
   const dispatch = useDispatch();
@@ -31,6 +32,7 @@ function App() {
         <Route exact path="/" component={Home} />
         <Route exact path="/mywritings" component={MyWritings} />
         <Route exact path="/writing/create" component={CreateWriting} />
+        <Route exact path="/writing/:id" component={MyWriting} />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={SignUp} />
       </Switch>
