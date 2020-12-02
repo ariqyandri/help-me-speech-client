@@ -37,3 +37,21 @@ export const postWriting = (value: PostWriting) => {
     }
   };
 };
+
+export const fetchWriting = (id: number) => {
+  return async (dispatch: any, getState: any) => {
+    dispatch(appLoading());
+    try {
+      const response = await axios.get(`${apiUrl}/writing/${id}`);
+      dispatch(displayWriting(response.data));
+      dispatch(appDoneLoading());
+    } catch (error) {
+      if (error.response) {
+        console.log(error.response.data.message);
+      } else {
+        console.log(error.message);
+      }
+      dispatch(appDoneLoading());
+    }
+  };
+};
