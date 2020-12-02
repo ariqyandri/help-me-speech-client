@@ -14,7 +14,6 @@ export default function EditWritingForm(props: Props) {
   const handleIsPrivate = (event: any) => {
     setValue({ ...value, isPrivate: value.isPrivate === true ? false : true });
   };
-  console.log(value.isPrivate);
   const handleClick = (event: any) => {
     event.preventDefault();
     dispatch(updateWriting(value, props.id));

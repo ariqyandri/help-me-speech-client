@@ -18,6 +18,9 @@ export default function CreateWritingForm() {
   const handleChange = (event: any) => {
     setValue({ ...value, [event.target.name]: event.target.value });
   };
+  const handleIsPrivate = (event: any) => {
+    setValue({ ...value, isPrivate: value.isPrivate === true ? false : true });
+  };
   const handleClick = (event: any) => {
     event.preventDefault();
     dispatch(postWriting(value));
@@ -63,6 +66,15 @@ export default function CreateWritingForm() {
             <option value={5}>Play</option>
             <option value={6}>Blog</option>
           </Form.Control>
+        </Form.Group>
+        <Form.Group>
+          <Form.Check
+            type="checkbox"
+            id={`default-checkbox`}
+            label={`Private`}
+            checked={value.isPrivate}
+            onChange={handleIsPrivate}
+          />
         </Form.Group>
         <Button variant="primary" type="submit" onClick={handleClick}>
           Submit
