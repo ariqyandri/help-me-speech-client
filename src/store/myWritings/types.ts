@@ -2,6 +2,7 @@ export type Writing = {
   id: number;
   title: string;
   content: string;
+  isPrivate: boolean;
   imageUrl: string | null;
   videoUrl: string | null;
   userId: number;
@@ -14,14 +15,6 @@ export type Writing = {
 
 export type Category = {
   name: string;
-};
-
-export type PostWriting = {
-  title: string;
-  content: string;
-  imageUrl: string | null;
-  videoUrl: string | null;
-  categoryId: number;
 };
 
 export type Action =

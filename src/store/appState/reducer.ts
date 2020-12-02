@@ -3,6 +3,7 @@ import { Action } from "./types";
 const initialState = {
   loading: false,
   message: null,
+  fullfilledRequest: null,
 };
 
 const appStateReducer = (state = initialState, action: Action) => {
@@ -19,6 +20,11 @@ const appStateReducer = (state = initialState, action: Action) => {
     case "CLEAR_MESSAGE":
       return { ...state, message: null };
 
+    case "FULFILLED_REQUEST":
+      return { ...state, fullfilledRequest: action.payload };
+
+    case "RESET_REQUEST":
+      return { ...state, fullfilledRequest: null };
     default:
       return state;
   }
