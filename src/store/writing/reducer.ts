@@ -9,6 +9,7 @@ const initialState: Writing = {
   userId: null,
   categoryId: null,
   user: null,
+  category: null,
   createdAt: null,
   updatedAt: null,
 };

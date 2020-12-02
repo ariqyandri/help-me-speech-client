@@ -8,11 +8,15 @@ export type Writing = {
   userId: number;
   categoryId: number;
   user: User;
+  category: Category;
   createdAt: any;
   updatedAt: any;
 };
 export type User = {
   firstName: string;
   lastName: string;
+};
+export type Category = {
+  name: string;
 };
 export type Props = { aWriting: Writing };

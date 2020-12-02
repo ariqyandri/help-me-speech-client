@@ -7,6 +7,7 @@ export type Writing = {
   userId: number | null;
   categoryId: number | null;
   user: User | null;
+  category: Category | null;
   createdAt: any;
   updatedAt: any;
 };
@@ -15,7 +16,9 @@ export type User = {
   firstName: string;
   lastName: string;
 };
-
+export type Category = {
+  name: string;
+};
 export type PostWriting = {
   title: string;
   content: string;
