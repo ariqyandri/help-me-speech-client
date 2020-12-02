@@ -2,7 +2,7 @@ export type Writing = {
   id: number;
   title: string;
   content: string;
-  private: boolean;
+  isPrivate: boolean;
   imageUrl: string | null;
   videoUrl: string | null;
   userId: number;
@@ -23,7 +23,7 @@ export type Category = {
 export type PostWriting = {
   title: string;
   content: string;
-  private: boolean;
+  isPrivate: boolean;
   imageUrl: string | null;
   videoUrl: string | null;
   categoryId: number;
@@ -32,7 +32,7 @@ export type PostWriting = {
 export type UpdateWriting = {
   title: string;
   content: string;
-  private: boolean;
+  isPrivate: boolean;
   imageUrl: string | null;
   videoUrl: string | null;
   categoryId: number;

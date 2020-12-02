@@ -1,7 +1,7 @@
 export type Writing = {
   title: string;
   content: string;
-  private: boolean;
+  isPrivate: boolean;
   imageUrl: string | null;
   videoUrl: string | null;
   categoryId: number;

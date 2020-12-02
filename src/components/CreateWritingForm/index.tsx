@@ -9,7 +9,7 @@ export default function CreateWritingForm() {
   const [value, setValue] = useState<Writing>({
     title: "",
     content: "",
-    private: false,
+    isPrivate: false,
     imageUrl: null,
     videoUrl: null,
     categoryId: 0,
