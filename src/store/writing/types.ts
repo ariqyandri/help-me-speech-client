@@ -28,6 +28,15 @@ export type PostWriting = {
   categoryId: number;
 };
 
+export type UpdateWriting = {
+  title: string;
+  content: string;
+  private: boolean;
+  imageUrl: string | null;
+  videoUrl: string | null;
+  categoryId: number;
+};
+
 export type Action = {
   type: "DISPLAY_WRITING";
   payload: Writing;
