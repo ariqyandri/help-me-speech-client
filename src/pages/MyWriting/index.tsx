@@ -16,7 +16,6 @@ export default function MyWriting() {
   }, [dispatch, id]);
   return (
     <div>
-      <h1>My Writing</h1>
       <DisplayWriting aWriting={writing} />
     </div>
   );
