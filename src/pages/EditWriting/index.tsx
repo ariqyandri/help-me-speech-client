@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
-import { Button, Spinner } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useHistory, useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import EditWritingForm from "../../components/EditWritingForm/index";
 import Loading from "../../components/Loading";
 import {
@@ -28,7 +27,7 @@ export default function EditWriting() {
     dispatch(fetchWriting(id));
   }, [dispatch, id]);
   if (requestId === id) {
-    history.push(`/writing/${id}`);
+    history.push(`/writing/view/${id}`);
   }
   const writing = useSelector(selectWriting);
   if (!writing) {

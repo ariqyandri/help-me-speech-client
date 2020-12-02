@@ -5,6 +5,7 @@ import writing from "./writing/reducer";
 import myWritings from "./myWritings/reducer";
 import appState from "./appState/reducer";
 import categories from "./categories/reducer";
+import stopwatch from "./stopwatch/reducer";
 
 export default combineReducers({
   dummy,
@@ -13,4 +14,5 @@ export default combineReducers({
   categories,
   writing,
   myWritings,
+  stopwatch,
 });

@@ -14,6 +14,7 @@ import { fetchCategories } from "./store/categories/action";
 import { selectToken } from "./store/user/selectors";
 import MyWriting from "./pages/MyWriting/index";
 import EditWriting from "./pages/EditWriting/index";
+import HelpMePractice from "./pages/HelpMePractice/index";
 
 function App() {
   const dispatch = useDispatch();
@@ -34,7 +35,12 @@ function App() {
         <Route exact path="/mywritings" component={MyWritings} />
         <Route exact path="/writing/create" component={CreateWriting} />
         <Route exact path="/writing/edit/:id" component={EditWriting} />
-        <Route exact path="/writing/:id" component={MyWriting} />
+        <Route exact path="/writing/view/:id" component={MyWriting} />
+        <Route
+          exact
+          path="/writing/helpmepractice/:id"
+          component={HelpMePractice}
+        />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={SignUp} />
       </Switch>

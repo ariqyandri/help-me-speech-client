@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
 import { updateWriting } from "../../store/writing/action";
 import { Writing, Props } from "./types";
 
