@@ -8,12 +8,17 @@ import MyWritings from "./pages/MyWritings/index";
 import CreateWriting from "./pages/CreateWriting/index";
 import Navbar from "./components/Navbar/index";
 import Message from "./components/Message";
-import { useDispatch } from "react-redux";
-import { getUserWithStoredToken } from "./store/user/action";
+import { useDispatch, useSelector } from "react-redux";
+import { getUserWithStoredToken, logOut } from "./store/user/action";
 import { fetchCategories } from "./store/categories/action";
+import { selectToken } from "./store/user/selectors";
 
 function App() {
   const dispatch = useDispatch();
+  const token = useSelector(selectToken);
+  if (!token) {
+    dispatch(logOut());
+  }
   useEffect(() => {
     dispatch(getUserWithStoredToken());
     dispatch(fetchCategories());
