@@ -1,6 +1,7 @@
 import React from "react";
-import { Badge, Card } from "react-bootstrap";
+import { Badge, Button, Card } from "react-bootstrap";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { selectAppLoading } from "../../store/appState/selectors";
 import Loading from "../Loading";
 import { Props } from "./types";
@@ -24,6 +25,9 @@ export default function DisplayMyWritings(props: Props) {
           <Badge pill variant="primary">
             {props.myWriting.categoryId}
           </Badge>
+          <Link to={`/writing/${props.myWriting.id}`}>
+            <Button variant="primary">Visit writing</Button>
+          </Link>
         </Card.Body>
       </Card>
     </div>
