@@ -24,7 +24,6 @@ const appStateReducer = (state = initialState, action: Action) => {
       return { ...state, fullfilledRequest: action.payload };
 
     case "RESET_REQUEST":
-      console.log(`null`)
       return { ...state, fullfilledRequest: null };
     default:
       return state;

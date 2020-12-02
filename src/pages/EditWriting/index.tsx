@@ -28,7 +28,6 @@ export default function EditWriting() {
     dispatch(fetchWriting(id));
   }, [dispatch, id]);
   if (requestId === id) {
-    console.log(`this runs`);
     history.push(`/writing/${id}`);
   }
   const writing = useSelector(selectWriting);

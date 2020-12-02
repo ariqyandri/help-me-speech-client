@@ -16,7 +16,6 @@ export default function CreateWriting() {
   }
   if (writing) {
     if (requestId === writing.id) {
-      console.log(`this runs`);
       history.push(`/writing/${writing.id}`);
     }
   }
