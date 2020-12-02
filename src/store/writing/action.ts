@@ -6,6 +6,7 @@ import { Action } from "./types";
 import {
   appDoneLoading,
   appLoading,
+  fulfilledRequest,
   showMessageWithTimeout,
 } from "../appState/action";
 
@@ -24,7 +25,8 @@ export const postWriting = (value: PostWriting) => {
       const response = await axios.post(`${apiUrl}/writing`, value, {
         headers: { Authorization: `Bearer ${token}` },
       });
-      dispatch(displayWriting(response.data));
+      dispatch(fetchWriting(response.data.id));
+      dispatch(fulfilledRequest(response.data.id));
       dispatch(showMessageWithTimeout("success", true, `Success!`, 2000));
       dispatch(appDoneLoading());
     } catch (error) {
@@ -65,6 +67,7 @@ export const updateWriting = (value: UpdateWriting, id: number) => {
         headers: { Authorization: `Bearer ${token}` },
       });
       dispatch(fetchWriting(response.data.id));
+      dispatch(fulfilledRequest(response.data.id));
       dispatch(showMessageWithTimeout("success", true, `Success!`, 2000));
       dispatch(appDoneLoading());
     } catch (error) {

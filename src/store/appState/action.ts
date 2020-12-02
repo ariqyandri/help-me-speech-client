@@ -1,8 +1,17 @@
 import { DEFAULT_MESSAGE_TIMEOUT } from "../../config/constants";
+import { Id } from "./types";
 
 export const appLoading = () => ({ type: "APP_LOADING" });
 export const appDoneLoading = () => ({ type: "APP_DONE_LOADING" });
 export const clearMessage = () => ({ type: "CLEAR_MESSAGE" });
+export const fulfilledRequest = (id: Id) => ({
+  type: "FULFILLED_REQUEST",
+  payload: id,
+});
+
+export const resetRequest = () => ({
+  type: "RESET_REQUEST",
+});
 
 export const setMessage = (
   variant: string,

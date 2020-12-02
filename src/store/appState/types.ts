@@ -11,10 +11,19 @@ export type SetMessageWithTimeout = {
   timeOutMilliSeconds: number;
 };
 
+export type Id = number | null;
+
 export type Action =
   | { type: "APP_LOADING" }
   | {
       type: "APP_DONE_LOADING";
     }
   | { type: "CLEAR_MESSAGE" }
-  | { type: "SET_MESSAGE"; payload: SetMessage };
+  | { type: "SET_MESSAGE"; payload: SetMessage }
+  | {
+      type: "FULFILLED_REQUEST";
+      payload: Id;
+    }
+  | {
+      type: "RESET_REQUEST";
+    };

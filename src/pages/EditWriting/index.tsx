@@ -4,7 +4,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory, useParams } from "react-router-dom";
 import EditWritingForm from "../../components/EditWritingForm/index";
 import Loading from "../../components/Loading";
-import { selectAppLoading } from "../../store/appState/selectors";
+import {
+  selectAppLoading,
+  selectFullfilledRequest,
+} from "../../store/appState/selectors";
 import { selectToken } from "../../store/user/selectors";
 import { fetchWriting } from "../../store/writing/action";
 import { selectWriting } from "../../store/writing/selector";
@@ -12,6 +15,7 @@ import { Writing, Params } from "./types";
 
 export default function EditWriting() {
   const dispatch = useDispatch();
+  const requestId = useSelector(selectFullfilledRequest);
   const token = useSelector(selectToken);
   const history = useHistory();
   if (!token) {
@@ -23,6 +27,10 @@ export default function EditWriting() {
   useEffect(() => {
     dispatch(fetchWriting(id));
   }, [dispatch, id]);
+  if (requestId === id) {
+    console.log(`this runs`);
+    history.push(`/writing/${id}`);
+  }
   const writing = useSelector(selectWriting);
   if (!writing) {
     return <Loading />;
@@ -40,22 +48,6 @@ export default function EditWriting() {
     <div>
       <h1>Edit Writing</h1>
       <EditWritingForm editWriting={editWriting} id={id} />
-      {loading ? (
-        <Button>
-          <Spinner
-            as="span"
-            animation="border"
-            size="sm"
-            role="status"
-            aria-hidden="true"
-          />
-          <span className="sr-only">Loading...</span>
-        </Button>
-      ) : (
-        <Link to={`/writing/${id}`}>
-          <Button variant="primary">View Writing</Button>
-        </Link>
-      )}
     </div>
   );
 }
