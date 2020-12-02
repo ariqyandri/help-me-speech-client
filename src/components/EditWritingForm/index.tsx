@@ -11,6 +11,10 @@ export default function EditWritingForm(props: Props) {
   const handleChange = (event: any) => {
     setValue({ ...value, [event.target.name]: event.target.value });
   };
+  const handleIsPrivate = (event: any) => {
+    setValue({ ...value, isPrivate: value.isPrivate === true ? false : true });
+  };
+  console.log(value.isPrivate);
   const handleClick = (event: any) => {
     event.preventDefault();
     dispatch(updateWriting(value, props.id));
@@ -19,7 +23,7 @@ export default function EditWritingForm(props: Props) {
   return (
     <div>
       <Form>
-        <Form.Group controlId="exampleForm.ControlInput1">
+        <Form.Group>
           <Form.Label>Title</Form.Label>
           <Form.Control
             name="title"
@@ -29,7 +33,7 @@ export default function EditWritingForm(props: Props) {
             required
           />
         </Form.Group>
-        <Form.Group controlId="exampleForm.ControlTextarea1">
+        <Form.Group>
           <Form.Label>Content</Form.Label>
           <Form.Control
             name="content"
@@ -40,7 +44,7 @@ export default function EditWritingForm(props: Props) {
             required
           />
         </Form.Group>
-        <Form.Group controlId="exampleForm.ControlSelect1">
+        <Form.Group>
           <Form.Label>Category</Form.Label>
           <Form.Control
             name="categoryId"
@@ -56,6 +60,15 @@ export default function EditWritingForm(props: Props) {
             <option value={5}>Play</option>
             <option value={6}>Blog</option>
           </Form.Control>
+        </Form.Group>
+        <Form.Group>
+          <Form.Check
+            type="checkbox"
+            id={`default-checkbox`}
+            label={`Private`}
+            checked={value.isPrivate}
+            onChange={handleIsPrivate}
+          />
         </Form.Group>
         <Button variant="primary" type="submit" onClick={handleClick}>
           Submit
