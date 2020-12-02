@@ -1,6 +1,7 @@
 export type Writing = {
   title: string | null;
   content: string | null;
+  private: boolean | null;
   imageUrl: string | null;
   videoUrl: string | null;
   userId: number | null;

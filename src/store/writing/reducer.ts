@@ -3,6 +3,7 @@ import { Writing, Action } from "./types";
 const initialState: Writing = {
   title: null,
   content: null,
+  private: null,
   imageUrl: null,
   videoUrl: null,
   userId: null,

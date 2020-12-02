@@ -2,6 +2,7 @@ export type Writing = {
   id: number;
   title: string;
   content: string;
+  private: boolean;
   imageUrl: string | null;
   videoUrl: string | null;
   userId: number;
