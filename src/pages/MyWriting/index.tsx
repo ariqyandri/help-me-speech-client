@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import DisplayWriting from "../../components/DisplayWriting";
 import { fetchWriting } from "../../store/writing/action";
 import { selectWriting } from "../../store/writing/selector";
 import { Params } from "./types";
@@ -16,6 +17,7 @@ export default function MyWriting() {
   return (
     <div>
       <h1>My Writing</h1>
+      <DisplayWriting aWriting={writing} />
     </div>
   );
 }
