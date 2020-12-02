@@ -9,9 +9,9 @@ import {
   showMessageWithTimeout,
 } from "../appState/action";
 
-export const createWriting = (writing: Writing): Action => {
+export const displayWriting = (writing: Writing): Action => {
   return {
-    type: "CREATE_WRITING",
+    type: "DISPLAY_WRITING",
     payload: writing,
   };
 };
@@ -24,8 +24,26 @@ export const postWriting = (value: PostWriting) => {
       const response = await axios.post(`${apiUrl}/writing`, value, {
         headers: { Authorization: `Bearer ${token}` },
       });
-      dispatch(createWriting(response.data));
+      dispatch(displayWriting(response.data));
       dispatch(showMessageWithTimeout("success", true, `Success!`, 2000));
+      dispatch(appDoneLoading());
+    } catch (error) {
+      if (error.response) {
+        console.log(error.response.data.message);
+      } else {
+        console.log(error.message);
+      }
+      dispatch(appDoneLoading());
+    }
+  };
+};
+
+export const fetchWriting = (id: number) => {
+  return async (dispatch: any, getState: any) => {
+    dispatch(appLoading());
+    try {
+      const response = await axios.get(`${apiUrl}/writing/${id}`);
+      dispatch(displayWriting(response.data));
       dispatch(appDoneLoading());
     } catch (error) {
       if (error.response) {
