@@ -6,3 +6,5 @@ export type Writing = {
   videoUrl: string | null;
   categoryId: number;
 };
+
+export type Props = { editWriting: Writing; id: number };

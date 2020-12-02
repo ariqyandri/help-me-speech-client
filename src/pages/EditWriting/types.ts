@@ -2,7 +2,7 @@ export type Params = {
   id: string;
 };
 
-export type EditWriting = {
+export type Writing = {
   title: string;
   content: string;
   isPrivate: boolean;

@@ -1,26 +1,19 @@
 import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { useDispatch } from "react-redux";
-import { postWriting } from "../../store/writing/action";
-import { Writing } from "./types";
+import { updateWriting } from "../../store/writing/action";
+import { Writing, Props } from "./types";
 
-export default function EditWritingForm() {
+export default function EditWritingForm(props: Props) {
   const dispatch = useDispatch();
-  const [value, setValue] = useState<Writing>({
-    title: "",
-    content: "",
-    isPrivate: false,
-    imageUrl: null,
-    videoUrl: null,
-    categoryId: 0,
-  });
+  const [value, setValue] = useState<Writing>(props.editWriting);
 
   const handleChange = (event: any) => {
     setValue({ ...value, [event.target.name]: event.target.value });
   };
   const handleClick = (event: any) => {
     event.preventDefault();
-    dispatch(postWriting(value));
+    dispatch(updateWriting(value, props.id));
   };
 
   return (
