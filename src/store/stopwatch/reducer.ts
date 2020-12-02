@@ -22,10 +22,16 @@ const appStateReducer = (state = initialState, action: Action) => {
       return { ...state, isActive: state.isActive === false ? true : false };
     case "DEACTIVATE":
       return {
+        ...initialState,
+      };
+    case "LAP":
+      console.log([
+        ...state.lap,
+        { num: state.lap.length + 1, time: state.time },
+      ]);
+      return {
         ...state,
-        isActive: false,
-        seconds: 0,
-        time: displayTime(0),
+        lap: [...state.lap, { no: state.lap.length + 1, time: state.time }],
       };
     default:
       return state;

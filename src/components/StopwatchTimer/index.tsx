@@ -4,6 +4,7 @@ import {
   switchActive,
   deactivate,
   setTime,
+  lap,
 } from "../../store/stopwatch/action";
 import {
   selectTime,
@@ -22,6 +23,9 @@ export default function StopwatchTimer() {
   }
   function handleReset() {
     dispatch(deactivate());
+  }
+  function handleLap() {
+    dispatch(lap());
   }
   useEffect(() => {
     let interval: any = null;
@@ -46,6 +50,11 @@ export default function StopwatchTimer() {
         >
           {isActive ? "Pause" : "Start"}
         </button>
+        {seconds > 0 ? (
+          <button className="button" onClick={handleLap}>
+            lap
+          </button>
+        ) : null}
         <button className="button" onClick={handleReset}>
           Reset
         </button>

@@ -5,4 +5,5 @@ export type Action =
   | {
       type: "SWITCH";
     }
-  | { type: "DEACTIVATE" };
+  | { type: "DEACTIVATE" }
+  | { type: "LAP" };
