@@ -1,50 +1,52 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  switchActive,
+  deactivate,
+  setTime,
+} from "../../store/stopwatch/action";
+import {
+  selectTime,
+  selectIsActive,
+  selectSeconds,
+} from "../../store/stopwatch/selectors";
 
 export default function StopwatchTimer() {
-  const [sec, setSec] = useState(0);
-  const [min, setMin] = useState(0);
-  const [hrs, setHrs] = useState(0);
-  const [seconds, setSeconds] = useState(0);
-  const [isActive, setIsActive] = useState(false);
-
-  function toggle() {
-    setIsActive(!isActive);
+  const dispatch = useDispatch();
+  const timeDisplay = useSelector(selectTime);
+  const { hrs, min, sec } = timeDisplay;
+  const seconds = useSelector(selectSeconds);
+  const isActive = useSelector(selectIsActive);
+  function handleClick() {
+    dispatch(switchActive());
   }
-
-  function reset() {
-    setSeconds(0);
-    setIsActive(false);
+  function handleReset() {
+    dispatch(deactivate());
   }
-
   useEffect(() => {
     let interval: any = null;
     if (isActive) {
       interval = setInterval(() => {
-        setSeconds((seconds) => seconds + 1);
+        dispatch(setTime());
       }, 1000);
-      setSec(Math.floor(seconds % 60));
-      setMin(Math.floor((seconds / 60) % 60));
-      setHrs(Math.floor((seconds / (60 * 60)) % 24));
     } else if (!isActive && seconds !== 0) {
       clearInterval(interval);
     }
     return () => clearInterval(interval);
-  }, [isActive, seconds]);
+  }, [dispatch, isActive, seconds]);
   return (
     <div className="app">
-      <div className="time">
-        {hrs}h {min}m {sec}s
-      </div>
+      <div className="time">{`${hrs} : ${min} : ${sec}`}</div>
       <div className="row">
         <button
           className={`button button-primary button-primary-${
             isActive ? "active" : "inactive"
           }`}
-          onClick={toggle}
+          onClick={handleClick}
         >
           {isActive ? "Pause" : "Start"}
         </button>
-        <button className="button" onClick={reset}>
+        <button className="button" onClick={handleReset}>
           Reset
         </button>
       </div>

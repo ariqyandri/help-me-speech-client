@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import DisplayMyWritingPractice from "../../components/DisplayWritingPractice/index";
 import Loading from "../../components/Loading";
-import StopwatchTimer from "../../components/StopwatchTimer/trial";
+import StopwatchTimer from "../../components/StopwatchTimer/index";
 import { selectToken } from "../../store/user/selectors";
 import { fetchWriting } from "../../store/writing/action";
 import { selectWriting } from "../../store/writing/selector";
