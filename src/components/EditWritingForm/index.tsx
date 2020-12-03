@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { selectCategories } from "../../store/categories/selector";
 import { updateWriting } from "../../store/writing/action";
-import { Writing, Props } from "./types";
+import { Writing, Props, Category } from "./types";
 
 export default function EditWritingForm(props: Props) {
   const dispatch = useDispatch();
+  const categories = useSelector(selectCategories);
   const [value, setValue] = useState<Writing>(props.editWriting);
   const handleChange = (event: any) => {
     setValue({ ...value, [event.target.name]: event.target.value });
@@ -50,12 +52,13 @@ export default function EditWritingForm(props: Props) {
             onChange={handleChange}
             required
           >
-            <option value={1}>Speech</option>
-            <option value={2}>Presentation</option>
-            <option value={3}>Interview</option>
-            <option value={4}>Poem</option>
-            <option value={5}>Play</option>
-            <option value={6}>Blog</option>
+            {categories.map((category: Category) => {
+              return (
+                <option key={category.id} value={category.id}>
+                  {category.name}
+                </option>
+              );
+            })}
           </Form.Control>
         </Form.Group>
         <Form.Group>

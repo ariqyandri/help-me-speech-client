@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { selectCategories } from "../../store/categories/selector";
 import { postWriting } from "../../store/writing/action";
-import { Writing } from "./types";
+import { Writing, Category } from "./types";
 
 export default function CreateWritingForm() {
   const dispatch = useDispatch();
+  const categories = useSelector(selectCategories);
   const [value, setValue] = useState<Writing>({
     title: "",
     content: "",
@@ -14,7 +16,6 @@ export default function CreateWritingForm() {
     videoUrl: null,
     categoryId: 0,
   });
-
   const handleChange = (event: any) => {
     setValue({ ...value, [event.target.name]: event.target.value });
   };
@@ -59,12 +60,13 @@ export default function CreateWritingForm() {
             onChange={handleChange}
             required
           >
-            <option value={1}>Speech</option>
-            <option value={2}>Presentation</option>
-            <option value={3}>Interview</option>
-            <option value={4}>Poem</option>
-            <option value={5}>Play</option>
-            <option value={6}>Blog</option>
+            {categories.map((category: Category) => {
+              return (
+                <option key={category.id} value={category.id}>
+                  {category.name}
+                </option>
+              );
+            })}
           </Form.Control>
         </Form.Group>
         <Form.Group>
