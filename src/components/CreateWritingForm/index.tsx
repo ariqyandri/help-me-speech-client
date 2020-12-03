@@ -33,7 +33,7 @@ export default function CreateWritingForm() {
     }
     event.preventDefault();
     setValidated(true);
-    if (value.title !== "" || value.content !== "" || value.categoryId !== 0) {
+    if (value.title !== "" && value.content !== "" && value.categoryId !== 0) {
       dispatch(postWriting(value));
     }
   };
