@@ -19,6 +19,10 @@ const imagesReducer = (state = initialState, action: Action) => {
       }
       return [...state, { ...action.payload }];
     case "REMOVE_IMAGE":
+      console.log("image remove", action.payload);
+      if (state.length === 1) {
+        return [...initialState];
+      }
       const newArray = state.filter((image) => {
         return image.id !== action.payload;
       });

@@ -23,6 +23,7 @@ export const postImage = (value: PostImage) => {
       const response = await axios.post(`${apiUrl}/image`, value, {
         headers: { Authorization: `Bearer ${token}` },
       });
+      console.log(response.data);
       dispatch(displayImage(response.data));
     } catch (error) {
       if (error.response) {
@@ -39,7 +40,7 @@ export const assignImage = (writingId: number) => {
     const token = selectToken(getState());
     const imagesIds = selectImagesIds(getState());
     try {
-      const response = await axios.put(
+      await axios.put(
         `${apiUrl}/image/${writingId}`,
         { id: imagesIds },
         {
@@ -61,10 +62,11 @@ export const deleteImage = (id: number) => {
   return async (dispatch: any, getState: any) => {
     const token = selectToken(getState());
     try {
-      const response = await axios.delete(`${apiUrl}/image/${id}`, {
+      await axios.delete(`${apiUrl}/image/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
-      removeImage(response.data);
+      dispatch(removeImage(id));
+      console.log(`removed image`, id);
     } catch (error) {
       if (error.response) {
         console.log(error.response.data.message);
