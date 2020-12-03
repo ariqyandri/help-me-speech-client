@@ -1,4 +1,3 @@
-import { time } from "console";
 import { displayTime } from "../../config/constants";
 import { Action } from "./types";
 
