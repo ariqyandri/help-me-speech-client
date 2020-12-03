@@ -17,15 +17,19 @@ export const displayWriting = (writing: Writing): Action => {
   };
 };
 
-export const postWriting = (value: PostWriting) => {
+export const postImage = (url: string) => {
   return async (dispatch: any, getState: any) => {
     const token = selectToken(getState());
     dispatch(appLoading());
     try {
-      const response = await axios.post(`${apiUrl}/writing`, value, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
-      dispatch(fetchWriting(response.data.id));
+      const response = await axios.post(
+        `${apiUrl}/writing`,
+        { url },
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+      dispatch(fetchMyWriting(response.data.id));
       dispatch(fulfilledRequest(response.data.id));
       dispatch(showMessageWithTimeout("success", true, `Success!`, 2000));
       dispatch(appDoneLoading());
@@ -40,12 +44,38 @@ export const postWriting = (value: PostWriting) => {
   };
 };
 
-export const fetchWriting = (id: number) => {
+export const fetchMyWriting = (id: number) => {
   return async (dispatch: any, getState: any) => {
+    const token = selectToken(getState());
     dispatch(appLoading());
     try {
-      const response = await axios.get(`${apiUrl}/writing/${id}`);
+      const response = await axios.get(`${apiUrl}/writing/mywriting/${id}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
       dispatch(displayWriting(response.data));
+      dispatch(appDoneLoading());
+    } catch (error) {
+      if (error.response) {
+        console.log(error.response.data.message);
+      } else {
+        console.log(error.message);
+      }
+      dispatch(appDoneLoading());
+    }
+  };
+};
+
+export const postWriting = (value: PostWriting) => {
+  return async (dispatch: any, getState: any) => {
+    const token = selectToken(getState());
+    dispatch(appLoading());
+    try {
+      const response = await axios.post(`${apiUrl}/writing`, value, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      dispatch(fetchMyWriting(response.data.id));
+      dispatch(fulfilledRequest(response.data.id));
+      dispatch(showMessageWithTimeout("success", true, `Success!`, 2000));
       dispatch(appDoneLoading());
     } catch (error) {
       if (error.response) {
@@ -63,10 +93,14 @@ export const updateWriting = (value: UpdateWriting, id: number) => {
     const token = selectToken(getState());
     dispatch(appLoading());
     try {
-      const response = await axios.put(`${apiUrl}/writing/${id}`, value, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
-      dispatch(fetchWriting(response.data.id));
+      const response = await axios.put(
+        `${apiUrl}/writing/mywriting/${id}`,
+        value,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+      dispatch(fetchMyWriting(response.data.id));
       dispatch(fulfilledRequest(response.data.id));
       dispatch(showMessageWithTimeout("success", true, `Success!`, 2000));
       dispatch(appDoneLoading());

@@ -8,7 +8,7 @@ import {
   selectFullfilledRequest,
 } from "../../store/appState/selectors";
 import { selectToken } from "../../store/user/selectors";
-import { fetchWriting } from "../../store/writing/action";
+import { fetchMyWriting } from "../../store/writing/action";
 import { selectWriting } from "../../store/writing/selector";
 import { Writing, Params } from "./types";
 
@@ -24,7 +24,7 @@ export default function EditWriting() {
   const params: Params = useParams();
   const id: number = parseInt(params.id);
   useEffect(() => {
-    dispatch(fetchWriting(id));
+    dispatch(fetchMyWriting(id));
   }, [dispatch, id]);
   if (requestId === id) {
     history.push(`/writing/view/${id}`);

@@ -19,7 +19,7 @@ export default function UploadImage() {
   };
   return (
     <div>
-      <Button onClick={handleOpen}></Button>
+      <Button onClick={handleOpen}>Upload Image</Button>
     </div>
   );
 }
