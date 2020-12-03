@@ -9,38 +9,12 @@ import {
   fulfilledRequest,
   showMessageWithTimeout,
 } from "../appState/action";
+import { assignImage } from "../images/action";
 
 export const displayWriting = (writing: Writing): Action => {
   return {
     type: "DISPLAY_WRITING",
     payload: writing,
-  };
-};
-
-export const postImage = (url: string) => {
-  return async (dispatch: any, getState: any) => {
-    const token = selectToken(getState());
-    dispatch(appLoading());
-    try {
-      const response = await axios.post(
-        `${apiUrl}/writing`,
-        { url },
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      );
-      dispatch(fetchMyWriting(response.data.id));
-      dispatch(fulfilledRequest(response.data.id));
-      dispatch(showMessageWithTimeout("success", true, `Success!`, 2000));
-      dispatch(appDoneLoading());
-    } catch (error) {
-      if (error.response) {
-        console.log(error.response.data.message);
-      } else {
-        console.log(error.message);
-      }
-      dispatch(appDoneLoading());
-    }
   };
 };
 
@@ -73,6 +47,7 @@ export const postWriting = (value: PostWriting) => {
       const response = await axios.post(`${apiUrl}/writing`, value, {
         headers: { Authorization: `Bearer ${token}` },
       });
+      dispatch(assignImage(response.data.id));
       dispatch(fetchMyWriting(response.data.id));
       dispatch(fulfilledRequest(response.data.id));
       dispatch(showMessageWithTimeout("success", true, `Success!`, 2000));

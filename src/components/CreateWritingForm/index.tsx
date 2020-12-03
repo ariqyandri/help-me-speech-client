@@ -3,6 +3,7 @@ import { Button, Form } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { selectCategories } from "../../store/categories/selector";
 import { postWriting } from "../../store/writing/action";
+import ImagePreview from "../ImagePreview";
 import UploadImage from "../UploadImage";
 import { Writing, Category } from "./types";
 
@@ -80,6 +81,7 @@ export default function CreateWritingForm() {
           />
         </Form.Group>
         <UploadImage />
+        <ImagePreview />
         <Button variant="primary" type="submit" onClick={handleClick}>
           Submit
         </Button>

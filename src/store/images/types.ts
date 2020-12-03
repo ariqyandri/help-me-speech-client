@@ -9,6 +9,11 @@ export type ImageType = {
   updatedAt: any;
 };
 
+export type PostImage = {
+  url: string;
+  name: string;
+};
+
 export type Action =
   | {
       type: "DISPLAY_IMAGE";

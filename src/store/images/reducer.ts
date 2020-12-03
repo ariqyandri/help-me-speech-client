@@ -24,6 +24,7 @@ const imagesReducer = (state = initialState, action: Action) => {
       });
       return [...newArray];
     case "REMOVE_ALL_IMAGE":
+      console.log("all removed", [...initialState]);
       return [...initialState];
     default:
       return state;
