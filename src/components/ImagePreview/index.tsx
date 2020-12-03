@@ -10,7 +10,6 @@ export default function ImagePreview() {
   if (images.find((image: ImageType) => image.id === 0)) {
     return <div>{null}</div>;
   }
-  console.log(images);
   const handleRemove = (event: any) => {
     event.preventDefault();
     dispatch(deleteImage(event.target.value));
@@ -19,7 +18,7 @@ export default function ImagePreview() {
     <div>
       {images.map((image: ImageType) => {
         return (
-          <div>
+          <div key={image.id}>
             <img src={image.url} alt={image.name} />
             <button onClick={handleRemove} value={image.id}>
               Remove Image

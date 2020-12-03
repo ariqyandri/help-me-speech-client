@@ -19,5 +19,5 @@ export type Action =
       type: "DISPLAY_IMAGE";
       payload: ImageType;
     }
-  | { type: "REMOVE_IMAGE"; payload: number }
+  | { type: "REMOVE_IMAGE"; payload: any }
   | { type: "REMOVE_ALL_IMAGE" };

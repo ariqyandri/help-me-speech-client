@@ -13,4 +13,4 @@ export type Category = {
   imageUrl: string | null;
   createdAt: any;
   updatedAt: any;
-};
+} 
