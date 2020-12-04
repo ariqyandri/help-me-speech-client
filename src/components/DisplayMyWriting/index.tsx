@@ -10,18 +10,19 @@ export default function DisplayMyWriting(props: Props) {
   const id = useSelector(selectUserId);
   return (
     <div>
-      <h1>{props.aWriting.title}</h1>
-      <h5>{props.aWriting.category.name}</h5>
+      <h1>{props.myWriting.title}</h1>
+      <h5>{props.myWriting.category.name}</h5>
       <h5>
-        By {`${props.aWriting.user.firstName} ${props.aWriting.user.lastName}`},
-        Created at {props.aWriting.createdAt}
+        By{" "}
+        {`${props.myWriting.user.firstName} ${props.myWriting.user.lastName}`},
+        Created at {props.myWriting.createdAt}
       </h5>
-      {!props.aWriting.images ? null : (
-        <DisplayImage images={props.aWriting.images} />
+      {!props.myWriting.images ? null : (
+        <DisplayImage images={props.myWriting.images} />
       )}
-      <h3>{props.aWriting.content}</h3>
-      {id === props.aWriting.userId ? (
-        <Link to={`/writing/edit/${props.aWriting.id}`}>
+      <h3>{props.myWriting.content}</h3>
+      {id === props.myWriting.userId ? (
+        <Link to={`/mywriting/edit/${props.myWriting.id}`}>
           <Button>Edit</Button>
         </Link>
       ) : null}

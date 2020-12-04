@@ -22,7 +22,7 @@ export default function LoggedIn() {
   return (
     <>
       <NavbarItem path="/mywritings" linkText="My Writings" />
-      <NavbarItem path="/writing/create" linkText="Create Writing" />
+      <NavbarItem path="/mywriting/create" linkText="Create Writing" />
       <Nav.Item style={{ padding: ".5rem 1rem" }}>{user.email}</Nav.Item>
       <Button onClick={handleLogOut}>Logout</Button>
     </>

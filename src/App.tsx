@@ -35,12 +35,12 @@ function App() {
         <Route exact path="/" component={Home} />
         <Route exact path="/writings" component={Writings} />
         <Route exact path="/mywritings" component={MyWritings} />
-        <Route exact path="/writing/create" component={CreateWriting} />
-        <Route exact path="/writing/edit/:id" component={EditWriting} />
-        <Route exact path="/writing/view/:id" component={MyWriting} />
+        <Route exact path="/mywriting/create" component={CreateWriting} />
+        <Route exact path="/mywriting/edit/:id" component={EditWriting} />
+        <Route exact path="/mywriting/view/:id" component={MyWriting} />
         <Route
           exact
-          path="/writing/helpmepractice/:id"
+          path="/mywriting/helpmepractice/:id"
           component={HelpMePractice}
         />
         <Route path="/login" component={Login} />

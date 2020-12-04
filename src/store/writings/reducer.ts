@@ -2,7 +2,7 @@ import { Writing, Action } from "./types";
 
 const initialState: Writing[] = [];
 
-const writingReducer = (state = initialState, action: Action) => {
+const writingsReducer = (state = initialState, action: Action) => {
   switch (action.type) {
     case "FETCH_WRITINGS":
       return [...action.payload];
@@ -25,4 +25,4 @@ const writingReducer = (state = initialState, action: Action) => {
   }
 };
 
-export default writingReducer;
+export default writingsReducer;

@@ -19,7 +19,7 @@ export default function MyWriting() {
   }, [dispatch, id]);
   return (
     <div>
-      {!writing ? <Loading /> : <DisplayMyWriting aWriting={writing} />}
+      {!writing ? <Loading /> : <DisplayMyWriting myWriting={writing} />}
     </div>
   );
 }

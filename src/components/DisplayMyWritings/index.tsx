@@ -27,10 +27,10 @@ export default function DisplayMyWritings(props: Props) {
           </Badge>
         </Card.Body>
         <Card.Body>
-          <Link to={`/writing/view/${props.myWriting.id}`}>
+          <Link to={`/mywriting/view/${props.myWriting.id}`}>
             <Button variant="primary">Visit writing</Button>
           </Link>
-          <Link to={`/writing/helpmepractice/${props.myWriting.id}`}>
+          <Link to={`/mywriting/helpmepractice/${props.myWriting.id}`}>
             <Button variant="primary">Help Me Practice!</Button>
           </Link>{" "}
         </Card.Body>
