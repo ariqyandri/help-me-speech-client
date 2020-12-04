@@ -7,7 +7,6 @@ import DisplayImage from "../DisplayImage/index";
 import { Props } from "./types";
 
 export default function DisplayMyWriting(props: Props) {
-  const id = useSelector(selectUserId);
   return (
     <div>
       <h1>{props.myWriting.title}</h1>
@@ -21,11 +20,9 @@ export default function DisplayMyWriting(props: Props) {
         <DisplayImage images={props.myWriting.images} />
       )}
       <h3>{props.myWriting.content}</h3>
-      {id === props.myWriting.userId ? (
-        <Link to={`/mywriting/edit/${props.myWriting.id}`}>
-          <Button>Edit</Button>
-        </Link>
-      ) : null}
+      <Link to={`/mywriting/edit/${props.myWriting.id}`}>
+        <Button>Edit</Button>
+      </Link>
     </div>
   );
 }

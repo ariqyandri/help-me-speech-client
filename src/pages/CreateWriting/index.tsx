@@ -21,7 +21,7 @@ export default function CreateWriting() {
   }
   if (writing) {
     if (requestId === writing.id) {
-      history.push(`/writing/view/${writing.id}`);
+      history.push(`/mywriting/view/${writing.id}`);
     }
   }
   return (

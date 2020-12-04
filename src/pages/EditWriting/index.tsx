@@ -27,7 +27,7 @@ export default function EditWriting() {
     dispatch(fetchMyWriting(id));
   }, [dispatch, id]);
   if (requestId === id) {
-    history.push(`/writing/view/${id}`);
+    history.push(`/mywriting/view/${id}`);
   }
   const writing = useSelector(selectMyWriting);
   if (!writing) {
