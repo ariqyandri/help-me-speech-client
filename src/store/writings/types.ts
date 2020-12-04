@@ -5,6 +5,7 @@ export type Writing = {
   isPrivate: boolean;
   userId: number;
   categoryId: number;
+  user: User;
   category: Category;
   description: string | null;
   createdAt: any;

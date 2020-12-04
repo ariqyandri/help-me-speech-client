@@ -6,7 +6,7 @@ import { selectUserId } from "../../store/user/selectors";
 import DisplayImage from "../DisplayImage/index";
 import { Props } from "./types";
 
-export default function DisplayWriting(props: Props) {
+export default function DisplayMyWriting(props: Props) {
   const id = useSelector(selectUserId);
   return (
     <div>

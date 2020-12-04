@@ -1,20 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import DisplayMyWritings from "../../components/DisplayMyWritings";
+import DisplayWritings from "../../components/DIsplayWritings";
 import FilterByCategories from "../../components/FilterByCategories";
 import Loading from "../../components/Loading";
 import { selectAppLoading } from "../../store/appState/selectors";
-import { fetchMyWritings } from "../../store/myWritings/action";
+import { fetchWritings } from "../../store/writings/action";
 import { selectWritings } from "../../store/writings/selector";
 import { Writing } from "./types";
 
-export default function MyWritings() {
+export default function Writings() {
   const dispatch = useDispatch();
   const loading = useSelector(selectAppLoading);
   const writings = useSelector(selectWritings);
   const [categoryId, setCategoryId] = useState<number>(0);
   useEffect(() => {
-    dispatch(fetchMyWritings(categoryId));
+    dispatch(fetchWritings(categoryId));
   }, [dispatch, categoryId]);
   return (
     <div>
@@ -24,7 +24,7 @@ export default function MyWritings() {
         <Loading />
       ) : (
         writings.map((writing: Writing) => {
-          return <DisplayMyWritings key={writing.id} myWriting={writing} />;
+          return <DisplayWritings key={writing.id} aWriting={writing} />;
         })
       )}
     </div>

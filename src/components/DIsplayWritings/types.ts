@@ -20,3 +20,5 @@ export type User = {
 export type Category = {
   name: string;
 };
+
+export type Props = { aWriting: Writing };

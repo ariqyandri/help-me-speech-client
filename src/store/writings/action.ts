@@ -17,7 +17,7 @@ export const createDescription = () => {
   };
 };
 
-export const fetchMyWritings = (categoryId: number) => {
+export const fetchWritings = (categoryId: number) => {
   return async (dispatch: any, getState: any) => {
     dispatch(appLoading());
     try {
@@ -28,6 +28,7 @@ export const fetchMyWritings = (categoryId: number) => {
         const response = await axios.get(
           `${apiUrl}/writings/category/${categoryId}`
         );
+
         dispatch(displayWritings(response.data));
       }
       dispatch(createDescription());
