@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
-import DisplayMyWritingPractice from "../../components/DisplayWritingPractice/index";
+import DisplayMyWritingPractice from "../../components/DisplayMyWritingPractice/index";
 import Loading from "../../components/Loading";
 import StopwatchTimer from "../../components/StopwatchTimer/index";
 import { selectToken } from "../../store/user/selectors";

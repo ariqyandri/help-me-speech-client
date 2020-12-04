@@ -8,11 +8,9 @@ import { Props } from "./types";
 
 export default function DisplayMyWritings(props: Props) {
   const loading = useSelector(selectAppLoading);
-
   if (loading === true) {
     return <Loading />;
   }
-
   return (
     <div>
       <Card style={{ width: "18rem" }}>
@@ -28,7 +26,7 @@ export default function DisplayMyWritings(props: Props) {
         </Card.Body>
         <Card.Body>
           <Link to={`/mywriting/view/${props.myWriting.id}`}>
-            <Button variant="primary">Visit writing</Button>
+            <Button variant="primary">Visit my writing</Button>
           </Link>
           <Link to={`/mywriting/helpmepractice/${props.myWriting.id}`}>
             <Button variant="primary">Help Me Practice!</Button>
