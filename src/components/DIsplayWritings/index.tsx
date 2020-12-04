@@ -10,6 +10,8 @@ import "./DisplayWritings.css";
 export default function DisplayWritings(props: Props) {
   const loading = useSelector(selectAppLoading);
 
+  const date = new Date(props.aWriting.createdAt);
+
   if (loading === true) {
     return <Loading />;
   }
@@ -23,14 +25,14 @@ export default function DisplayWritings(props: Props) {
             By{" "}
             {`${props.aWriting.user.firstName} ${props.aWriting.user.lastName}`}
           </Card.Subtitle>{" "}
-          <Card.Subtitle className="mb-2 text-muted">
-            {props.aWriting.createdAt}
-          </Card.Subtitle>
           <Card.Text>{props.aWriting.description}</Card.Text>
           <Badge pill variant="primary">
             {props.aWriting.category.name}
           </Badge>
         </Card.Body>
+        <Card.Subtitle className="mb-2 text-muted">
+          {date.toDateString()}
+        </Card.Subtitle>
         <Card.Body>
           <Link to={`/writing/view/${props.aWriting.id}`}>
             <Button variant="primary">Visit writing</Button>

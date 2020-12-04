@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { Route, Switch } from "react-router-dom";
 import "./App.css";
+import "hover.css";
 import Home from "./pages/Home/index";
 import Login from "./pages/Login/index";
 import SignUp from "./pages/SignUp/index";

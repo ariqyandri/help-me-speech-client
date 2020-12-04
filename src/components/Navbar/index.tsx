@@ -17,7 +17,7 @@ export default function Navigation() {
 
   return (
     <Navbar expand="lg" variant="light">
-      <Navbar.Brand as={NavLink} to="/" className="lock">
+      <Navbar.Brand as={NavLink} to="/" className="lock hvr-forward">
         <h1>
           Help me speech <i className="icon-unlock">{logo()}</i>
           <i className="icon-lock">{logoFill()}</i>
