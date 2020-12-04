@@ -5,7 +5,7 @@ import DisplayWriting from "../../components/DisplayWriting";
 import Loading from "../../components/Loading";
 import { resetRequest } from "../../store/appState/action";
 import { fetchMyWriting } from "../../store/myWriting/action";
-import { selectWriting } from "../../store/myWriting/selector";
+import { selectMyWriting } from "../../store/myWriting/selector";
 import { Params } from "./types";
 
 export default function MyWriting() {
@@ -13,7 +13,7 @@ export default function MyWriting() {
   dispatch(resetRequest());
   const params: Params = useParams();
   const id: number = parseInt(params.id);
-  const writing = useSelector(selectWriting);
+  const writing = useSelector(selectMyWriting);
   useEffect(() => {
     dispatch(fetchMyWriting(id));
   }, [dispatch, id]);

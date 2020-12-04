@@ -9,7 +9,7 @@ import {
 } from "../../store/appState/selectors";
 import { selectToken } from "../../store/user/selectors";
 import { fetchMyWriting } from "../../store/myWriting/action";
-import { selectWriting } from "../../store/myWriting/selector";
+import { selectMyWriting } from "../../store/myWriting/selector";
 import { Writing, Params } from "./types";
 
 export default function EditWriting() {
@@ -29,7 +29,7 @@ export default function EditWriting() {
   if (requestId === id) {
     history.push(`/writing/view/${id}`);
   }
-  const writing = useSelector(selectWriting);
+  const writing = useSelector(selectMyWriting);
   if (!writing) {
     return <Loading />;
   }

@@ -1,1 +1,1 @@
-export const selectWriting = (state: any) => state.myWriting;
+export const selectMyWriting = (state: any) => state.myWriting;
