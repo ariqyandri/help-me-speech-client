@@ -8,6 +8,10 @@ export const displayImage = (image: ImageType) => {
   return { type: "DISPLAY_IMAGE", payload: image };
 };
 
+export const displayImageFromFetch = (images: ImageType[]) => {
+  return { type: "DISPLAY_IMAGE_FROM_FETCH", payload: images };
+};
+
 export const removeImage = (id: number) => {
   return { type: "REMOVE_IMAGE", payload: id };
 };

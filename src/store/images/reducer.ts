@@ -22,6 +22,11 @@ const imagesReducer = (state = initialState, action: Action) => {
         return [{ ...action.payload }];
       }
       return [...state, { ...action.payload }];
+    case "DISPLAY_IMAGE_FROM_FETCH":
+      if (action.payload.length === 0) {
+        return [...initialState];
+      }
+      return [...action.payload];
     case "REMOVE_IMAGE":
       if (state.length === 1) {
         return [...initialState];

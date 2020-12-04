@@ -8,7 +8,7 @@ export default function DisplayImage(props: Props) {
       <Carousel>
         {props.images.map((i) => {
           return (
-            <Carousel.Item interval={1000}>
+            <Carousel.Item key={i.id} interval={1000}>
               <img className="d-block w-100" src={i.url} alt={i.name} />
             </Carousel.Item>
           );

@@ -33,13 +33,11 @@ export default function EditWriting() {
   if (!writing) {
     return <Loading />;
   }
-  const { title, content, isPrivate, imageUrl, videoUrl, categoryId } = writing;
+  const { title, content, isPrivate, categoryId } = writing;
   const editWriting: Writing = {
     title,
     content,
     isPrivate,
-    imageUrl,
-    videoUrl,
     categoryId,
   };
   return (

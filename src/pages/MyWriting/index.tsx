@@ -17,7 +17,6 @@ export default function MyWriting() {
   useEffect(() => {
     dispatch(fetchMyWriting(id));
   }, [dispatch, id]);
-  console.log(writing);
   return (
     <div>{!writing ? <Loading /> : <DisplayWriting aWriting={writing} />}</div>
   );

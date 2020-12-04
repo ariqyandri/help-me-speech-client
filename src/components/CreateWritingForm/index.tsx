@@ -14,8 +14,6 @@ export default function CreateWritingForm() {
     title: "",
     content: "",
     isPrivate: false,
-    imageUrl: null,
-    videoUrl: null,
     categoryId: 0,
   });
   const [validated, setValidated] = useState(false);

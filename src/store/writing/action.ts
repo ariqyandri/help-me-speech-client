@@ -9,7 +9,7 @@ import {
   fulfilledRequest,
   showMessageWithTimeout,
 } from "../appState/action";
-import { assignImage } from "../images/action";
+import { assignImage, displayImageFromFetch } from "../images/action";
 
 export const displayWriting = (writing: Writing): Action => {
   return {
@@ -26,7 +26,9 @@ export const fetchMyWriting = (id: number) => {
       const response = await axios.get(`${apiUrl}/writing/mywriting/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
-      console.log(response.data);
+
+      dispatch(displayImageFromFetch(response.data.images));
+
       dispatch(displayWriting(response.data));
       dispatch(appDoneLoading());
     } catch (error) {
@@ -68,14 +70,16 @@ export const updateWriting = (value: UpdateWriting, id: number) => {
   return async (dispatch: any, getState: any) => {
     const token = selectToken(getState());
     dispatch(appLoading());
+    const { title, content, isPrivate, categoryId } = value;
     try {
       const response = await axios.put(
         `${apiUrl}/writing/mywriting/${id}`,
-        value,
+        { title, content, isPrivate, categoryId },
         {
           headers: { Authorization: `Bearer ${token}` },
         }
       );
+      dispatch(assignImage(response.data.id));
       dispatch(fetchMyWriting(response.data.id));
       dispatch(fulfilledRequest(response.data.id));
       dispatch(showMessageWithTimeout("success", true, `Success!`, 2000));

@@ -20,4 +20,5 @@ export type Action =
       payload: ImageType;
     }
   | { type: "REMOVE_IMAGE"; payload: any }
-  | { type: "REMOVE_ALL_IMAGE" };
+  | { type: "REMOVE_ALL_IMAGE" }
+  | { type: "DISPLAY_IMAGE_FROM_FETCH"; payload: ImageType[] };
