@@ -26,6 +26,7 @@ export const fetchMyWriting = (id: number) => {
       const response = await axios.get(`${apiUrl}/writing/mywriting/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
+      console.log(response.data);
       dispatch(displayWriting(response.data));
       dispatch(appDoneLoading());
     } catch (error) {
