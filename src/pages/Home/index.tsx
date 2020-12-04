@@ -8,7 +8,7 @@ export default function Home() {
   const categories = useSelector(selectCategories);
   return (
     <div>
-      <h1>Help Me Speech!</h1>
+      <h1>View some Writings!</h1>
       <div className="justifyHome">
         <HomeCategory categories={categories} />
       </div>
