@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { selectCategories } from "../../store/categories/selector";
+import { removeAllImage } from "../../store/images/action";
 import { postWriting } from "../../store/myWriting/action";
 import ImagePreview from "../ImagePreview";
 import UploadImage from "../UploadImage";
@@ -9,6 +10,9 @@ import { Writing, Category } from "./types";
 
 export default function CreateWritingForm() {
   const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(removeAllImage());
+  }, [dispatch]);
   const categories = useSelector(selectCategories);
   const [value, setValue] = useState<Writing>({
     title: "",
@@ -35,7 +39,6 @@ export default function CreateWritingForm() {
       dispatch(postWriting(value));
     }
   };
-
   return (
     <div>
       <Form noValidate validated={validated} onSubmit={handleClick}>
