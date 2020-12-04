@@ -6,7 +6,7 @@ import { selectAppLoading } from "../../store/appState/selectors";
 import Loading from "../Loading";
 import { Props } from "./types";
 
-export default function HomeCarousel(props: Props) {
+export default function HomeCategory(props: Props) {
   const loading = useSelector(selectAppLoading);
   if (loading) {
     return <Loading />;
