@@ -1,8 +1,6 @@
 import React from "react";
 import { Button } from "react-bootstrap";
-import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { selectUserId } from "../../store/user/selectors";
 import DisplayImage from "../DisplayImage/index";
 import { Props } from "./types";
 

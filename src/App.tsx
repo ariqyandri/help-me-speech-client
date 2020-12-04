@@ -34,9 +34,9 @@ function App() {
       <Message />
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route exact path="/writings" component={Writings} />
+        <Route exact path="/writings/:category?" component={Writings} />
         <Route exact path="/writing/view/:id" component={Writing} />
-        <Route exact path="/mywritings" component={MyWritings} />
+        <Route exact path="/mywritings/:category?" component={MyWritings} />
         <Route exact path="/mywriting/create" component={CreateWriting} />
         <Route exact path="/mywriting/edit/:id" component={EditWriting} />
         <Route exact path="/mywriting/view/:id" component={MyWriting} />
