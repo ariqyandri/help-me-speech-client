@@ -1,14 +1,14 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { selectDummy } from "../../store/dummy/selectors";
+import HomeCarousel from "../../components/HomeCarousel/index";
+import { selectCategories } from "../../store/categories/selector";
 
 export default function Home() {
-  const dummy = useSelector(selectDummy);
-
+  const categories = useSelector(selectCategories);
   return (
     <div>
-      {dummy.attr1}
-      Home
-    </div>
+      <h1>Help Me Speech!</h1>
+{      <HomeCarousel categories={categories} />
+}    </div>
   );
 }

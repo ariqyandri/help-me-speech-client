@@ -20,3 +20,5 @@ export type User = {
 export type Category = {
   name: string;
 };
+
+export type Params = { category: string };
