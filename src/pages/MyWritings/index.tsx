@@ -5,6 +5,7 @@ import DisplayMyWritings from "../../components/DisplayMyWritings";
 import FilterByCategories from "../../components/FilterByCategories";
 import Loading from "../../components/Loading";
 import { selectAppLoading } from "../../store/appState/selectors";
+import { selectCategoryById } from "../../store/categories/selector";
 import { fetchMyWritings } from "../../store/myWritings/action";
 import { selectMyWritings } from "../../store/myWritings/selector";
 import { selectToken } from "../../store/user/selectors";
@@ -20,9 +21,15 @@ export default function MyWritings() {
   const loading = useSelector(selectAppLoading);
   const myWritings = useSelector(selectMyWritings);
   const [categoryId, setCategoryId] = useState<number>(0);
+  const category = useSelector(selectCategoryById(categoryId));
   useEffect(() => {
     dispatch(fetchMyWritings(categoryId));
-  }, [dispatch, categoryId]);
+    if (category) {
+      history.push(`/mywritings/${category.name}`);
+    } else {
+      history.push(`/mywritings/all`);
+    }
+  }, [dispatch, history, category, categoryId]);
   return (
     <div>
       <h1>My Writings</h1>

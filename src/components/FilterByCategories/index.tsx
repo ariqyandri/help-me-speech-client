@@ -6,7 +6,6 @@ import { Category, Props } from "./types";
 
 export default function FilterByCategories(props: Props) {
   const categories = useSelector(selectCategories);
-
   return (
     <>
       <ButtonGroup toggle>
