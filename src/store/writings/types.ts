@@ -3,20 +3,14 @@ export type Writing = {
   title: string;
   content: string;
   isPrivate: boolean;
-  images: ImageType[] | null;
   userId: number;
   categoryId: number;
   user: User;
   category: Category;
+  description: string | null;
   createdAt: any;
   updatedAt: any;
 } | null;
-
-export type ImageType = {
-  id: number;
-  url: string;
-  name: string;
-};
 
 export type User = {
   firstName: string;
@@ -27,7 +21,11 @@ export type Category = {
   name: string;
 };
 
-export type Action = {
-  type: "DISPLAY_WRITING";
-  payload: Writing;
-};
+export type Action =
+  | {
+      type: "FETCH_WRITINGS";
+      payload: Writing[];
+    }
+  | {
+      type: "CREATE_DESCRIPTION";
+    };

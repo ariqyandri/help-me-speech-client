@@ -5,7 +5,7 @@ import { selectAppLoading } from "../../store/appState/selectors";
 import Loading from "../Loading";
 import { Props } from "./types";
 
-export default function DisplayMyWritings(props: Props) {
+export default function DisplayMyWritingPractice(props: Props) {
   const loading = useSelector(selectAppLoading);
 
   if (loading === true) {

@@ -10,24 +10,17 @@ export type Writing = {
   category: Category;
   createdAt: any;
   updatedAt: any;
-} | null;
-
+};
 export type ImageType = {
   id: number;
   url: string;
   name: string;
 };
-
 export type User = {
   firstName: string;
   lastName: string;
 };
-
 export type Category = {
   name: string;
 };
-
-export type Action = {
-  type: "DISPLAY_WRITING";
-  payload: Writing;
-};
+export type Props = { myWriting: Writing };

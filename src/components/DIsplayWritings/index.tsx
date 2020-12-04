@@ -6,31 +6,34 @@ import { selectAppLoading } from "../../store/appState/selectors";
 import Loading from "../Loading";
 import { Props } from "./types";
 
-export default function DisplayMyWritings(props: Props) {
+export default function DisplayWritings(props: Props) {
   const loading = useSelector(selectAppLoading);
+
   if (loading === true) {
     return <Loading />;
   }
+
   return (
     <div>
       <Card style={{ width: "18rem" }}>
         <Card.Body>
-          <Card.Title>{props.myWriting.title}</Card.Title>
+          <Card.Title>{props.aWriting.title}</Card.Title>
           <Card.Subtitle className="mb-2 text-muted">
-            {props.myWriting.createdAt}
+            By{" "}
+            {`${props.aWriting.user.firstName} ${props.aWriting.user.lastName}`}
+          </Card.Subtitle>{" "}
+          <Card.Subtitle className="mb-2 text-muted">
+            {props.aWriting.createdAt}
           </Card.Subtitle>
-          <Card.Text>{props.myWriting.description}</Card.Text>
+          <Card.Text>{props.aWriting.description}</Card.Text>
           <Badge pill variant="primary">
-            {props.myWriting.category.name}
+            {props.aWriting.category.name}
           </Badge>
         </Card.Body>
         <Card.Body>
-          <Link to={`/mywriting/view/${props.myWriting.id}`}>
-            <Button variant="primary">Visit my writing</Button>
+          <Link to={`/writing/view/${props.aWriting.id}`}>
+            <Button variant="primary">Visit writing</Button>
           </Link>
-          <Link to={`/mywriting/helpmepractice/${props.myWriting.id}`}>
-            <Button variant="primary">Help Me Practice!</Button>
-          </Link>{" "}
         </Card.Body>
       </Card>
     </div>

@@ -8,8 +8,8 @@ import {
   selectFullfilledRequest,
 } from "../../store/appState/selectors";
 import { selectToken } from "../../store/user/selectors";
-import { fetchMyWriting } from "../../store/writing/action";
-import { selectWriting } from "../../store/writing/selector";
+import { fetchMyWriting } from "../../store/myWriting/action";
+import { selectMyWriting } from "../../store/myWriting/selector";
 import { Writing, Params } from "./types";
 
 export default function EditWriting() {
@@ -27,9 +27,9 @@ export default function EditWriting() {
     dispatch(fetchMyWriting(id));
   }, [dispatch, id]);
   if (requestId === id) {
-    history.push(`/writing/view/${id}`);
+    history.push(`/mywriting/view/${id}`);
   }
-  const writing = useSelector(selectWriting);
+  const writing = useSelector(selectMyWriting);
   if (!writing) {
     return <Loading />;
   }

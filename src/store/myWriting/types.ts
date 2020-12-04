@@ -22,9 +22,21 @@ export type User = {
   firstName: string;
   lastName: string;
 };
-
 export type Category = {
   name: string;
+};
+export type PostWriting = {
+  title: string;
+  content: string;
+  isPrivate: boolean;
+  categoryId: number;
+};
+
+export type UpdateWriting = {
+  title: string;
+  content: string;
+  isPrivate: boolean;
+  categoryId: number;
 };
 
 export type Action = {
