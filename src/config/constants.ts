@@ -7,3 +7,4 @@ export const displayTime = (s: number) => {
   const hrs = Math.floor((s / (60 * 60)) % 24);
   return { sec, min, hrs };
 };
+

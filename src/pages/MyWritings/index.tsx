@@ -34,13 +34,15 @@ export default function MyWritings() {
     <div>
       <h1>My Writings</h1>
       <FilterByCategories id={categoryId} setId={setCategoryId} />
-      {loading ? (
-        <Loading />
-      ) : (
-        myWritings.map((writing: Writing) => {
-          return <DisplayMyWritings key={writing.id} myWriting={writing} />;
-        })
-      )}
+      <div>
+        {loading ? (
+          <Loading />
+        ) : (
+          myWritings.map((writing: Writing) => {
+            return <DisplayMyWritings key={writing.id} myWriting={writing} />;
+          })
+        )}
+      </div>
     </div>
   );
 }

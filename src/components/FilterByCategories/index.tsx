@@ -12,7 +12,7 @@ export default function FilterByCategories(props: Props) {
         <ToggleButton
           key={0}
           type="radio"
-          variant="primary"
+          variant="secondary"
           value={0}
           checked={props.id === 0}
           onChange={(e) => props.setId(parseInt(e.target.value))}
@@ -23,7 +23,7 @@ export default function FilterByCategories(props: Props) {
           <ToggleButton
             key={category.id}
             type="radio"
-            variant="primary"
+            variant="secondary"
             value={category.id}
             checked={props.id === category.id}
             onChange={(e) => props.setId(parseInt(e.target.value))}

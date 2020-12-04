@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { selectAppLoading } from "../../store/appState/selectors";
 import Loading from "../Loading";
 import { Props } from "./types";
+import "./DisplayWritings.css";
 
 export default function DisplayWritings(props: Props) {
   const loading = useSelector(selectAppLoading);
@@ -14,8 +15,8 @@ export default function DisplayWritings(props: Props) {
   }
 
   return (
-    <div>
-      <Card style={{ width: "18rem" }}>
+    <div className="cardWritings">
+      <Card>
         <Card.Body>
           <Card.Title>{props.aWriting.title}</Card.Title>
           <Card.Subtitle className="mb-2 text-muted">

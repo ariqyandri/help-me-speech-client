@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { selectAppLoading } from "../../store/appState/selectors";
 import Loading from "../Loading";
 import { Props } from "./types";
+import "./HomeCategory.css";
 
 export default function HomeCategory(props: Props) {
   const loading = useSelector(selectAppLoading);
@@ -12,15 +13,15 @@ export default function HomeCategory(props: Props) {
     return <Loading />;
   }
   return (
-    <div>
+    <>
       {props.categories.map((category) => {
         return (
-          <Card style={{ width: "18rem" }}>
-            <Card.Body>
-              <Card.Title>{category.name}</Card.Title>
-              <Card.Text>{category.description}</Card.Text>
-            </Card.Body>
-            <Card.Body>
+          <Card className="cardHome">
+            <Card.Body className="cardHomeBody">
+              <div>
+                <Card.Title>{category.name}</Card.Title>
+                <Card.Text>{category.description}</Card.Text>
+              </div>
               <Link to={`/writings/${category.name}`}>
                 <Button variant="primary">{`View ${category.name}s`}</Button>
               </Link>
@@ -28,6 +29,6 @@ export default function HomeCategory(props: Props) {
           </Card>
         );
       })}
-    </div>
+    </>
   );
 }

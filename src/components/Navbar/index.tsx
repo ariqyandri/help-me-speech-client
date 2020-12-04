@@ -7,6 +7,7 @@ import { selectToken } from "../../store/user/selectors";
 import NavbarItem from "./NavbarItem";
 import LoggedIn from "./LoggedIn";
 import LoggedOut from "./LoggedOut";
+import { logo } from "../../config/icons";
 
 export default function Navigation() {
   const token = useSelector(selectToken);
@@ -14,9 +15,9 @@ export default function Navigation() {
   const loginLogoutControls = token ? <LoggedIn /> : <LoggedOut />;
 
   return (
-    <Navbar bg="light" expand="lg">
+    <Navbar bg="warning" expand="lg" variant="light">
       <Navbar.Brand as={NavLink} to="/">
-        Help me speech!
+        <h1>Help me speech {logo()}</h1>
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">

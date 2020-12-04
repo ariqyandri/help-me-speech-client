@@ -27,7 +27,7 @@ export default function SignUpForm() {
 
   return (
     <Container>
-      <Form as={Col} md={{ span: 6, offset: 3 }} className="mt-5">
+      <Form as={Col}>
         <h1 className="mt-5 mb-5">Signup</h1>
         <Form.Group controlId="formBasicFirstName">
           <Form.Label>First Name</Form.Label>

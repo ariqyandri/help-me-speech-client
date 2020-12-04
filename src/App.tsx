@@ -32,22 +32,24 @@ function App() {
     <div className="App">
       <Navbar />
       <Message />
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/writings/:category?" component={Writings} />
-        <Route exact path="/writing/view/:id" component={Writing} />
-        <Route exact path="/mywritings/:category?" component={MyWritings} />
-        <Route exact path="/mywriting/create" component={CreateWriting} />
-        <Route exact path="/mywriting/edit/:id" component={EditWriting} />
-        <Route exact path="/mywriting/view/:id" component={MyWriting} />
-        <Route
-          exact
-          path="/mywriting/helpmepractice/:id"
-          component={HelpMePractice}
-        />
-        <Route path="/login" component={Login} />
-        <Route path="/signup" component={SignUp} />
-      </Switch>
+      <div className="marginApp">
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/writings/:category?" component={Writings} />
+          <Route exact path="/writing/view/:id" component={Writing} />
+          <Route exact path="/mywritings/:category?" component={MyWritings} />
+          <Route exact path="/mywriting/create" component={CreateWriting} />
+          <Route exact path="/mywriting/edit/:id" component={EditWriting} />
+          <Route exact path="/mywriting/view/:id" component={MyWriting} />
+          <Route
+            exact
+            path="/mywriting/helpmepractice/:id"
+            component={HelpMePractice}
+          />
+          <Route path="/login" component={Login} />
+          <Route path="/signup" component={SignUp} />
+        </Switch>
+      </div>
     </div>
   );
 }

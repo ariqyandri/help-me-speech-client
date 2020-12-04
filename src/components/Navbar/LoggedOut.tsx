@@ -12,7 +12,9 @@ export default function LoggedOut() {
   return (
     <>
       <NavbarItem path="/login" linkText="Create Writing" />
-      <Button onClick={handleLogIn}>Login</Button>
+      <Button onClick={handleLogIn} variant="dark">
+        Login
+      </Button>
     </>
   );
 }
