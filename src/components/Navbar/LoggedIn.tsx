@@ -24,7 +24,7 @@ export default function LoggedIn() {
       <NavbarItem path="/mywritings" linkText="My Writings" />
       <NavbarItem path="/mywriting/create" linkText="Create Writing" />
       <Nav.Item style={{ padding: ".5rem 1rem" }}>{user.email}</Nav.Item>
-      <Button onClick={handleLogOut} variant="dark">
+      <Button onClick={handleLogOut} variant="outline-dark">
         Logout
       </Button>
     </>

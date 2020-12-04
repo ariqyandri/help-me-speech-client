@@ -7,7 +7,8 @@ import { selectToken } from "../../store/user/selectors";
 import NavbarItem from "./NavbarItem";
 import LoggedIn from "./LoggedIn";
 import LoggedOut from "./LoggedOut";
-import { logo } from "../../config/icons";
+import { logo, logoFill } from "../../config/icons";
+import "./Navbar.css";
 
 export default function Navigation() {
   const token = useSelector(selectToken);
@@ -16,8 +17,11 @@ export default function Navigation() {
 
   return (
     <Navbar expand="lg" variant="light">
-      <Navbar.Brand as={NavLink} to="/">
-        <h1>Help me speech {logo()}</h1>
+      <Navbar.Brand as={NavLink} to="/" className="lock">
+        <h1>
+          Help me speech <i className="icon-unlock">{logo()}</i>
+          <i className="icon-lock">{logoFill()}</i>
+        </h1>
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
