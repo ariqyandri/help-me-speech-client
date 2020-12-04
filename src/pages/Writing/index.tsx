@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import DisplayWriting from "../../components/DisplayMyWriting/index";
+import DisplayWriting from "../../components/DisplayWriting/index";
 import Loading from "../../components/Loading";
 import { fetchWriting } from "../../store/writing/action";
 import { selectWriting } from "../../store/writing/selector";
@@ -16,6 +16,6 @@ export default function Writing() {
     dispatch(fetchWriting(id));
   }, [dispatch, id]);
   return (
-    <div>{!writing ? <Loading /> : <DisplayWriting myWriting={writing} />}</div>
+    <div>{!writing ? <Loading /> : <DisplayWriting aWriting={writing} />}</div>
   );
 }
