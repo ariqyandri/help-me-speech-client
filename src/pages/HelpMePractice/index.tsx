@@ -5,8 +5,8 @@ import DisplayMyWritingPractice from "../../components/DisplayWritingPractice/in
 import Loading from "../../components/Loading";
 import StopwatchTimer from "../../components/StopwatchTimer/index";
 import { selectToken } from "../../store/user/selectors";
-import { fetchMyWriting } from "../../store/writing/action";
-import { selectWriting } from "../../store/writing/selector";
+import { fetchMyWriting } from "../../store/myWriting/action";
+import { selectWriting } from "../../store/myWriting/selector";
 import { Params } from "./types";
 
 export default function HelpMePractice() {

@@ -4,8 +4,8 @@ import { useParams } from "react-router-dom";
 import DisplayWriting from "../../components/DisplayWriting";
 import Loading from "../../components/Loading";
 import { resetRequest } from "../../store/appState/action";
-import { fetchMyWriting } from "../../store/writing/action";
-import { selectWriting } from "../../store/writing/selector";
+import { fetchMyWriting } from "../../store/myWriting/action";
+import { selectWriting } from "../../store/myWriting/selector";
 import { Params } from "./types";
 
 export default function MyWriting() {

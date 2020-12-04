@@ -8,7 +8,7 @@ import {
   selectFullfilledRequest,
 } from "../../store/appState/selectors";
 import { selectToken } from "../../store/user/selectors";
-import { selectWriting } from "../../store/writing/selector";
+import { selectWriting } from "../../store/myWriting/selector";
 
 export default function CreateWriting() {
   const token = useSelector(selectToken);

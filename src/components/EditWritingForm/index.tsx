@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { selectCategories } from "../../store/categories/selector";
-import { updateWriting } from "../../store/writing/action";
+import { updateWriting } from "../../store/myWriting/action";
 import ImagePreview from "../ImagePreview";
 import UploadImage from "../UploadImage";
 import { Writing, Props, Category } from "./types";
