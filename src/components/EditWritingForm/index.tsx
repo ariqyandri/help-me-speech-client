@@ -3,6 +3,8 @@ import { Button, Form } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { selectCategories } from "../../store/categories/selector";
 import { updateWriting } from "../../store/writing/action";
+import ImagePreview from "../ImagePreview";
+import UploadImage from "../UploadImage";
 import { Writing, Props, Category } from "./types";
 
 export default function EditWritingForm(props: Props) {
@@ -70,6 +72,8 @@ export default function EditWritingForm(props: Props) {
             onChange={handleIsPrivate}
           />
         </Form.Group>
+        <UploadImage />
+        <ImagePreview />
         <Button variant="primary" type="submit" onClick={handleClick}>
           Submit
         </Button>

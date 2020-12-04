@@ -3,8 +3,7 @@ export type Writing = {
   title: string;
   content: string;
   isPrivate: boolean;
-  imageUrl: string | null;
-  videoUrl: string | null;
+  images: ImageType[] | null;
   userId: number;
   categoryId: number;
   user: User;
@@ -12,6 +11,12 @@ export type Writing = {
   createdAt: any;
   updatedAt: any;
 } | null;
+
+export type ImageType = {
+  id: number;
+  url: string;
+  name: string;
+};
 
 export type User = {
   firstName: string;
@@ -24,8 +29,6 @@ export type PostWriting = {
   title: string;
   content: string;
   isPrivate: boolean;
-  imageUrl: string | null;
-  videoUrl: string | null;
   categoryId: number;
 };
 
@@ -33,8 +36,6 @@ export type UpdateWriting = {
   title: string;
   content: string;
   isPrivate: boolean;
-  imageUrl: string | null;
-  videoUrl: string | null;
   categoryId: number;
 };
 

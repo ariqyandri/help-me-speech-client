@@ -5,7 +5,7 @@ import DisplayMyWritingPractice from "../../components/DisplayWritingPractice/in
 import Loading from "../../components/Loading";
 import StopwatchTimer from "../../components/StopwatchTimer/index";
 import { selectToken } from "../../store/user/selectors";
-import { fetchWriting } from "../../store/writing/action";
+import { fetchMyWriting } from "../../store/writing/action";
 import { selectWriting } from "../../store/writing/selector";
 import { Params } from "./types";
 
@@ -20,7 +20,7 @@ export default function HelpMePractice() {
   const id: number = parseInt(params.id);
   const writing = useSelector(selectWriting);
   useEffect(() => {
-    dispatch(fetchWriting(id));
+    dispatch(fetchMyWriting(id));
   }, [dispatch, id]);
   return (
     <div>

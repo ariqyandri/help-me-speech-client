@@ -17,7 +17,7 @@ const writingReducer = (state = initialState, action: Action) => {
                 : writing.content,
           };
         }
-        return;
+        return state;
       });
       return [...newState];
     default:

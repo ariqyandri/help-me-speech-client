@@ -3,14 +3,18 @@ export type Writing = {
   title: string;
   content: string;
   isPrivate: boolean;
-  imageUrl: string | null;
-  videoUrl: string | null;
+  images: ImageType[] | null;
   userId: number;
   categoryId: number;
   user: User;
   category: Category;
   createdAt: any;
   updatedAt: any;
+};
+export type ImageType = {
+  id: number;
+  url: string;
+  name: string;
 };
 export type User = {
   firstName: string;

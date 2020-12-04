@@ -6,6 +6,7 @@ import myWritings from "./myWritings/reducer";
 import appState from "./appState/reducer";
 import categories from "./categories/reducer";
 import stopwatch from "./stopwatch/reducer";
+import images from "./images/reducer";
 
 export default combineReducers({
   dummy,
@@ -15,4 +16,5 @@ export default combineReducers({
   writing,
   myWritings,
   stopwatch,
+  images,
 });

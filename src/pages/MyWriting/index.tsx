@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import DisplayWriting from "../../components/DisplayWriting";
 import Loading from "../../components/Loading";
 import { resetRequest } from "../../store/appState/action";
-import { fetchWriting } from "../../store/writing/action";
+import { fetchMyWriting } from "../../store/writing/action";
 import { selectWriting } from "../../store/writing/selector";
 import { Params } from "./types";
 
@@ -15,7 +15,7 @@ export default function MyWriting() {
   const id: number = parseInt(params.id);
   const writing = useSelector(selectWriting);
   useEffect(() => {
-    dispatch(fetchWriting(id));
+    dispatch(fetchMyWriting(id));
   }, [dispatch, id]);
   return (
     <div>{!writing ? <Loading /> : <DisplayWriting aWriting={writing} />}</div>

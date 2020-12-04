@@ -9,6 +9,7 @@ import {
   fulfilledRequest,
   showMessageWithTimeout,
 } from "../appState/action";
+import { assignImage, displayImageFromFetch } from "../images/action";
 
 export const displayWriting = (writing: Writing): Action => {
   return {
@@ -17,17 +18,18 @@ export const displayWriting = (writing: Writing): Action => {
   };
 };
 
-export const postWriting = (value: PostWriting) => {
+export const fetchMyWriting = (id: number) => {
   return async (dispatch: any, getState: any) => {
     const token = selectToken(getState());
     dispatch(appLoading());
     try {
-      const response = await axios.post(`${apiUrl}/writing`, value, {
+      const response = await axios.get(`${apiUrl}/writing/mywriting/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
-      dispatch(fetchWriting(response.data.id));
-      dispatch(fulfilledRequest(response.data.id));
-      dispatch(showMessageWithTimeout("success", true, `Success!`, 2000));
+
+      dispatch(displayImageFromFetch(response.data.images));
+
+      dispatch(displayWriting(response.data));
       dispatch(appDoneLoading());
     } catch (error) {
       if (error.response) {
@@ -40,12 +42,18 @@ export const postWriting = (value: PostWriting) => {
   };
 };
 
-export const fetchWriting = (id: number) => {
+export const postWriting = (value: PostWriting) => {
   return async (dispatch: any, getState: any) => {
+    const token = selectToken(getState());
     dispatch(appLoading());
     try {
-      const response = await axios.get(`${apiUrl}/writing/${id}`);
-      dispatch(displayWriting(response.data));
+      const response = await axios.post(`${apiUrl}/writing`, value, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      dispatch(assignImage(response.data.id));
+      dispatch(fetchMyWriting(response.data.id));
+      dispatch(fulfilledRequest(response.data.id));
+      dispatch(showMessageWithTimeout("success", true, `Success!`, 2000));
       dispatch(appDoneLoading());
     } catch (error) {
       if (error.response) {
@@ -62,11 +70,17 @@ export const updateWriting = (value: UpdateWriting, id: number) => {
   return async (dispatch: any, getState: any) => {
     const token = selectToken(getState());
     dispatch(appLoading());
+    const { title, content, isPrivate, categoryId } = value;
     try {
-      const response = await axios.put(`${apiUrl}/writing/${id}`, value, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
-      dispatch(fetchWriting(response.data.id));
+      const response = await axios.put(
+        `${apiUrl}/writing/mywriting/${id}`,
+        { title, content, isPrivate, categoryId },
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+      dispatch(assignImage(response.data.id));
+      dispatch(fetchMyWriting(response.data.id));
       dispatch(fulfilledRequest(response.data.id));
       dispatch(showMessageWithTimeout("success", true, `Success!`, 2000));
       dispatch(appDoneLoading());
