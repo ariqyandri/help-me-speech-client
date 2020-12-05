@@ -29,3 +29,7 @@ h6,
 p {
   white-space: pre-wrap;
 }
+
+p {
+  text-align: justify;
+}
