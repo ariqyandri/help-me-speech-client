@@ -22,12 +22,16 @@ export default function DisplayWritings(props: Props) {
             style={{ textDecoration: "none", color: "black" }}
             className="hvr-color-text"
           >
-            <Card.Title>{props.aWriting.title}</Card.Title>
+            <Card.Title className="hvr-weight-text">
+              {props.aWriting.title}
+            </Card.Title>
             <Card.Subtitle className="mb-2 text-muted">
               By{" "}
               {`${props.aWriting.user.firstName} ${props.aWriting.user.lastName}`}
             </Card.Subtitle>
-            <Card.Text>{props.aWriting.description}</Card.Text>
+            <Card.Text className=" hvr-color-text cardWritingsText">
+              {props.aWriting.content}
+            </Card.Text>
           </Link>
           <div>
             <div style={{ color: "black", marginBottom: "10px" }}>
