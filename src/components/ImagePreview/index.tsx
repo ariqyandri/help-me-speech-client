@@ -7,7 +7,6 @@ import { ImageType } from "./types";
 export default function ImagePreview() {
   const dispatch = useDispatch();
   const images = useSelector(selectImages);
-  console.log(images);
   if (images.find((image: ImageType) => image.id === 0)) {
     return <div>{null}</div>;
   }

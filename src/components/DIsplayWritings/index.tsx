@@ -43,7 +43,7 @@ export default function DisplayWritings(props: Props) {
               to={`/writing/view/${props.aWriting.id}`}
               style={{ color: "black", marginTop: "100px" }}
             >
-              Visit writing
+              Visit {props.aWriting.category.name}
             </Link>
           </div>
         </Card.Body>

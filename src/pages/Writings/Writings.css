@@ -1,0 +1,7 @@
+.justifyWritings {
+  justify-content: left;
+  width: fit-content;
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1600px;
+}

@@ -34,7 +34,7 @@ export default function MyWritings() {
     <div>
       <h1>My Writings</h1>
       <FilterByCategories id={categoryId} setId={setCategoryId} />
-      <div>
+      <div className="justifyWritings">
         {loading ? (
           <Loading />
         ) : (
