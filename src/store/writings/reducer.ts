@@ -12,8 +12,8 @@ const writingsReducer = (state = initialState, action: Action) => {
           return {
             ...writing,
             description:
-              writing.content.length > 110
-                ? `${writing.content.substring(0, 110)}...`
+              writing.content.length > 180
+                ? `${writing.content.substring(0, 180)}...`
                 : writing.content,
           };
         }

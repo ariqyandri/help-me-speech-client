@@ -1,5 +1,5 @@
 .justifyWritings {
-  justify-content: left;
+  justify-content: center;
   width: fit-content;
   display: flex;
   flex-wrap: wrap;
