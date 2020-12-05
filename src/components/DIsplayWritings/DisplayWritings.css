@@ -1,5 +1,11 @@
 .cardWritings {
   margin: 20px;
   width: 300px;
-  height: 400px;
+  height: 300px;
+}
+
+.cardWritingsBody {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
