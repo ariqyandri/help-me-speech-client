@@ -19,10 +19,13 @@ export default function DisplayMyWritings(props: Props) {
           <Link
             to={`/mywriting/view/${props.myWriting.id}`}
             style={{ textDecoration: "none", color: "black" }}
-            className="hvr-grow"
           >
-            <Card.Title>{props.myWriting.title}</Card.Title>
-            <Card.Text>{props.myWriting.description}</Card.Text>
+            <Card.Title className="hvr-weight-text">
+              {props.myWriting.title}
+            </Card.Title>
+            <Card.Text className="hvr-color-text">
+              {props.myWriting.description}
+            </Card.Text>
           </Link>
           <div>
             <div style={{ color: "black", marginBottom: "10px" }}>

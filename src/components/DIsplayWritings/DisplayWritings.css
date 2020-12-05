@@ -9,3 +9,11 @@
   flex-direction: column;
   justify-content: space-between;
 }
+
+:hover.hvr-weight-text {
+  font-weight: bolder;
+}
+
+:hover.hvr-color-text {
+  color: grey;
+}

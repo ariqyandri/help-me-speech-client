@@ -17,7 +17,7 @@ export default function DisplayMyWriting(props: Props) {
       {!props.myWriting.images ? null : (
         <DisplayImage images={props.myWriting.images} />
       )}
-      <h3>{props.myWriting.content}</h3>
+      <p>{props.myWriting.content}</p>
       <Link to={`/mywriting/edit/${props.myWriting.id}`}>
         <Button>Edit</Button>
       </Link>

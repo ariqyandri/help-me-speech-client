@@ -20,7 +20,7 @@ export default function DisplayWritings(props: Props) {
           <Link
             to={`/writing/view/${props.aWriting.id}`}
             style={{ textDecoration: "none", color: "black" }}
-            className="hvr-grow"
+            className="hvr-color-text"
           >
             <Card.Title>{props.aWriting.title}</Card.Title>
             <Card.Subtitle className="mb-2 text-muted">

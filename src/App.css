@@ -19,3 +19,13 @@
 .lock:hover .icon-lock {
   display: inline;
 }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  white-space: pre-wrap;
+}
