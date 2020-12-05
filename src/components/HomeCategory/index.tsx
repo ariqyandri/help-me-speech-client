@@ -23,6 +23,7 @@ export default function HomeCategory(props: Props) {
               history.push(`/writings/${category.name}`);
             }}
             border="dark"
+            key={category.id}
           >
             <Card.Body className="cardHomeBody">
               <div>
