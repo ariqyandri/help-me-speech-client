@@ -9,6 +9,7 @@ import MyWritings from "./pages/MyWritings/index";
 import CreateWriting from "./pages/CreateWriting/index";
 import Navbar from "./components/Navbar/index";
 import Message from "./components/Message";
+import Footer from "./components/Footer";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserWithStoredToken, logOut } from "./store/user/action";
 import { fetchCategories } from "./store/categories/action";
@@ -51,6 +52,7 @@ function App() {
           <Route path="/signup" component={SignUp} />
         </Switch>
       </div>
+      <Footer />
     </div>
   );
 }
