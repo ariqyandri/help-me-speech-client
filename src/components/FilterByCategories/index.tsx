@@ -3,12 +3,13 @@ import { ButtonGroup, ToggleButton } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { selectCategories } from "../../store/categories/selector";
 import { Category, Props } from "./types";
+import "./FilterByCategories.css";
 
 export default function FilterByCategories(props: Props) {
   const categories = useSelector(selectCategories);
   return (
     <>
-      <ButtonGroup toggle>
+      <ButtonGroup toggle className="filterButtons">
         <ToggleButton
           key={0}
           type="radio"

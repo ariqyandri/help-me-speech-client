@@ -18,7 +18,7 @@ export default function HomeCategory(props: Props) {
       {props.categories.map((category) => {
         return (
           <Card
-            className="cardHome hvr-box-shadow-outset"
+            className="cardHome hvr-grow"
             onClick={() => {
               history.push(`/writings/${category.name}`);
             }}
@@ -26,10 +26,12 @@ export default function HomeCategory(props: Props) {
             key={category.id}
           >
             <Card.Body className="cardHomeBody">
-              <div>
-                <Card.Title>{category.name}</Card.Title>
-                <Card.Text>{category.description}</Card.Text>
-              </div>
+              <Card.Title className="cardHomeTitle">
+                <h1>{category.name}</h1>
+              </Card.Title>
+              <Card.Text className="cardHomeText">
+                {category.description}
+              </Card.Text>
               <Link
                 style={{ color: "black" }}
                 to={`/writings/${category.name}`}
