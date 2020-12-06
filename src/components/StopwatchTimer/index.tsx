@@ -13,6 +13,10 @@ import {
   selectLaps,
 } from "../../store/stopwatch/selectors";
 import LapTable from "../../components/LapTable/index";
+import { Button } from "react-bootstrap";
+import "./StopwatchTimer.css";
+import { displayWatch } from "../../config/constants";
+
 export default function StopwatchTimer() {
   const dispatch = useDispatch();
   const timeDisplay = useSelector(selectTime);
@@ -41,25 +45,20 @@ export default function StopwatchTimer() {
     return () => clearInterval(interval);
   }, [dispatch, isActive, seconds]);
   return (
-    <div className="app">
-      <div className="time">{`${hrs} : ${min} : ${sec}`}</div>
-      <div className="row">
-        <button
-          className={`button button-primary button-primary-${
-            isActive ? "active" : "inactive"
-          }`}
-          onClick={handleClick}
-        >
+    <div className="stopwatch">
+      <h1 className="stopwatchDisplay">{displayWatch(hrs, min, sec)}</h1>
+      <div className="stopwatchButtons">
+        <Button variant={isActive ? "danger" : "success"} onClick={handleClick}>
           {isActive ? "Pause" : "Start"}
-        </button>
+        </Button>
         {seconds > 0 ? (
-          <button className="button" onClick={handleLap}>
-            lap
-          </button>
+          <Button variant="secondary" onClick={handleLap}>
+            Lap
+          </Button>
         ) : null}
-        <button className="button" onClick={handleReset}>
+        <Button variant="warning" onClick={handleReset}>
           Reset
-        </button>
+        </Button>
       </div>
       {laps ? <LapTable laps={laps} /> : null}{" "}
     </div>
