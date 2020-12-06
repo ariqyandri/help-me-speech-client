@@ -14,7 +14,7 @@ export default function DisplayWriting(props: Props) {
       {!props.aWriting.images ? null : (
         <DisplayImage images={props.aWriting.images} />
       )}
-      <h3>{props.aWriting.content}</h3>
+      <p>{props.aWriting.content}</p>
     </div>
   );
 }

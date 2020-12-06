@@ -14,7 +14,7 @@ export default function DisplayMyWritings(props: Props) {
   }
   return (
     <div>
-      <Card border="dark" className="cardWritings hvr-box-shadow-outset ">
+      <Card border="dark" className="cardWritings hvr-grow ">
         <Card.Body className="cardWritingsBody">
           <Link
             to={`/mywriting/view/${props.myWriting.id}`}
@@ -24,7 +24,7 @@ export default function DisplayMyWritings(props: Props) {
               {props.myWriting.title}
             </Card.Title>
             <Card.Text className="cardWritingsText">
-              {props.myWriting.description}
+              {props.myWriting.content}
             </Card.Text>
           </Link>
           <div>
