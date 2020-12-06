@@ -1,6 +1,6 @@
 .justifyWritings {
   justify-content: center;
-  width: fit-content;
+  width: auto;
   display: flex;
   flex-wrap: wrap;
   max-width: 1600px;
