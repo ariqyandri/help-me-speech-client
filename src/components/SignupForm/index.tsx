@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
-import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { Col } from "react-bootstrap";
 import { signUp } from "../../store/user/action";
 
 export default function SignUpForm() {
