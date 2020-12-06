@@ -120,7 +120,7 @@ export default function CreateWritingForm() {
           </ToggleButton>
         </ButtonGroup>
         <ImagePreview />
-        <Button variant="danger" type="submit">
+        <Button variant="success" type="submit">
           Submit
         </Button>
       </Form>

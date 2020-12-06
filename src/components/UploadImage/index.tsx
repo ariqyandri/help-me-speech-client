@@ -32,7 +32,9 @@ export default function UploadImage() {
   };
   return (
     <div>
-      <Button onClick={handleOpen}>Upload Image</Button>
+      <Button onClick={handleOpen} variant="outline-dark">
+        Upload Image
+      </Button>
     </div>
   );
 }
