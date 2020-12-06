@@ -17,12 +17,14 @@ export default function DisplayImage(props: Props) {
         {props.images.map((i) => {
           return (
             <Carousel.Item key={i.id} interval={10000}>
-              <div className="displayImageBox">
-                <img
-                  className="d-block displayImage"
-                  src={i.url}
-                  alt={i.name}
-                />
+              <div className="displayImageBoxOver">
+                <div className="displayImageBox">
+                  <img
+                    className="d-block displayImage"
+                    src={i.url}
+                    alt={i.name}
+                  />
+                </div>
               </div>
             </Carousel.Item>
           );
