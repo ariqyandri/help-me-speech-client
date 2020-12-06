@@ -26,9 +26,8 @@ export default function SignUpForm() {
   }
 
   return (
-    <Container>
-      <Form as={Col}>
-        <h1 className="mt-5 mb-5">Signup</h1>
+    <>
+      <Form className="formLogin">
         <Form.Group controlId="formBasicFirstName">
           <Form.Label>First Name</Form.Label>
           <Form.Control
@@ -69,13 +68,15 @@ export default function SignUpForm() {
             required
           />
         </Form.Group>
-        <Form.Group className="mt-5">
-          <Button variant="primary" type="submit" onClick={submitForm}>
+        <Form.Group style={{ margin: "20px" }}>
+          <Button variant="success" type="submit" onClick={submitForm}>
             Sign up
           </Button>
         </Form.Group>
-        <Link to="/login">Click here to log in</Link>
+        <Link to="/login">
+          <Button variant="outline-dark">Click here to log in</Button>
+        </Link>
       </Form>
-    </Container>
+    </>
   );
 }

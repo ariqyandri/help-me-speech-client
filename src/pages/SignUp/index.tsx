@@ -15,7 +15,8 @@ export default function Login() {
   }, [token, history]);
 
   return (
-    <div>
+    <div style={{ width: "500px" }}>
+      <h1>Sign up</h1>
       <SignupForm />
     </div>
   );

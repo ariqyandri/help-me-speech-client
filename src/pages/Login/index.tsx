@@ -15,7 +15,8 @@ export default function Login() {
   }, [token, history]);
 
   return (
-    <div>
+    <div style={{ width: "500px" }}>
+      <h1>Log in</h1>
       <LoginForm />
     </div>
   );
