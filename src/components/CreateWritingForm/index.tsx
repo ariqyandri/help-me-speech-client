@@ -8,12 +8,15 @@ import ImagePreview from "../ImagePreview";
 import UploadImage from "../UploadImage";
 import { Writing, Category } from "./types";
 import "./CreateWritingForm.css";
+import DisplayImage from "../DisplayImage";
+import { selectImages } from "../../store/images/selector";
 
 export default function CreateWritingForm() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(removeAllImage());
   }, [dispatch]);
+  const images = useSelector(selectImages);
   const categories = useSelector(selectCategories);
   const [value, setValue] = useState<Writing>({
     title: "",
@@ -83,6 +86,12 @@ export default function CreateWritingForm() {
             Please choose a category.
           </Form.Control.Feedback>
         </Form.Group>
+        {images[0].id === 0 ? null : (
+          <div>
+            <Form.Label>Images</Form.Label>
+            <DisplayImage images={images} />
+          </div>
+        )}
         <Form.Group controlId="exampleForm.ControlTextarea1">
           <Form.Label>Content</Form.Label>
           <Form.Control

@@ -4,8 +4,6 @@ import { deleteImage } from "../../store/images/action";
 import { selectImages } from "../../store/images/selector";
 import { ImageType } from "./types";
 import "./ImagePreview.css";
-import DisplayImage from "../DisplayImage";
-import { xCircle, xCircleFill } from "../../config/icons";
 
 export default function ImagePreview() {
   const dispatch = useDispatch();
@@ -36,7 +34,6 @@ export default function ImagePreview() {
           );
         })}
       </div>
-      <DisplayImage images={images} />
     </>
   );
 }
