@@ -5,35 +5,45 @@ import { Link } from "react-router-dom";
 import { selectAppLoading } from "../../store/appState/selectors";
 import Loading from "../Loading";
 import { Props } from "./types";
+import "./DisplayWritings.css";
 
 export default function DisplayWritings(props: Props) {
   const loading = useSelector(selectAppLoading);
-
+  const date = new Date(props.aWriting.createdAt);
   if (loading === true) {
     return <Loading />;
   }
-
   return (
     <div>
-      <Card style={{ width: "18rem" }}>
-        <Card.Body>
-          <Card.Title>{props.aWriting.title}</Card.Title>
-          <Card.Subtitle className="mb-2 text-muted">
-            By{" "}
-            {`${props.aWriting.user.firstName} ${props.aWriting.user.lastName}`}
-          </Card.Subtitle>{" "}
-          <Card.Subtitle className="mb-2 text-muted">
-            {props.aWriting.createdAt}
-          </Card.Subtitle>
-          <Card.Text>{props.aWriting.description}</Card.Text>
-          <Badge pill variant="primary">
-            {props.aWriting.category.name}
-          </Badge>
-        </Card.Body>
-        <Card.Body>
-          <Link to={`/writing/view/${props.aWriting.id}`}>
-            <Button variant="primary">Visit writing</Button>
+      <Card border="dark" className="cardWritings hvr-grow">
+        <Card.Body className="cardWritingsBody">
+          <Link
+            to={`/writing/view/${props.aWriting.id}`}
+            style={{ textDecoration: "none", color: "black" }}
+          >
+            <Card.Title className="hvr-weight-text">
+              {props.aWriting.title}
+            </Card.Title>
+            <Card.Subtitle className="mb-2 text-muted">
+              By{" "}
+              {`${props.aWriting.user.firstName} ${props.aWriting.user.lastName}`}
+            </Card.Subtitle>
+            <Card.Text className="cardWritingsText">
+              {props.aWriting.content}
+            </Card.Text>
           </Link>
+          <div>
+            <div style={{ color: "black", marginBottom: "10px" }}>
+              <Badge variant="dark">{props.aWriting.category.name}</Badge>
+              <Badge variant="dark-outline"> | {date.toDateString()}</Badge>
+            </div>
+            <Link
+              to={`/writing/view/${props.aWriting.id}`}
+              style={{ color: "black", marginTop: "100px" }}
+            >
+              <Button variant="outline-dark">Visit</Button>
+            </Link>
+          </div>
         </Card.Body>
       </Card>
     </div>

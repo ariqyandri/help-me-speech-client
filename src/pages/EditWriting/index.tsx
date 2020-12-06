@@ -41,7 +41,7 @@ export default function EditWriting() {
     categoryId,
   };
   return (
-    <div>
+    <div style={{ width: "1000px" }}>
       <h1>Edit Writing</h1>
       {loading ? (
         <Loading />

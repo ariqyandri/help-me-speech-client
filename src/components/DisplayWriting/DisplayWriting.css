@@ -1,0 +1,29 @@
+.displayWriting {
+  width: auto;
+  border-top: 2px solid black;
+}
+
+.displayWritingHeader {
+  width: auto;
+  text-align: left;
+  border-bottom: 0.5px solid lightgray;
+  margin-bottom: 10px;
+}
+
+.displayWritingTitle {
+  width: auto;
+  margin-top: 20px;
+  font-weight: 700;
+}
+
+.displayWritingBody {
+  width: auto;
+  text-align: center;
+}
+
+.displayWritingBodyContent {
+  width: auto;
+  margin-left: 5%;
+  margin-right: 5%;
+  max-width: 1000px;
+}

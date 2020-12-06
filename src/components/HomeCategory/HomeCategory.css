@@ -1,0 +1,19 @@
+.cardHome {
+  margin: 25px;
+  width: 450px;
+  height: 300px;
+}
+
+.cardHomeBody {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.cardHomeText {
+  text-align: center;
+}
+
+.cardHomeTitle {
+  font-size: larger;
+}

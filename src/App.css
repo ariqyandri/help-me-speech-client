@@ -1,14 +1,35 @@
 .App {
   text-align: center;
+  font-family: "Montserrat", sans-serif;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.marginApp {
+  margin-left: auto;
+  margin-right: auto;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-evenly;
+  max-width: 1600px;
+}
+
+.lock:hover .icon-unlock,
+.lock .icon-lock {
+  display: none;
+}
+.lock:hover .icon-lock {
+  display: inline;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  white-space: pre-wrap;
+}
+
+p {
+  text-align: justify;
 }

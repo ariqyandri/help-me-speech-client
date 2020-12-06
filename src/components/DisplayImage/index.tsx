@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { selectAppLoading } from "../../store/appState/selectors";
 import Loading from "../Loading";
 import { Props } from "./types";
+import "./DisplayImage.css";
 
 export default function DisplayImage(props: Props) {
   const loading = useSelector(selectAppLoading);
@@ -12,11 +13,19 @@ export default function DisplayImage(props: Props) {
   }
   return (
     <div>
-      <Carousel>
+      <Carousel className="displayImageCarousel">
         {props.images.map((i) => {
           return (
-            <Carousel.Item key={i.id} interval={1000}>
-              <img className="d-block w-100" src={i.url} alt={i.name} />
+            <Carousel.Item key={i.id} interval={10000}>
+              <div className="displayImageBoxOver">
+                <div className="displayImageBox">
+                  <img
+                    className="d-block displayImage"
+                    src={i.url}
+                    alt={i.name}
+                  />
+                </div>
+              </div>
             </Carousel.Item>
           );
         })}

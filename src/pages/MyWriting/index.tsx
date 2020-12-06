@@ -18,7 +18,7 @@ export default function MyWriting() {
     dispatch(fetchMyWriting(id));
   }, [dispatch, id]);
   return (
-    <div>
+    <div className="justifyWriting">
       {!writing ? <Loading /> : <DisplayMyWriting myWriting={writing} />}
     </div>
   );

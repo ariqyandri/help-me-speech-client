@@ -8,6 +8,7 @@ import { selectToken } from "../../store/user/selectors";
 import { fetchMyWriting } from "../../store/myWriting/action";
 import { selectMyWriting } from "../../store/myWriting/selector";
 import { Params } from "./types";
+import "./HelpMePractice.css";
 
 export default function HelpMePractice() {
   const dispatch = useDispatch();
@@ -25,12 +26,14 @@ export default function HelpMePractice() {
   return (
     <div>
       <h1>Help Me Practice!</h1>
-      {!writing ? (
-        <Loading />
-      ) : (
-        <DisplayMyWritingPractice myWriting={writing} />
-      )}
-      <StopwatchTimer />
+      <div className="practicePage">
+        <StopwatchTimer />
+        {!writing ? (
+          <Loading />
+        ) : (
+          <DisplayMyWritingPractice myWriting={writing} />
+        )}
+      </div>
     </div>
   );
 }

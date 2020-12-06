@@ -1,0 +1,23 @@
+.cardWritings {
+  margin: 25px;
+  width: 350px;
+  height: 300px;
+}
+
+.cardWritingsBody {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.cardWritingsText {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+}
+
+.cardWritingsBody:hover .hvr-weight-text {
+  font-weight: bolder;
+}

@@ -1,16 +1,20 @@
 import React, { useState } from "react";
-import { Button, Form } from "react-bootstrap";
+import { Button, ButtonGroup, Form, ToggleButton } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { selectCategories } from "../../store/categories/selector";
-import { updateWriting } from "../../store/myWriting/action";
 import ImagePreview from "../ImagePreview";
 import UploadImage from "../UploadImage";
 import { Writing, Props, Category } from "./types";
+import DisplayImage from "../DisplayImage";
+import { selectImages } from "../../store/images/selector";
+import { updateWriting } from "../../store/myWriting/action";
 
 export default function EditWritingForm(props: Props) {
   const dispatch = useDispatch();
+  const images = useSelector(selectImages);
   const categories = useSelector(selectCategories);
   const [value, setValue] = useState<Writing>(props.editWriting);
+  const [validated, setValidated] = useState(false);
   const handleChange = (event: any) => {
     setValue({ ...value, [event.target.name]: event.target.value });
   };
@@ -18,13 +22,26 @@ export default function EditWritingForm(props: Props) {
     setValue({ ...value, isPrivate: value.isPrivate === true ? false : true });
   };
   const handleClick = (event: any) => {
+    const form = event.currentTarget;
+    if (form.checkValidity() === false) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
     event.preventDefault();
-    dispatch(updateWriting(value, props.id));
+    setValidated(true);
+    if (value.title !== "" && value.content !== "" && value.categoryId !== 0) {
+      dispatch(updateWriting(value, props.id));
+    }
   };
   return (
     <div>
-      <Form>
-        <Form.Group>
+      <Form
+        noValidate
+        validated={validated}
+        onSubmit={handleClick}
+        className="form"
+      >
+        <Form.Group className="formTitle">
           <Form.Label>Title</Form.Label>
           <Form.Control
             name="title"
@@ -33,19 +50,11 @@ export default function EditWritingForm(props: Props) {
             onChange={handleChange}
             required
           />
+          <Form.Control.Feedback type="invalid">
+            Please provide a title.
+          </Form.Control.Feedback>
         </Form.Group>
-        <Form.Group>
-          <Form.Label>Content</Form.Label>
-          <Form.Control
-            name="content"
-            as="textarea"
-            rows={3}
-            value={value.content}
-            onChange={handleChange}
-            required
-          />
-        </Form.Group>
-        <Form.Group>
+        <Form.Group controlId="exampleForm.ControlSelect1">
           <Form.Label>Category</Form.Label>
           <Form.Control
             name="categoryId"
@@ -54,6 +63,7 @@ export default function EditWritingForm(props: Props) {
             onChange={handleChange}
             required
           >
+            <option value="">Choose a category</option>
             {categories.map((category: Category) => {
               return (
                 <option key={category.id} value={category.id}>
@@ -62,19 +72,54 @@ export default function EditWritingForm(props: Props) {
               );
             })}
           </Form.Control>
+          <Form.Control.Feedback type="invalid">
+            Please choose a category.
+          </Form.Control.Feedback>
         </Form.Group>
-        <Form.Group>
-          <Form.Check
-            type="checkbox"
-            id={`default-checkbox`}
-            label={`Private`}
-            checked={value.isPrivate}
-            onChange={handleIsPrivate}
+        {images[0].id === 0 ? null : (
+          <div>
+            <Form.Label>Images</Form.Label>
+            <DisplayImage images={images} />
+          </div>
+        )}
+        <Form.Group controlId="exampleForm.ControlTextarea1">
+          <Form.Label>Content</Form.Label>
+          <Form.Control
+            name="content"
+            as="textarea"
+            type="text"
+            rows={15}
+            value={value.content}
+            onChange={handleChange}
+            required
           />
+          <Form.Control.Feedback type="invalid">
+            Please provide a text.
+          </Form.Control.Feedback>
         </Form.Group>
         <UploadImage />
+        <ButtonGroup toggle className="filterButtons">
+          <ToggleButton
+            type="radio"
+            variant="outline-dark"
+            value={true}
+            checked={!value.isPrivate}
+            onChange={handleIsPrivate}
+          >
+            Public
+          </ToggleButton>{" "}
+          <ToggleButton
+            type="radio"
+            variant="outline-dark"
+            value={false}
+            checked={value.isPrivate}
+            onChange={handleIsPrivate}
+          >
+            Private
+          </ToggleButton>
+        </ButtonGroup>
         <ImagePreview />
-        <Button variant="primary" type="submit" onClick={handleClick}>
+        <Button variant="success" type="submit">
           Submit
         </Button>
       </Form>

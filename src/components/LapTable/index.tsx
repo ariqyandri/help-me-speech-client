@@ -1,5 +1,6 @@
 import React from "react";
 import { Table } from "react-bootstrap";
+import { displayWatch } from "../../config/constants";
 import { Lap, Props } from "./types";
 
 export default function LapTable(props: Props) {
@@ -17,7 +18,9 @@ export default function LapTable(props: Props) {
             return (
               <tr>
                 <td>{lap.num}</td>
-                <td>{`${lap.time.hrs} : ${lap.time.min} : ${lap.time.sec}`}</td>
+                <td>
+                  {displayWatch(lap.time.hrs, lap.time.min, lap.time.sec)}
+                </td>
               </tr>
             );
           })}

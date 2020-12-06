@@ -1,0 +1,20 @@
+.stopwatch {
+  width: 400px;
+  margin: 25px;
+  margin-left: 0px;
+}
+
+.stopwatchDisplay {
+  font-size: 4em;
+}
+
+.stopwatchButtons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.stopwatchButtons Button {
+  margin-right: 10px;
+}

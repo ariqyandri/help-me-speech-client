@@ -4,6 +4,8 @@ import { useSelector } from "react-redux";
 import { selectAppLoading } from "../../store/appState/selectors";
 import Loading from "../Loading";
 import { Props } from "./types";
+import "./DisplayMyWritingPractice.css";
+import { Link } from "react-router-dom";
 
 export default function DisplayMyWritingPractice(props: Props) {
   const loading = useSelector(selectAppLoading);
@@ -14,11 +16,20 @@ export default function DisplayMyWritingPractice(props: Props) {
 
   return (
     <div>
-      <Card>
-        <Card.Header as="h5">{props.myWriting.title}</Card.Header>
-        <Badge pill variant="primary">
-          {props.myWriting.category.name}
-        </Badge>
+      <Card className="practiceCard">
+        <Card.Header as="h5">
+          <h2>
+            <Link
+              to={`/mywriting/view/${props.myWriting.id}`}
+              style={{ color: "black" }}
+            >
+              {props.myWriting.title}
+            </Link>
+          </h2>
+          <Badge pill variant="dark">
+            {props.myWriting.category.name}
+          </Badge>
+        </Card.Header>
         <Card.Body>
           <Card.Text>{props.myWriting.content} </Card.Text>
         </Card.Body>

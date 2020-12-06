@@ -3,11 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { deleteImage } from "../../store/images/action";
 import { selectImages } from "../../store/images/selector";
 import { ImageType } from "./types";
+import "./ImagePreview.css";
 
 export default function ImagePreview() {
   const dispatch = useDispatch();
   const images = useSelector(selectImages);
-  console.log(images);
   if (images.find((image: ImageType) => image.id === 0)) {
     return <div>{null}</div>;
   }
@@ -16,17 +16,24 @@ export default function ImagePreview() {
     dispatch(deleteImage(event.target.value));
   };
   return (
-    <div>
-      {images.map((image: ImageType) => {
-        return (
-          <div key={image.id}>
-            <img src={image.url} alt={image.name} />
-            <button onClick={handleRemove} value={image.id}>
-              Remove Image
-            </button>
-          </div>
-        );
-      })}
-    </div>
+    <>
+      <div className="imagePreview">
+        {images.map((image: ImageType) => {
+          console.log(image.id);
+          return (
+            <div key={image.id} className="img-wrap lock">
+              <button className="close" onClick={handleRemove} value={image.id}>
+                &times;
+              </button>
+              <img
+                src={image.url}
+                alt={image.name}
+                className="displayImagePreview"
+              />
+            </div>
+          );
+        })}
+      </div>
+    </>
   );
 }

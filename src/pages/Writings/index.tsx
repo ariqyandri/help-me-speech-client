@@ -14,6 +14,7 @@ import { selectToken, selectUser } from "../../store/user/selectors";
 import { fetchWritings } from "../../store/writings/action";
 import { selectWritings } from "../../store/writings/selector";
 import { Params, Writing } from "./types";
+import "./Writings.css";
 
 export default function Writings() {
   const dispatch = useDispatch();
@@ -41,16 +42,18 @@ export default function Writings() {
     <div>
       <h1>Writings</h1>
       <FilterByCategories id={categoryId} setId={setCategoryId} />
-      {loading ? (
-        <Loading />
-      ) : (
-        writings.map((writing: Writing) => {
-          if (writing.userId === userId) {
-            return <DisplayMyWritings key={writing.id} myWriting={writing} />;
-          }
-          return <DisplayWritings key={writing.id} aWriting={writing} />;
-        })
-      )}
+      <div className="justifyWritings">
+        {loading ? (
+          <Loading />
+        ) : (
+          writings.map((writing: Writing) => {
+            if (writing.userId === userId) {
+              return <DisplayMyWritings key={writing.id} myWriting={writing} />;
+            }
+            return <DisplayWritings key={writing.id} aWriting={writing} />;
+          })
+        )}
+      </div>
     </div>
   );
 }
