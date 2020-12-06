@@ -18,11 +18,6 @@
   -webkit-box-orient: vertical;
 }
 
-
-:hover.hvr-weight-text {
+.cardWritingsBody:hover .hvr-weight-text {
   font-weight: bolder;
-}
-
-:hover.hvr-color-text {
-  color: grey;
 }

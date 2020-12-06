@@ -15,12 +15,11 @@ export default function DisplayWritings(props: Props) {
   }
   return (
     <div>
-      <Card border="dark" className="cardWritings hvr-box-shadow-outset">
+      <Card border="dark" className="cardWritings hvr-grow">
         <Card.Body className="cardWritingsBody">
           <Link
             to={`/writing/view/${props.aWriting.id}`}
             style={{ textDecoration: "none", color: "black" }}
-            className="hvr-color-text"
           >
             <Card.Title className="hvr-weight-text">
               {props.aWriting.title}
@@ -29,7 +28,7 @@ export default function DisplayWritings(props: Props) {
               By{" "}
               {`${props.aWriting.user.firstName} ${props.aWriting.user.lastName}`}
             </Card.Subtitle>
-            <Card.Text className=" hvr-color-text cardWritingsText">
+            <Card.Text className="cardWritingsText">
               {props.aWriting.content}
             </Card.Text>
           </Link>

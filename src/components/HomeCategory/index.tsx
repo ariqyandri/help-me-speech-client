@@ -33,7 +33,7 @@ export default function HomeCategory(props: Props) {
                 {category.description}
               </Card.Text>
               <Link
-                style={{ color: "black" }}
+                style={{ color: "black", textDecoration: "none" }}
                 to={`/writings/${category.name}`}
               >
                 {`View ${category.name}s`}

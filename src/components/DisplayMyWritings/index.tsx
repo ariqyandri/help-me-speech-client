@@ -23,7 +23,7 @@ export default function DisplayMyWritings(props: Props) {
             <Card.Title className="hvr-weight-text">
               {props.myWriting.title}
             </Card.Title>
-            <Card.Text className="hvr-color-text cardWritingsText">
+            <Card.Text className="cardWritingsText">
               {props.myWriting.description}
             </Card.Text>
           </Link>
