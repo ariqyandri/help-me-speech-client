@@ -15,8 +15,15 @@ export default function DisplayImage(props: Props) {
       <Carousel>
         {props.images.map((i) => {
           return (
-            <Carousel.Item key={i.id} interval={1000}>
-              <img className="d-block w-100" src={i.url} alt={i.name} />
+            <Carousel.Item key={i.id} interval={10000}>
+              <div style={{ maxWidth: "1000px", maxHeight: "600px" }}>
+                <img
+                  className="d-block "
+                  style={{ width: "100%", height: "100%" }}
+                  src={i.url}
+                  alt={i.name}
+                />
+              </div>
             </Carousel.Item>
           );
         })}

@@ -6,6 +6,7 @@ import Loading from "../../components/Loading";
 import { fetchWriting } from "../../store/writing/action";
 import { selectWriting } from "../../store/writing/selector";
 import { Params } from "./types";
+import "./Writing.css";
 
 export default function Writing() {
   const dispatch = useDispatch();
@@ -16,6 +17,8 @@ export default function Writing() {
     dispatch(fetchWriting(id));
   }, [dispatch, id]);
   return (
-    <div>{!writing ? <Loading /> : <DisplayWriting aWriting={writing} />}</div>
+    <div className="justifyWriting">
+      {!writing ? <Loading /> : <DisplayWriting aWriting={writing} />}
+    </div>
   );
 }
