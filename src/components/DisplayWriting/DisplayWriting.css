@@ -19,12 +19,12 @@
 
 .displayWritingBody {
   width: auto;
-  text-align: left;
+  text-align: center;
 }
 
 .displayWritingBodyContent {
   width: auto;
   margin-left: 5%;
   margin-right: 5%;
-  max-width: 800px;
+  max-width: 1000px;
 }

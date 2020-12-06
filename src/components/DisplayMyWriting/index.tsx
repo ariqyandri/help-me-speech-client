@@ -6,6 +6,7 @@ import { Props } from "./types";
 
 export default function DisplayMyWriting(props: Props) {
   const date = new Date(props.myWriting.createdAt);
+  console.log(props.myWriting);
   return (
     <div className="displayWriting">
       <div className="displayWritingHeader">
@@ -26,7 +27,8 @@ export default function DisplayMyWriting(props: Props) {
         </h6>
       </div>
       <div className="displayWritingBody">
-        {!props.myWriting.images ? null : (
+        {!props.myWriting.images ||
+        props.myWriting.images?.length === 0 ? null : (
           <DisplayImage images={props.myWriting.images} />
         )}
         <div className="displayWritingBodyContent">

@@ -35,9 +35,7 @@ export default function DisplayWritings(props: Props) {
           <div>
             <div style={{ color: "black", marginBottom: "10px" }}>
               <Badge variant="dark">{props.aWriting.category.name}</Badge>
-              <Badge variant="dark-outline">
-                created at {date.toDateString()}
-              </Badge>
+              <Badge variant="dark-outline"> | {date.toDateString()}</Badge>
             </div>
             <Link
               to={`/writing/view/${props.aWriting.id}`}

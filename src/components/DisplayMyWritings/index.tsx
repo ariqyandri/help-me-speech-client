@@ -30,9 +30,7 @@ export default function DisplayMyWritings(props: Props) {
           <div>
             <div style={{ color: "black", marginBottom: "10px" }}>
               <Badge variant="dark">{props.myWriting.category.name}</Badge>
-              <Badge variant="dark-outline">
-                created at {date.toDateString()}
-              </Badge>
+              <Badge variant="dark-outline"> | {date.toDateString()}</Badge>
             </div>
             <div></div>
             <div>

@@ -52,7 +52,7 @@ function App() {
           <Route path="/signup" component={SignUp} />
         </Switch>
       </div>
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 }
