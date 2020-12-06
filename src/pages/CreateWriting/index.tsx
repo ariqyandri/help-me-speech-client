@@ -25,7 +25,7 @@ export default function CreateWriting() {
     }
   }
   return (
-    <div>
+    <div style={{ width: "1000px" }}>
       <h1>Create Writing</h1>
       {loading ? <Loading /> : <CreateWritingForm />}
     </div>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button, Form } from "react-bootstrap";
+import { Button, ButtonGroup, Form, ToggleButton } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { selectCategories } from "../../store/categories/selector";
 import { removeAllImage } from "../../store/images/action";
@@ -7,6 +7,7 @@ import { postWriting } from "../../store/myWriting/action";
 import ImagePreview from "../ImagePreview";
 import UploadImage from "../UploadImage";
 import { Writing, Category } from "./types";
+import "./CreateWritingForm.css";
 
 export default function CreateWritingForm() {
   const dispatch = useDispatch();
@@ -41,8 +42,13 @@ export default function CreateWritingForm() {
   };
   return (
     <div>
-      <Form noValidate validated={validated} onSubmit={handleClick}>
-        <Form.Group controlId="exampleForm.ControlInput1">
+      <Form
+        noValidate
+        validated={validated}
+        onSubmit={handleClick}
+        className="form"
+      >
+        <Form.Group className="formTitle">
           <Form.Label>Title</Form.Label>
           <Form.Control
             name="title"
@@ -53,21 +59,6 @@ export default function CreateWritingForm() {
           />
           <Form.Control.Feedback type="invalid">
             Please provide a title.
-          </Form.Control.Feedback>
-        </Form.Group>
-        <Form.Group controlId="exampleForm.ControlTextarea1">
-          <Form.Label>Content</Form.Label>
-          <Form.Control
-            name="content"
-            as="textarea"
-            type="text"
-            rows={3}
-            value={value.content}
-            onChange={handleChange}
-            required
-          />
-          <Form.Control.Feedback type="invalid">
-            Please provide a text.
           </Form.Control.Feedback>
         </Form.Group>
         <Form.Group controlId="exampleForm.ControlSelect1">
@@ -92,25 +83,44 @@ export default function CreateWritingForm() {
             Please choose a category.
           </Form.Control.Feedback>
         </Form.Group>
-        <Form.Group>
-          <Form.Check
-            type="checkbox"
-            name="isPrivate"
-            id={`default-checkbox`}
-            label={`Private`}
-            isValid={true}
-            feedback={
-              value.isPrivate === true
-                ? `Your writing is PRIVATE.`
-                : `Your writing is PUBLIC.`
-            }
-            checked={value.isPrivate}
-            onChange={handleIsPrivate}
+        <Form.Group controlId="exampleForm.ControlTextarea1">
+          <Form.Label>Content</Form.Label>
+          <Form.Control
+            name="content"
+            as="textarea"
+            type="text"
+            rows={15}
+            value={value.content}
+            onChange={handleChange}
+            required
           />
+          <Form.Control.Feedback type="invalid">
+            Please provide a text.
+          </Form.Control.Feedback>
         </Form.Group>
         <UploadImage />
+        <ButtonGroup toggle className="filterButtons">
+          <ToggleButton
+            type="radio"
+            variant="outline-dark"
+            value={true}
+            checked={!value.isPrivate}
+            onChange={handleIsPrivate}
+          >
+            Public
+          </ToggleButton>{" "}
+          <ToggleButton
+            type="radio"
+            variant="outline-dark"
+            value={false}
+            checked={value.isPrivate}
+            onChange={handleIsPrivate}
+          >
+            Private
+          </ToggleButton>
+        </ButtonGroup>
         <ImagePreview />
-        <Button variant="primary" type="submit">
+        <Button variant="danger" type="submit">
           Submit
         </Button>
       </Form>
