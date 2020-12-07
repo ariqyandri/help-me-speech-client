@@ -30,7 +30,7 @@ export default function DisplayMyWritingPractice(props: Props) {
             {props.myWriting.category.name}
           </Badge>
         </Card.Header>
-        <Card.Body>
+        <Card.Body className="practiceCardBody">
           <Card.Text>{props.myWriting.content} </Card.Text>
         </Card.Body>
       </Card>
