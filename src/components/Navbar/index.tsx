@@ -19,7 +19,7 @@ export default function Navigation() {
     <Navbar expand="lg" variant="light">
       <Navbar.Brand as={NavLink} to="/" className="lock hvr-forward">
         <h1>
-          Help me speech <i className="icon-unlock">{logo()}</i>
+          Help Me Speech <i className="icon-unlock">{logo()}</i>
           <i className="icon-lock">{logoFill()}</i>
         </h1>
       </Navbar.Brand>
