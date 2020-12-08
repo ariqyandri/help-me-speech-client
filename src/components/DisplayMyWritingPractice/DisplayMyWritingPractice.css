@@ -1,4 +1,8 @@
 .practiceCard {
   width: 500px;
-  max-height: 1000px;
+}
+
+.practiceCardBody {
+  max-height: 600px;
+  overflow-y: scroll;
 }
