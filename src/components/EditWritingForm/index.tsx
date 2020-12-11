@@ -98,6 +98,7 @@ export default function EditWritingForm(props: Props) {
           </Form.Control.Feedback>
         </Form.Group>
         <UploadImage />
+        <ImagePreview />
         <ButtonGroup toggle className="filterButtons">
           <ToggleButton
             type="radio"
@@ -118,7 +119,6 @@ export default function EditWritingForm(props: Props) {
             Private
           </ToggleButton>
         </ButtonGroup>
-        <ImagePreview />
         <Button variant="success" type="submit">
           Submit
         </Button>

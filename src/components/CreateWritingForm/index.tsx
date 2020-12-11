@@ -108,6 +108,7 @@ export default function CreateWritingForm() {
           </Form.Control.Feedback>
         </Form.Group>
         <UploadImage />
+        <ImagePreview />
         <ButtonGroup toggle className="filterButtons">
           <ToggleButton
             type="radio"
@@ -128,7 +129,6 @@ export default function CreateWritingForm() {
             Private
           </ToggleButton>
         </ButtonGroup>
-        <ImagePreview />
         <Button variant="success" type="submit">
           Submit
         </Button>
