@@ -27,7 +27,7 @@ export default function HomeCategory(props: Props) {
           >
             <Card.Body className="cardHomeBody">
               <Card.Title className="cardHomeTitle">
-                <h1>{category.name}</h1>
+                <h1 className="hvr-weight-text">{category.name}</h1>
               </Card.Title>
               <Card.Text className="cardHomeText">
                 {category.description}
@@ -36,7 +36,7 @@ export default function HomeCategory(props: Props) {
                 style={{ color: "black", textDecoration: "none" }}
                 to={`/writings/${category.name}`}
               >
-                {`View ${category.name}s`}
+                <p className="homeLink">{`View ${category.name}s`}</p>
               </Link>
             </Card.Body>
           </Card>
