@@ -21,9 +21,9 @@ export default function ImagePreview() {
         {images.map((image: ImageType) => {
           console.log(image.id);
           return (
-            <div key={image.id} className="img-wrap lock">
+            <div key={image.id} className="img-wrap">
               <button className="close" onClick={handleRemove} value={image.id}>
-                &times;
+                <h1>&times;</h1>
               </button>
               <img
                 src={image.url}

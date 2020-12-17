@@ -17,3 +17,12 @@
 .cardHomeTitle {
   font-size: larger;
 }
+
+.cardHome:hover .hvr-weight-text {
+  font-weight: bolder;
+  text-align: center;
+}
+
+.homeLink {
+  text-align: center;
+}
