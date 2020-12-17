@@ -1,0 +1,4 @@
+.bodyTable {
+  max-height: 550px;
+  overflow-y: scroll;
+}
