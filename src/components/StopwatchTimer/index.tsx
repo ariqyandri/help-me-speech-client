@@ -52,7 +52,7 @@ export default function StopwatchTimer() {
           {isActive ? "Pause" : "Start"}
         </Button>
         {seconds > 0 ? (
-          <Button variant="secondary" onClick={handleLap}>
+          <Button variant="outline-secondary" onClick={handleLap}>
             Lap
           </Button>
         ) : null}
