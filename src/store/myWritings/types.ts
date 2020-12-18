@@ -15,6 +15,7 @@ export type Category = {
   name: string;
 };
 
+
 export type Action =
   | {
       type: "FETCH_MY_WRITINGS";
@@ -22,4 +23,8 @@ export type Action =
     }
   | {
       type: "CREATE_DESCRIPTION";
+    }
+  | {
+      type: "REMOVE_MY_WRITINGS";
+      payload: number;
     };

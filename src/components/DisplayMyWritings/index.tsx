@@ -2,7 +2,9 @@ import React from "react";
 import { Badge, Button, Card } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { pencilFill } from "../../config/icons";
 import { selectAppLoading } from "../../store/appState/selectors";
+import DeleteButton from "../DeleteButton";
 import Loading from "../Loading";
 import { Props } from "./types";
 
@@ -32,14 +34,14 @@ export default function DisplayMyWritings(props: Props) {
               <Badge variant="dark">{props.myWriting.category.name}</Badge>
               <Badge variant="dark-outline"> | {date.toDateString()}</Badge>
             </div>
-            <div></div>
             <div>
-              <Link to={`/mywriting/edit/${props.myWriting.id}`}>
-                <Button variant="outline-dark">Edit</Button>
-              </Link>{" "}
               <Link to={`/mywriting/helpmepractice/${props.myWriting.id}`}>
                 <Button variant="warning">Practice!</Button>
               </Link>{" "}
+              <Link to={`/mywriting/edit/${props.myWriting.id}`}>
+                <Button variant="outline-dark">{pencilFill()}</Button>
+              </Link>{" "}
+              <DeleteButton id={props.myWriting.id} type="writings" />
             </div>
           </div>
         </Card.Body>
