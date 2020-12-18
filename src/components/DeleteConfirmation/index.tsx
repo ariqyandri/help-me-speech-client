@@ -7,21 +7,23 @@ export default function DeleteConfirmation(props: Props) {
     <>
       <Modal
         {...props}
-        size="lg"
+        // size="sm"
+        dialogClassName="modal-40w"
         aria-labelledby="contained-modal-title-vcenter"
         centered
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
-            Modal heading
+            Delete Warning!{" "}
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <h4>Delete Warning!</h4>
           <p>Are you sure you want to delete this file?</p>
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={props.onHide}>Return</Button>{" "}
+          <Button onClick={props.onHide} variant="secondary">
+            Return
+          </Button>{" "}
           <Button onClick={props.onHide} variant="danger">
             Delete
           </Button>
