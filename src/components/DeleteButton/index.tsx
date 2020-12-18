@@ -16,6 +16,7 @@ export default function DeleteButton(props: Props) {
         id={props.id}
         show={modalShow}
         onHide={() => setModalShow(false)}
+        type={props.type}
       />
     </>
   );

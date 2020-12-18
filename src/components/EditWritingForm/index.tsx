@@ -124,7 +124,7 @@ export default function EditWritingForm(props: Props) {
         <Button variant="success" type="submit" className="submitButton">
           Submit
         </Button>
-        <DeleteButton id={value.id} />
+        <DeleteButton id={value.id} type="edit" />
       </Form>
     </div>
   );

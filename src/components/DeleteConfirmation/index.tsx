@@ -1,11 +1,20 @@
 import React from "react";
 import { Button, Modal } from "react-bootstrap";
 import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 import { deleteMyWriting } from "../../store/myWriting/action";
 import { Props } from "./types";
 
 export default function DeleteConfirmation(props: Props) {
   const dispatch = useDispatch();
+  const history = useHistory();
+  const handleDelete = (e: any) => {
+    e.preventDefault();
+    dispatch(deleteMyWriting(props.id));
+    if (props.type === "edit") {
+      history.push("/mywritings");
+    }
+  };
   return (
     <>
       <Modal
@@ -27,12 +36,7 @@ export default function DeleteConfirmation(props: Props) {
           <Button onClick={props.onHide} variant="secondary">
             Return
           </Button>{" "}
-          <Button
-            onClick={() => {
-              dispatch(deleteMyWriting(props.id));
-            }}
-            variant="danger"
-          >
+          <Button onClick={handleDelete} variant="danger">
             Delete
           </Button>
         </Modal.Footer>
