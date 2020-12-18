@@ -3,6 +3,7 @@ import React from "react";
 import { Button } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { postImage } from "../../store/images/action";
+import "./UploadImage.css";
 
 export default function UploadImage() {
   const dispatch = useDispatch();
@@ -32,7 +33,11 @@ export default function UploadImage() {
   };
   return (
     <div>
-      <Button onClick={handleOpen} variant="outline-dark">
+      <Button
+        onClick={handleOpen}
+        variant="outline-dark"
+        className="uploadButton"
+      >
         Upload Image
       </Button>
     </div>

@@ -7,7 +7,9 @@ import UploadImage from "../UploadImage";
 import { Writing, Props, Category } from "./types";
 import DisplayImage from "../DisplayImage";
 import { selectImages } from "../../store/images/selector";
-import { updateWriting } from "../../store/myWriting/action";
+import { updateMyWriting } from "../../store/myWriting/action";
+import DeleteButton from "../DeleteButton";
+import "./EditWritingForm.css";
 
 export default function EditWritingForm(props: Props) {
   const dispatch = useDispatch();
@@ -30,7 +32,7 @@ export default function EditWritingForm(props: Props) {
     event.preventDefault();
     setValidated(true);
     if (value.title !== "" && value.content !== "" && value.categoryId !== 0) {
-      dispatch(updateWriting(value, props.id));
+      dispatch(updateMyWriting(value, props.id));
     }
   };
   return (
@@ -99,7 +101,7 @@ export default function EditWritingForm(props: Props) {
         </Form.Group>
         <UploadImage />
         <ImagePreview />
-        <ButtonGroup toggle className="filterButtons">
+        <ButtonGroup toggle className="publicButton">
           <ToggleButton
             type="radio"
             variant="outline-dark"
@@ -119,9 +121,10 @@ export default function EditWritingForm(props: Props) {
             Private
           </ToggleButton>
         </ButtonGroup>
-        <Button variant="success" type="submit">
+        <Button variant="success" type="submit" className="submitButton">
           Submit
         </Button>
+        <DeleteButton id={value.id} type="edit" />
       </Form>
     </div>
   );

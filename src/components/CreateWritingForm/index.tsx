@@ -3,7 +3,7 @@ import { Button, ButtonGroup, Form, ToggleButton } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { selectCategories } from "../../store/categories/selector";
 import { removeAllImage } from "../../store/images/action";
-import { postWriting } from "../../store/myWriting/action";
+import { postMyWriting } from "../../store/myWriting/action";
 import ImagePreview from "../ImagePreview";
 import UploadImage from "../UploadImage";
 import { Writing, Category } from "./types";
@@ -40,7 +40,7 @@ export default function CreateWritingForm() {
     event.preventDefault();
     setValidated(true);
     if (value.title !== "" && value.content !== "" && value.categoryId !== 0) {
-      dispatch(postWriting(value));
+      dispatch(postMyWriting(value));
     }
   };
   return (

@@ -6,7 +6,6 @@ import { Badge } from "react-bootstrap";
 
 export default function DisplayWriting(props: Props) {
   const date = new Date(props.aWriting.createdAt);
-  console.log(props.aWriting);
   return (
     <div className="displayWriting">
       <div className="displayWritingHeader">

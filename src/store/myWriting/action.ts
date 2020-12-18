@@ -11,10 +11,16 @@ import {
 } from "../appState/action";
 import { assignImage, displayImageFromFetch } from "../images/action";
 
-export const displayWriting = (writing: Writing): Action => {
+export const displayMyWriting = (writing: Writing): Action => {
   return {
-    type: "DISPLAY_WRITING",
+    type: "DISPLAY_MY_WRITING",
     payload: writing,
+  };
+};
+
+export const removeMyWriting = (): Action => {
+  return {
+    type: "REMOVE_MY_WRITING",
   };
 };
 
@@ -29,7 +35,7 @@ export const fetchMyWriting = (id: number) => {
 
       dispatch(displayImageFromFetch(response.data.images));
 
-      dispatch(displayWriting(response.data));
+      dispatch(displayMyWriting(response.data));
       dispatch(appDoneLoading());
     } catch (error) {
       if (error.response) {
@@ -42,7 +48,7 @@ export const fetchMyWriting = (id: number) => {
   };
 };
 
-export const postWriting = (value: PostWriting) => {
+export const postMyWriting = (value: PostWriting) => {
   return async (dispatch: any, getState: any) => {
     const token = selectToken(getState());
     dispatch(appLoading());
@@ -66,7 +72,7 @@ export const postWriting = (value: PostWriting) => {
   };
 };
 
-export const updateWriting = (value: UpdateWriting, id: number) => {
+export const updateMyWriting = (value: UpdateWriting, id: number) => {
   return async (dispatch: any, getState: any) => {
     const token = selectToken(getState());
     dispatch(appLoading());
@@ -82,6 +88,28 @@ export const updateWriting = (value: UpdateWriting, id: number) => {
       dispatch(assignImage(response.data.id));
       dispatch(fetchMyWriting(response.data.id));
       dispatch(fulfilledRequest(response.data.id));
+      dispatch(showMessageWithTimeout("success", true, `Success!`, 2000));
+      dispatch(appDoneLoading());
+    } catch (error) {
+      if (error.response) {
+        console.log(error.response.data.message);
+      } else {
+        console.log(error.message);
+      }
+      dispatch(appDoneLoading());
+    }
+  };
+};
+
+export const deleteMyWriting = (id: number) => {
+  return async (dispatch: any, getState: any) => {
+    const token = selectToken(getState());
+    dispatch(appLoading());
+    try {
+      await axios.delete(`${apiUrl}/writing/mywriting/${id}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      dispatch(removeMyWriting());
       dispatch(showMessageWithTimeout("success", true, `Success!`, 2000));
       dispatch(appDoneLoading());
     } catch (error) {

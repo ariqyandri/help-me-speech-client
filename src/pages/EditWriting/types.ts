@@ -3,6 +3,7 @@ export type Params = {
 };
 
 export type Writing = {
+  id: number;
   title: string;
   content: string;
   isPrivate: boolean;

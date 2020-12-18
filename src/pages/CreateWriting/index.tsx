@@ -20,7 +20,7 @@ export default function CreateWriting() {
     history.push("/");
   }
   if (writing) {
-    if (requestId === writing.id) {
+    if (loading === false && requestId === writing.id) {
       history.push(`/mywriting/view/${writing.id}`);
     }
   }

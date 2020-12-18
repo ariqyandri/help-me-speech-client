@@ -39,7 +39,11 @@ export type UpdateWriting = {
   categoryId: number;
 };
 
-export type Action = {
-  type: "DISPLAY_WRITING";
-  payload: Writing;
-};
+export type Action =
+  | {
+      type: "DISPLAY_MY_WRITING";
+      payload: Writing;
+    }
+  | {
+      type: "REMOVE_MY_WRITING";
+    };
