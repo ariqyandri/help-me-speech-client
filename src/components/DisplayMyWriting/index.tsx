@@ -6,7 +6,6 @@ import { Props } from "./types";
 
 export default function DisplayMyWriting(props: Props) {
   const date = new Date(props.myWriting.createdAt);
-  console.log(props.myWriting);
   return (
     <div className="displayWriting">
       <div className="displayWritingHeader">

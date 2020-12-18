@@ -15,7 +15,6 @@ export default function ImagePreview() {
     <>
       <div className="imagePreview">
         {images.map((image: ImageType) => {
-          console.log(image.id);
           return (
             <div key={image.id} className="img-wrap">
               <button
