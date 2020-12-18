@@ -11,10 +11,6 @@ export default function ImagePreview() {
   if (images.find((image: ImageType) => image.id === 0)) {
     return <div>{null}</div>;
   }
-  const handleRemove = (event: any) => {
-    event.preventDefault();
-    dispatch(deleteImage(event.target.value));
-  };
   return (
     <>
       <div className="imagePreview">
@@ -22,7 +18,13 @@ export default function ImagePreview() {
           console.log(image.id);
           return (
             <div key={image.id} className="img-wrap">
-              <button className="close" onClick={handleRemove} value={image.id}>
+              <button
+                className="close"
+                onClick={(e) => {
+                  e.preventDefault();
+                  dispatch(deleteImage(image.id));
+                }}
+              >
                 <h1>&times;</h1>
               </button>
               <img
