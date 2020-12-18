@@ -3,6 +3,7 @@ import { Button, Modal } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { deleteMyWriting } from "../../store/myWriting/action";
+import { deleteMyWritings } from "../../store/myWritings/action";
 import { Props } from "./types";
 
 export default function DeleteConfirmation(props: Props) {
@@ -10,9 +11,12 @@ export default function DeleteConfirmation(props: Props) {
   const history = useHistory();
   const handleDelete = (e: any) => {
     e.preventDefault();
-    dispatch(deleteMyWriting(props.id));
     if (props.type === "edit") {
+      dispatch(deleteMyWriting(props.id));
       history.push("/mywritings");
+    }
+    if (props.type === "writings") {
+      dispatch(deleteMyWritings(props.id));
     }
   };
   return (

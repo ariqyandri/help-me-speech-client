@@ -41,9 +41,9 @@ export type UpdateWriting = {
 
 export type Action =
   | {
-      type: "DISPLAY_WRITING";
+      type: "DISPLAY_MY_WRITING";
       payload: Writing;
     }
   | {
-      type: "REMOVE_WRITING";
+      type: "REMOVE_MY_WRITING";
     };

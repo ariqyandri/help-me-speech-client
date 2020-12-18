@@ -13,14 +13,14 @@ import { assignImage, displayImageFromFetch } from "../images/action";
 
 export const displayMyWriting = (writing: Writing): Action => {
   return {
-    type: "DISPLAY_WRITING",
+    type: "DISPLAY_MY_WRITING",
     payload: writing,
   };
 };
 
 export const removeMyWriting = (): Action => {
   return {
-    type: "REMOVE_WRITING",
+    type: "REMOVE_MY_WRITING",
   };
 };
 
