@@ -26,7 +26,7 @@ export default function EditWriting() {
   useEffect(() => {
     dispatch(fetchMyWriting(id));
   }, [dispatch, id]);
-  if (requestId === id) {
+  if (loading === false && requestId === id) {
     history.push(`/mywriting/view/${id}`);
   }
   const writing = useSelector(selectMyWriting);
