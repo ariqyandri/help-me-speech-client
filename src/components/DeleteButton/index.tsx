@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Button } from "react-bootstrap";
+import { trashFill } from "../../config/icons";
 import DeleteConfirmation from "../DeleteConfirmation";
 import { Props } from "./types";
 
@@ -9,7 +10,7 @@ export default function DeleteButton(props: Props) {
   return (
     <>
       <Button variant="danger" onClick={() => setModalShow(true)}>
-        Delete{" "}
+        {trashFill()}
       </Button>
 
       <DeleteConfirmation
