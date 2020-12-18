@@ -26,15 +26,18 @@ export const signUp = (
   firstName: string,
   lastName: string,
   email: string,
+  image: string,
   password: string
 ) => {
   return async (dispatch: any, getState: any) => {
     dispatch(appLoading());
+    console.log({ firstName, lastName, email, image, password });
     try {
       const response = await axios.post(`${apiUrl}/signup`, {
         firstName,
         lastName,
         email,
+        image,
         password,
       });
 
@@ -97,6 +100,7 @@ export const getUserWithStoredToken = () => {
       const response = await axios.get(`${apiUrl}/me`, {
         headers: { Authorization: `Bearer ${token}` },
       });
+      console.log(response.data);
       dispatch(tokenStillValid(response.data));
       dispatch(appDoneLoading());
     } catch (error) {

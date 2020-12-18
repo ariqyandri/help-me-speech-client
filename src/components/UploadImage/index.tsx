@@ -15,11 +15,6 @@ export default function UploadImage() {
       },
       (error: any, result: any) => {
         if (result.event === "success") {
-          console.log(
-            `success`,
-            result.info.url,
-            result.info.original_filename
-          );
           dispatch(
             postImage({
               url: result.info.url,

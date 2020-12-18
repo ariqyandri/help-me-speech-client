@@ -4,18 +4,23 @@ import Button from "react-bootstrap/Button";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { signUp } from "../../store/user/action";
+import UploadProfileImage from "../UploadProfileImage";
+import { Image } from "react-bootstrap";
 
 export default function SignUpForm() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [image, setImage] = useState(
+    "https://icon-library.com/images/default-profile-icon/default-profile-icon-16.jpg"
+  );
   const dispatch = useDispatch();
 
   function submitForm(event: any) {
     event.preventDefault();
 
-    dispatch(signUp(firstName, lastName, email, password));
+    dispatch(signUp(firstName, lastName, email, image, password));
 
     setFirstName("");
     setLastName("");
@@ -25,6 +30,7 @@ export default function SignUpForm() {
 
   return (
     <>
+      <Image src={`${image}`} roundedCircle style={{ maxHeight: "200px" }} />
       <Form className="formLogin">
         <Form.Group controlId="formBasicFirstName">
           <Form.Label>First Name</Form.Label>
@@ -66,6 +72,7 @@ export default function SignUpForm() {
             required
           />
         </Form.Group>
+        <UploadProfileImage setImage={setImage} />
         <Form.Group style={{ margin: "20px" }}>
           <Button variant="success" type="submit" onClick={submitForm}>
             Sign up

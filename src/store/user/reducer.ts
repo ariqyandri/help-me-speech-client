@@ -6,6 +6,7 @@ const initialState: User = {
   firstName: null,
   lastName: null,
   email: null,
+  image: null,
   createdAt: null,
   updatedAt: null,
 };

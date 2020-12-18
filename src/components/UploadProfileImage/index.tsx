@@ -2,11 +2,9 @@
 import React from "react";
 import { Button } from "react-bootstrap";
 import { useDispatch } from "react-redux";
-import { postImage } from "../../store/images/action";
-import "./UploadImage.css";
+import { Props } from "./types";
 
-export default function UploadProfileImage() {
-  const dispatch = useDispatch();
+export default function UploadProfileImage({ setImage }: Props) {
   const handleOpen = async () => {
     const widget = cloudinary.createUploadWidget(
       {
@@ -15,17 +13,7 @@ export default function UploadProfileImage() {
       },
       (error: any, result: any) => {
         if (result.event === "success") {
-          console.log(
-            `success`,
-            result.info.url,
-            result.info.original_filename
-          );
-          dispatch(
-            postImage({
-              url: result.info.url,
-              name: result.info.original_filename,
-            })
-          );
+          setImage(result.info.url);
         }
       }
     );
@@ -38,7 +26,7 @@ export default function UploadProfileImage() {
         variant="outline-dark"
         className="uploadButton"
       >
-        Upload Image
+        Upload Profile Image
       </Button>
     </div>
   );
