@@ -35,6 +35,7 @@ export default function EditWriting() {
   }
   const { title, content, isPrivate, categoryId } = writing;
   const editWriting: Writing = {
+    id,
     title,
     content,
     isPrivate,

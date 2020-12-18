@@ -1,8 +1,11 @@
 import React from "react";
 import { Button, Modal } from "react-bootstrap";
+import { useDispatch } from "react-redux";
+import { deleteMyWriting } from "../../store/myWriting/action";
 import { Props } from "./types";
 
 export default function DeleteConfirmation(props: Props) {
+  const dispatch = useDispatch();
   return (
     <>
       <Modal
@@ -24,7 +27,12 @@ export default function DeleteConfirmation(props: Props) {
           <Button onClick={props.onHide} variant="secondary">
             Return
           </Button>{" "}
-          <Button onClick={props.onHide} variant="danger">
+          <Button
+            onClick={() => {
+              dispatch(deleteMyWriting(props.id));
+            }}
+            variant="danger"
+          >
             Delete
           </Button>
         </Modal.Footer>

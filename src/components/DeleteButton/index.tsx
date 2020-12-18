@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 import DeleteConfirmation from "../DeleteConfirmation";
+import { Props } from "./types";
 
-export default function DeleteButton() {
+export default function DeleteButton(props: Props) {
   const [modalShow, setModalShow] = useState(false);
 
   return (
@@ -11,7 +12,11 @@ export default function DeleteButton() {
         Delete{" "}
       </Button>
 
-      <DeleteConfirmation show={modalShow} onHide={() => setModalShow(false)} />
+      <DeleteConfirmation
+        id={props.id}
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+      />
     </>
   );
 }
