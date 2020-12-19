@@ -32,7 +32,7 @@ export default function UploadProfileImage({ setImage, image }: Props) {
       <div style={{ margin: "5px" }}>
         <Button
           onClick={handleOpen}
-          variant="outline-secondary"
+          variant="outline-dark"
           className="uploadButton"
         >
           {image ===

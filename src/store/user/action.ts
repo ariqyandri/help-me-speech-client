@@ -5,7 +5,8 @@ import { User } from "./types";
 import {
   appDoneLoading,
   appLoading,
-  setMessage,
+  loginCorrect,
+  loginInCorrect,
   showMessageWithTimeout,
 } from "../appState/action";
 
@@ -32,7 +33,6 @@ export const signUp = (
 ) => {
   return async (dispatch: any, getState: any) => {
     dispatch(appLoading());
-    console.log({ firstName, lastName, email, image, password });
     try {
       const response = await axios.post(`${apiUrl}/signup`, {
         firstName,
@@ -41,7 +41,7 @@ export const signUp = (
         image,
         password,
       });
-
+      dispatch(loginCorrect());
       dispatch(loginSuccess(response.data));
       dispatch(
         showMessageWithTimeout(
@@ -55,8 +55,10 @@ export const signUp = (
     } catch (error) {
       if (error.response) {
         console.log(error.response.data.message);
+        dispatch(loginInCorrect());
       } else {
         console.log(error.message);
+        dispatch(loginInCorrect());
       }
       dispatch(appDoneLoading());
     }
@@ -71,6 +73,7 @@ export const login = (email: string, password: string) => {
         email,
         password,
       });
+      dispatch(loginCorrect());
       dispatch(loginSuccess(response.data));
       dispatch(
         showMessageWithTimeout(
@@ -84,10 +87,14 @@ export const login = (email: string, password: string) => {
     } catch (error) {
       if (error.response) {
         console.log(error.response.data.message);
-        dispatch(setMessage("danger", true, error.response.data.message));
+        if (error.response.data.message === "User with email already exists") {
+          dispatch(loginInCorrect());
+        }
       } else {
         console.log(error.message);
-        dispatch(setMessage("danger", true, error.message));
+        if (error.message === "User with email already exists") {
+          dispatch(loginInCorrect());
+        }
       }
       dispatch(appDoneLoading());
     }

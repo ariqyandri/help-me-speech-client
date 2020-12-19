@@ -1,11 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useHistory } from "react-router-dom";
 import { signUp } from "../../store/user/action";
 import UploadProfileImage from "../UploadProfileImage";
-import { Col } from "react-bootstrap";
+import { Col, Spinner } from "react-bootstrap";
+import { selectToken } from "../../store/user/selectors";
+import {
+  selectAppLoading,
+  selectLoginCorrect,
+} from "../../store/appState/selectors";
 
 export default function SignUpForm() {
   const [firstName, setFirstName] = useState("");
@@ -15,23 +20,49 @@ export default function SignUpForm() {
   const [image, setImage] = useState(
     "https://icon-library.com/images/default-profile-icon/default-profile-icon-16.jpg"
   );
+  const [validated, setValidated] = useState(false);
   const dispatch = useDispatch();
+  const correct = useSelector(selectLoginCorrect);
+  const token = useSelector(selectToken);
+  const loading = useSelector(selectAppLoading);
+  const history = useHistory();
 
   function submitForm(event: any) {
     event.preventDefault();
-
-    dispatch(signUp(firstName, lastName, email, image, password));
-
-    setFirstName("");
-    setLastName("");
-    setEmail("");
-    setPassword("");
+    if (
+      firstName !== "" &&
+      lastName !== "" &&
+      email !== "" &&
+      password !== ""
+    ) {
+      setValidated(true);
+      dispatch(signUp(firstName, lastName, email, image, password));
+    }
+    const form = event.currentTarget;
+    if (form.checkValidity() === false) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+    setValidated(true);
   }
+
+  useEffect(() => {
+    if (token !== null) {
+      setFirstName("");
+      setLastName("");
+      setEmail("");
+      setPassword("");
+      history.push("/");
+    }
+    if (correct === false) {
+      setValidated(false);
+    }
+  }, [token, history, correct]);
 
   return (
     <>
       <UploadProfileImage image={image} setImage={setImage} />{" "}
-      <Form className="formSignup">
+      <Form validated={validated} className="formSignup">
         <Form.Row>
           <Col>
             <Form.Group controlId="formBasicFirstName">
@@ -42,7 +73,10 @@ export default function SignUpForm() {
                 type="text"
                 placeholder="Enter first name"
                 required
-              />
+              />{" "}
+              <Form.Control.Feedback type="invalid">
+                Please provide your first name{" "}
+              </Form.Control.Feedback>
             </Form.Group>
           </Col>
           <Col>
@@ -55,6 +89,9 @@ export default function SignUpForm() {
                 placeholder="Enter last name"
                 required
               />
+              <Form.Control.Feedback type="invalid">
+                Please provide your last name{" "}
+              </Form.Control.Feedback>
             </Form.Group>
           </Col>
         </Form.Row>
@@ -65,8 +102,13 @@ export default function SignUpForm() {
             onChange={(event) => setEmail(event.target.value)}
             type="email"
             placeholder="Enter email"
+            isInvalid={correct ? false : true}
+            formNoValidate={true}
             required
           />
+          <Form.Control.Feedback type="invalid">
+            {correct ? "Please provide an email" : "User with email exists"}
+          </Form.Control.Feedback>
         </Form.Group>
         <Form.Group controlId="formBasicPassword">
           <Form.Label>Password</Form.Label>
@@ -77,14 +119,17 @@ export default function SignUpForm() {
             placeholder="Password"
             required
           />
+          <Form.Control.Feedback type="invalid">
+            Please provide a password{" "}
+          </Form.Control.Feedback>
         </Form.Group>
         <Form.Group style={{ margin: "20px" }}>
           <Button variant="success" type="submit" onClick={submitForm}>
-            Sign up
+            {loading ? <Spinner animation="border" size="sm" /> : "Log in"}
           </Button>
         </Form.Group>
-        <Link to="/login">
-          <Button variant="outline-dark">Click here to log in</Button>
+        <Link to="/login" style={{ color: "black" }}>
+          Click here to log in
         </Link>
       </Form>
     </>

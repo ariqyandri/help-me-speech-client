@@ -13,6 +13,14 @@ export const resetRequest = () => ({
   type: "RESET_REQUEST",
 });
 
+export const loginCorrect = () => ({
+  type: "LOGIN_CORRECT",
+});
+
+export const loginInCorrect = () => ({
+  type: "LOGIN_INCORRECT",
+});
+
 export const setMessage = (
   variant: string,
   dismissable: boolean,

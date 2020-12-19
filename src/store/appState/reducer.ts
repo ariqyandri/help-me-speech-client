@@ -4,6 +4,7 @@ const initialState = {
   loading: false,
   message: null,
   fullfilledRequest: null,
+  loginCorrect: true,
 };
 
 const appStateReducer = (state = initialState, action: Action) => {
@@ -25,6 +26,12 @@ const appStateReducer = (state = initialState, action: Action) => {
 
     case "RESET_REQUEST":
       return { ...state, fullfilledRequest: null };
+
+    case "LOGIN_CORRECT":
+      return { ...state, loginCorrect: true };
+
+    case "LOGIN_INCORRECT":
+      return { ...state, loginCorrect: false };
     default:
       return state;
   }
