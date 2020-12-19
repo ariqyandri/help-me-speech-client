@@ -19,6 +19,7 @@ import EditWriting from "./pages/EditWriting/index";
 import HelpMePractice from "./pages/HelpMePractice/index";
 import Writings from "./pages/Writings/index";
 import Writing from "./pages/Writing/index";
+import Profile from "./pages/Profile/index";
 
 function App() {
   const dispatch = useDispatch();
@@ -48,6 +49,7 @@ function App() {
             path="/mywriting/helpmepractice/:id"
             component={HelpMePractice}
           />
+          <Route exact path="/myprofile" component={Profile} />
           <Route path="/login" component={Login} />
           <Route path="/signup" component={SignUp} />
         </Switch>
