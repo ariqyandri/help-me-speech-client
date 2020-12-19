@@ -1,15 +1,18 @@
 //@ts-nocheck
 import React from "react";
-import { Button } from "react-bootstrap";
-import { useDispatch } from "react-redux";
+import { Button, Image } from "react-bootstrap";
+import { pencilFill, trashFill } from "../../config/icons";
 import { Props } from "./types";
 
-export default function UploadProfileImage({ setImage }: Props) {
+export default function UploadProfileImage({ setImage, image }: Props) {
   const handleOpen = async () => {
     const widget = cloudinary.createUploadWidget(
       {
         cloudName: "doai9yryh",
-        uploadPreset: "dgfhe4a6",
+        uploadPreset: "profile_crop",
+        cropping: true,
+        cropping_aspect_ratio: 1,
+        showSkipCropButton: false,
       },
       (error: any, result: any) => {
         if (result.event === "success") {
@@ -20,14 +23,38 @@ export default function UploadProfileImage({ setImage }: Props) {
     widget.open();
   };
   return (
-    <div>
-      <Button
-        onClick={handleOpen}
-        variant="outline-dark"
-        className="uploadButton"
-      >
-        Upload Profile Image
-      </Button>
-    </div>
+    <>
+      <Image
+        src={`${image}`}
+        roundedCircle
+        style={{ height: "200px", width: "auto" }}
+      />
+      <div style={{ margin: "5px" }}>
+        <Button
+          onClick={handleOpen}
+          variant="outline-secondary"
+          className="uploadButton"
+        >
+          {image ===
+          "https://icon-library.com/images/default-profile-icon/default-profile-icon-16.jpg"
+            ? "Upload Profile Image"
+            : pencilFill()}
+        </Button>{" "}
+        {image !==
+        "https://icon-library.com/images/default-profile-icon/default-profile-icon-16.jpg" ? (
+          <Button
+            variant="danger"
+            onClick={() => {
+              setImage(
+                "https://icon-library.com/images/default-profile-icon/default-profile-icon-16.jpg"
+              );
+            }}
+            className="uploadButton"
+          >
+            {trashFill()}
+          </Button>
+        ) : null}
+      </div>
+    </>
   );
 }

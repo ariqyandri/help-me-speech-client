@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { signUp } from "../../store/user/action";
 import UploadProfileImage from "../UploadProfileImage";
-import { Col, Image } from "react-bootstrap";
+import { Col } from "react-bootstrap";
 
 export default function SignUpForm() {
   const [firstName, setFirstName] = useState("");
@@ -30,8 +30,8 @@ export default function SignUpForm() {
 
   return (
     <>
-      <Image src={`${image}`} roundedCircle style={{ maxHeight: "200px" }} />
-      <Form className="formLogin">
+      <UploadProfileImage image={image} setImage={setImage} />{" "}
+      <Form className="formSignup">
         <Form.Row>
           <Col>
             <Form.Group controlId="formBasicFirstName">
@@ -78,7 +78,6 @@ export default function SignUpForm() {
             required
           />
         </Form.Group>
-        <UploadProfileImage setImage={setImage} />
         <Form.Group style={{ margin: "20px" }}>
           <Button variant="success" type="submit" onClick={submitForm}>
             Sign up
