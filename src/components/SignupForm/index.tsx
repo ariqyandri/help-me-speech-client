@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { signUp } from "../../store/user/action";
 import UploadProfileImage from "../UploadProfileImage";
-import { Image } from "react-bootstrap";
+import { Col, Image } from "react-bootstrap";
 
 export default function SignUpForm() {
   const [firstName, setFirstName] = useState("");
@@ -32,26 +32,32 @@ export default function SignUpForm() {
     <>
       <Image src={`${image}`} roundedCircle style={{ maxHeight: "200px" }} />
       <Form className="formLogin">
-        <Form.Group controlId="formBasicFirstName">
-          <Form.Label>First Name</Form.Label>
-          <Form.Control
-            value={firstName}
-            onChange={(event) => setFirstName(event.target.value)}
-            type="text"
-            placeholder="Enter first name"
-            required
-          />
-        </Form.Group>
-        <Form.Group controlId="formBasicLastName">
-          <Form.Label>Last Name</Form.Label>
-          <Form.Control
-            value={lastName}
-            onChange={(event) => setLastName(event.target.value)}
-            type="text"
-            placeholder="Enter last name"
-            required
-          />
-        </Form.Group>
+        <Form.Row>
+          <Col>
+            <Form.Group controlId="formBasicFirstName">
+              <Form.Label>First Name</Form.Label>
+              <Form.Control
+                value={firstName}
+                onChange={(event) => setFirstName(event.target.value)}
+                type="text"
+                placeholder="Enter first name"
+                required
+              />
+            </Form.Group>
+          </Col>
+          <Col>
+            <Form.Group controlId="formBasicLastName">
+              <Form.Label>Last Name</Form.Label>
+              <Form.Control
+                value={lastName}
+                onChange={(event) => setLastName(event.target.value)}
+                type="text"
+                placeholder="Enter last name"
+                required
+              />
+            </Form.Group>
+          </Col>
+        </Form.Row>
         <Form.Group controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
           <Form.Control
