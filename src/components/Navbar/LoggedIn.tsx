@@ -1,8 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Button from "react-bootstrap/Button";
 import { selectUser } from "../../store/user/selectors";
-import Nav from "react-bootstrap/Nav";
 import { useHistory } from "react-router-dom";
 import { logOut } from "../../store/user/action";
 import NavbarItem from "./NavbarItem";
