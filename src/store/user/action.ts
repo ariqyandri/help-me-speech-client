@@ -5,6 +5,7 @@ import { User } from "./types";
 import {
   appDoneLoading,
   appLoading,
+  setMessage,
   showMessageWithTimeout,
 } from "../appState/action";
 
@@ -83,8 +84,10 @@ export const login = (email: string, password: string) => {
     } catch (error) {
       if (error.response) {
         console.log(error.response.data.message);
+        dispatch(setMessage("danger", true, error.response.data.message));
       } else {
         console.log(error.message);
+        dispatch(setMessage("danger", true, error.message));
       }
       dispatch(appDoneLoading());
     }
