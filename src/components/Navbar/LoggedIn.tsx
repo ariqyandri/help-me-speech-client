@@ -28,7 +28,7 @@ export default function LoggedIn() {
         <Image
           src={`${user.image}`}
           roundedCircle
-          style={{ height: "35px", width: "auto" }}
+          style={{ height: "40px", width: "auto" }}
         />{" "}
       </Nav.Item>
       <Button onClick={handleLogOut} variant="outline-dark">
