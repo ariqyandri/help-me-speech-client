@@ -5,6 +5,8 @@ import { User } from "./types";
 import {
   appDoneLoading,
   appLoading,
+  loginCorrect,
+  loginInCorrect,
   showMessageWithTimeout,
 } from "../appState/action";
 
@@ -26,6 +28,7 @@ export const signUp = (
   firstName: string,
   lastName: string,
   email: string,
+  image: string,
   password: string
 ) => {
   return async (dispatch: any, getState: any) => {
@@ -35,9 +38,10 @@ export const signUp = (
         firstName,
         lastName,
         email,
+        image,
         password,
       });
-
+      dispatch(loginCorrect());
       dispatch(loginSuccess(response.data));
       dispatch(
         showMessageWithTimeout(
@@ -51,8 +55,10 @@ export const signUp = (
     } catch (error) {
       if (error.response) {
         console.log(error.response.data.message);
+        dispatch(loginInCorrect());
       } else {
         console.log(error.message);
+        dispatch(loginInCorrect());
       }
       dispatch(appDoneLoading());
     }
@@ -67,6 +73,7 @@ export const login = (email: string, password: string) => {
         email,
         password,
       });
+      dispatch(loginCorrect());
       dispatch(loginSuccess(response.data));
       dispatch(
         showMessageWithTimeout(
@@ -80,8 +87,14 @@ export const login = (email: string, password: string) => {
     } catch (error) {
       if (error.response) {
         console.log(error.response.data.message);
+        if (error.response.data.message === "User with email already exists") {
+          dispatch(loginInCorrect());
+        }
       } else {
         console.log(error.message);
+        if (error.message === "User with email already exists") {
+          dispatch(loginInCorrect());
+        }
       }
       dispatch(appDoneLoading());
     }
@@ -97,6 +110,7 @@ export const getUserWithStoredToken = () => {
       const response = await axios.get(`${apiUrl}/me`, {
         headers: { Authorization: `Bearer ${token}` },
       });
+      console.log(response.data);
       dispatch(tokenStillValid(response.data));
       dispatch(appDoneLoading());
     } catch (error) {

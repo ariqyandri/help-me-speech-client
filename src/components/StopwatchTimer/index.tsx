@@ -34,6 +34,9 @@ export default function StopwatchTimer() {
     dispatch(lap());
   }
   useEffect(() => {
+    dispatch(deactivate());
+  }, [dispatch]);
+  useEffect(() => {
     let interval: any = null;
     if (isActive) {
       interval = setInterval(() => {
@@ -44,6 +47,7 @@ export default function StopwatchTimer() {
     }
     return () => clearInterval(interval);
   }, [dispatch, isActive, seconds]);
+
   return (
     <div className="stopwatch">
       <h1 className="stopwatchDisplay">{displayWatch(hrs, min, sec)}</h1>

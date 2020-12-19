@@ -26,4 +26,10 @@ export type Action =
     }
   | {
       type: "RESET_REQUEST";
+    }
+  | {
+      type: "LOGIN_CORRECT";
+    }
+  | {
+      type: "LOGIN_INCORRECT";
     };
