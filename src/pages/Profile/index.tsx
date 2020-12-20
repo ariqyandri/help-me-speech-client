@@ -1,46 +1,29 @@
-import React, { useEffect, useState } from "react";
-import { selectToken, selectUser } from "../../store/user/selectors";
-import { useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
-import ProfileForm from "../../components/ProfileForm";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 import Loading from "../../components/Loading";
-import { Button, Spinner } from "react-bootstrap";
 import { selectAppLoading } from "../../store/appState/selectors";
-import { pencilFill } from "../../config/icons";
 import ProfileDisplay from "../../components/ProfileDisplay";
+import { selectOtherUser } from "../../store/otherUser/selector";
+import { fetchOtherUser } from "../../store/otherUser/action";
 
 export default function Profile() {
-  const token = useSelector(selectToken);
-  const history = useHistory();
-  const user = useSelector(selectUser);
+  const params: { id: any } = useParams();
+  console.log(params);
+  const dispatch = useDispatch();
+  const user = useSelector(selectOtherUser);
   const loading = useSelector(selectAppLoading);
-  const [edit, setEdit] = useState(false);
-
   useEffect(() => {
-    if (token === null) {
-      history.push("/");
-    }
-  }, [token, history]);
+    dispatch(fetchOtherUser(params.id));
+  }, [dispatch, params.id]);
 
   return (
     <div style={{ width: "500px" }}>
       <h1>Profile Page</h1>
       {user.id === null || loading ? (
         <Loading />
-      ) : edit === true ? (
-        <ProfileForm user={user} setEdit={setEdit} />
       ) : (
-        <>
-          <ProfileDisplay user={user} />
-          <Button
-            variant="success"
-            onClick={() => {
-              setEdit(true);
-            }}
-          >
-            {pencilFill()}
-          </Button>
-        </>
+        <ProfileDisplay user={user} />
       )}
     </div>
   );

@@ -19,6 +19,7 @@ import EditWriting from "./pages/EditWriting/index";
 import HelpMePractice from "./pages/HelpMePractice/index";
 import Writings from "./pages/Writings/index";
 import Writing from "./pages/Writing/index";
+import MyProfile from "./pages/MyProfile/index";
 import Profile from "./pages/Profile/index";
 
 function App() {
@@ -42,14 +43,15 @@ function App() {
           <Route exact path="/writing/view/:id" component={Writing} />
           <Route exact path="/mywritings/:category?" component={MyWritings} />
           <Route exact path="/mywriting/create" component={CreateWriting} />
-          <Route exact path="/mywriting/edit/:id" component={EditWriting} />
-          <Route exact path="/mywriting/view/:id" component={MyWriting} />
+          <Route exact path="/mywriting/edit/:id?" component={EditWriting} />
+          <Route exact path="/mywriting/view/:id?" component={MyWriting} />
           <Route
             exact
             path="/mywriting/helpmepractice/:id"
             component={HelpMePractice}
           />
-          <Route exact path="/myprofile" component={Profile} />
+          <Route exact path="/myprofile" component={MyProfile} />
+          <Route exact path="/profile/:id?" component={Profile} />
           <Route path="/login" component={Login} />
           <Route path="/signup" component={SignUp} />
         </Switch>

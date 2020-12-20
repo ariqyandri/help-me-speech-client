@@ -39,7 +39,6 @@ export default function ProfileForm({ user, setEdit }: Props) {
   }
 
   function handleUpdate(e: any) {
-    console.log({ ...update, [e.target.name]: e.target.value });
     setUpdate({ ...update, [e.target.name]: e.target.value });
   }
 
