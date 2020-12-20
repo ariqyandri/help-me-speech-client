@@ -1,43 +1,46 @@
 import React, { useEffect, useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import UploadProfileImage from "../UploadProfileImage";
-import { Col, Image, Spinner } from "react-bootstrap";
+import { Col, Spinner } from "react-bootstrap";
 import {
   selectAppLoading,
   selectLoginCorrect,
 } from "../../store/appState/selectors";
 import { Props } from "./types";
-import { pencilFill } from "../../config/icons";
+import { updateProfile } from "../../store/user/action";
 
-export default function ProfileForm(props: Props) {
-  const [firstName, setFirstName] = useState(props.user.firstName);
-  const [lastName, setLastName] = useState(props.user.lastName);
-  const [email, setEmail] = useState(props.user.email);
-  const [image, setImage] = useState(props.user.image);
+export default function ProfileForm({ user, setEdit }: Props) {
+  const [firstName, setFirstName] = useState(user.firstName);
+  const [lastName, setLastName] = useState(user.lastName);
+  const [email, setEmail] = useState(user.email);
+  const [image, setImage] = useState(user.image);
+  const [update, setUpdate] = useState({});
   const [validated, setValidated] = useState(false);
-  const [edit, setEdit] = useState(false);
   const correct = useSelector(selectLoginCorrect);
   const loading = useSelector(selectAppLoading);
-  console.log(props.user);
+  const dispatch = useDispatch();
+
   function submitForm(event: any) {
-    if (edit === false) {
+    event.preventDefault();
+    const form = event.currentTarget;
+    if (form.checkValidity() === false) {
       event.preventDefault();
-      setEdit(true);
+      event.stopPropagation();
     }
-    if (edit === true) {
-      event.preventDefault();
-      if (firstName !== "" && lastName !== "" && email !== "") {
-        setValidated(true);
-      }
-      const form = event.currentTarget;
-      if (form.checkValidity() === false) {
-        event.preventDefault();
-        event.stopPropagation();
-      }
-      setValidated(true);
+    if (image !== user.image) {
+      dispatch(updateProfile({ ...update, image: image }));
+    } else {
+      dispatch(updateProfile({ ...update }));
     }
+    setValidated(true);
+    setEdit(false);
+  }
+
+  function handleUpdate(e: any) {
+    console.log({ ...update, [e.target.name]: e.target.value });
+    setUpdate({ ...update, [e.target.name]: e.target.value });
   }
 
   useEffect(() => {
@@ -48,23 +51,19 @@ export default function ProfileForm(props: Props) {
 
   return (
     <>
-      {edit === false ? (
-        <Image
-          src={`${image}`}
-          roundedCircle
-          style={{ height: "200px", width: "auto" }}
-        />
-      ) : (
-        <UploadProfileImage image={image} setImage={setImage} />
-      )}{" "}
-      <Form validated={validated} className="formSignup">
+      <UploadProfileImage image={image} setImage={setImage} />
+      <Form validated={validated} className="formSignup" onSubmit={submitForm}>
         <Form.Row>
           <Col>
             <Form.Group controlId="formBasicFirstName">
               <Form.Label>First Name</Form.Label>
               <Form.Control
                 value={firstName}
-                onChange={(event) => setFirstName(event.target.value)}
+                onChange={(event) => {
+                  setFirstName(event.target.value);
+                  handleUpdate(event);
+                }}
+                name="firstName"
                 type="text"
                 placeholder="Enter first name"
                 required
@@ -79,7 +78,11 @@ export default function ProfileForm(props: Props) {
               <Form.Label>Last Name</Form.Label>
               <Form.Control
                 value={lastName}
-                onChange={(event) => setLastName(event.target.value)}
+                onChange={(event) => {
+                  setLastName(event.target.value);
+                  handleUpdate(event);
+                }}
+                name="lastName"
                 type="text"
                 placeholder="Enter last name"
                 required
@@ -94,7 +97,11 @@ export default function ProfileForm(props: Props) {
           <Form.Label>Email address</Form.Label>
           <Form.Control
             value={email}
-            onChange={(event) => setEmail(event.target.value)}
+            onChange={(event) => {
+              setEmail(event.target.value);
+              handleUpdate(event);
+            }}
+            name="email"
             type="email"
             placeholder="Enter email"
             isInvalid={correct ? false : true}
@@ -105,16 +112,9 @@ export default function ProfileForm(props: Props) {
             {correct ? "Please provide an email" : "User with email exists"}
           </Form.Control.Feedback>
         </Form.Group>
-
         <Form.Group style={{ margin: "20px" }}>
-          <Button variant="success" onClick={submitForm}>
-            {loading ? (
-              <Spinner animation="border" size="sm" />
-            ) : edit === true ? (
-              "Save"
-            ) : (
-              pencilFill()
-            )}
+          <Button variant="success" type="submit">
+            {loading ? <Spinner animation="border" size="sm" /> : "Save"}
           </Button>
         </Form.Group>
       </Form>

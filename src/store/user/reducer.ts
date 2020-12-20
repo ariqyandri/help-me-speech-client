@@ -21,6 +21,8 @@ const userReducer = (state = initialState, action: Action) => {
       return { ...initialState, token: null };
     case "TOKEN_STILL_VALID":
       return { ...state, ...action.payload };
+    case "UPDATE_PROFILE":
+      return { ...state, ...action.payload };
     default:
       return state;
   }

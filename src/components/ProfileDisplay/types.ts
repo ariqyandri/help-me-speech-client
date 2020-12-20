@@ -6,4 +6,4 @@ export type User = {
   image: string;
 };
 
-export type Props = { user: User; setEdit: any };
+export type Props = { user: User };

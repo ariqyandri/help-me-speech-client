@@ -18,4 +18,8 @@ export type Action =
       type: "TOKEN_STILL_VALID";
       payload: User;
     }
-  | { type: "LOG_OUT" };
+  | { type: "LOG_OUT" }
+  | {
+      type: "UPDATE_PROFILE";
+      payload: User;
+    };
