@@ -6,7 +6,6 @@ Help Me Speach will help you practice, and prepare you to ace your script!*
 
 ### What is "Help Me Speach" ?
 Help Me Speach is an app (or a website) that aims to help people practice their speaches, in forms of scripts, which are so called a "writing". The genesis behind this idea comes from a common issue which many people and I encounter, speaking. It might seem pointless to help people "speak" as that is a natural way for people to communicate. However, in occasions such as giving an acceptance speach, presenting an idea to a client, reading a monologue infront of a crowd, or being interviewed for a job, as the tensions rise from the pressure given by the crowd or by the fear of forgetting what to say, (etc.), speaking can get tough. 
-/n
 Hence, to help people prepare for their speaking or speaches, Help Me Speach probides features that could help them practice with their scripts!
 
 ### Features
