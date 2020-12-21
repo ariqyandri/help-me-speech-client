@@ -38,6 +38,3 @@ Hence, for people to prepare their speaking or speaches, Help Me Speach provides
 ## Data-Base Model
 
 ## Server Repository
-
-<h1>yes</h1>
-
