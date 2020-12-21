@@ -14,7 +14,9 @@ Hence, for people to prepare their speaking or speaches, Help Me Speach provides
 
 ### User Stories
 - Users are able to signup and login to their account. 
-- Users are able to create a writing and post it on the website, privately, or publicly for others to see their writing. 
+- Users are able to create a writing. 
+- Users can post it on the website, privately, or publicly for others to see their writing.
+- Users are able to edit their writing. 
 
 ### Tools & Technologies
 - TypeScript
@@ -31,10 +33,10 @@ Hence, for people to prepare their speaking or speaches, Help Me Speach provides
 - Sequelize ORM
 - PostgreSQL
 
-### Project Board
+### [Project Board] (https://github.com/users/ariqyandri/projects/1)
 
-### Wireframe
+### [Wireframe] (https://wireframepro.mockflow.com/view/Ma5d9d364b6e79cb9aaff7851b0ceaf3c1606145223784)
 
-### Data-Base Model
+### [Data-Base Model] (https://dbdiagram.io/d/5fbcb38f3a78976d7b7d2a63)
 
-### Server Repository
+### [Server Repository] (https://github.com/ariqyandri/help-me-speech-server)
