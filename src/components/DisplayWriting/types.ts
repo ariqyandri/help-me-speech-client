@@ -17,6 +17,7 @@ export type ImageType = {
   name: string;
 };
 export type User = {
+  id: number;
   firstName: string;
   lastName: string;
 };

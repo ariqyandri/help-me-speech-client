@@ -24,14 +24,25 @@ export default function DisplayWritings(props: Props) {
             <Card.Title className="hvr-weight-text">
               {props.aWriting.title}
             </Card.Title>
-            <Card.Subtitle className="mb-2 text-muted">
-              By{" "}
-              {`${props.aWriting.user.firstName} ${props.aWriting.user.lastName}`}
-            </Card.Subtitle>
+          </Link>
+          <Card.Subtitle className="mb-2 text-muted">
+            By{" "}
+            <Link
+              to={`/profile/${props.aWriting.userId}`}
+              style={{ color: "inherit" }}
+            >
+              {`${props.aWriting.user.firstName} ${props.aWriting.user.lastName}`}{" "}
+            </Link>
+          </Card.Subtitle>
+          <Link
+            to={`/writing/view/${props.aWriting.id}`}
+            style={{ textDecoration: "none", color: "black" }}
+          >
             <Card.Text className="cardWritingsText">
               {props.aWriting.content}
-            </Card.Text>
+            </Card.Text>{" "}
           </Link>
+
           <div>
             <div style={{ color: "black", marginBottom: "10px" }}>
               <Badge variant="dark">{props.aWriting.category.name}</Badge>

@@ -1,9 +1,7 @@
 import React from "react";
-import { Badge, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
-import { pencilFill } from "../../config/icons";
-import DeleteButton from "../DeleteButton";
+import { Badge } from "react-bootstrap";
 import DisplayImage from "../DisplayImage/index";
+import MyWritingButtons from "../MyWritingButtons";
 import { Props } from "./types";
 
 export default function DisplayMyWriting(props: Props) {
@@ -15,13 +13,7 @@ export default function DisplayMyWriting(props: Props) {
         <Badge variant="dark-outline">| {date.toDateString()}</Badge>
         <h1 className="displayWritingTitle">{props.myWriting.title}</h1>
         <div style={{ marginTop: "10px", marginBottom: "10px" }}>
-          <Link to={`/mywriting/helpmepractice/${props.myWriting.id}`}>
-            <Button variant="warning">Practice!</Button>
-          </Link>{" "}
-          <Link to={`/mywriting/edit/${props.myWriting.id}`}>
-            <Button variant="outline-dark">{pencilFill()}</Button>
-          </Link>{" "}
-          <DeleteButton id={props.myWriting.id} type="edit" />
+          <MyWritingButtons id={props.myWriting.id} type="edit" />
         </div>
         <h6>
           By{" "}

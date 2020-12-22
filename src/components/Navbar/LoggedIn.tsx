@@ -42,7 +42,13 @@ export default function LoggedIn() {
         <Dropdown.Menu align={"right"}>
           <Dropdown.Item disabled>{user.email}</Dropdown.Item>
           <Dropdown.Divider />
-          <Dropdown.Item>My Profile</Dropdown.Item>
+          <Dropdown.Item
+            onClick={() => {
+              history.push("/myprofile");
+            }}
+          >
+            My Profile
+          </Dropdown.Item>
           <Dropdown.Item onClick={handleLogOut}>Logout</Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>

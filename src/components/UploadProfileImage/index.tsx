@@ -4,7 +4,7 @@ import { Button, Image } from "react-bootstrap";
 import { pencilFill, trashFill } from "../../config/icons";
 import { Props } from "./types";
 
-export default function UploadProfileImage({ setImage, image }: Props) {
+export default function UploadProfileImage({ setImage, image,setUpdate }: Props) {
   const handleOpen = async () => {
     const widget = cloudinary.createUploadWidget(
       {
@@ -17,6 +17,9 @@ export default function UploadProfileImage({ setImage, image }: Props) {
       (error: any, result: any) => {
         if (result.event === "success") {
           setImage(result.info.url);
+          if(setUpdate){
+            setUpdate()
+          }
         }
       }
     );

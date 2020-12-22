@@ -13,6 +13,7 @@ export type Writing = {
 };
 
 export type User = {
+  id: number;
   firstName: string;
   lastName: string;
 };

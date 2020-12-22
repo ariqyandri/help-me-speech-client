@@ -11,7 +11,6 @@ import {
   selectLoginCorrect,
 } from "../../store/appState/selectors";
 import { loginCorrect } from "../../store/appState/action";
-import Loading from "../Loading";
 import { Spinner } from "react-bootstrap";
 
 export default function LoginForm() {
