@@ -20,6 +20,15 @@ const writingsReducer = (state = initialState, action: Action) => {
         return state;
       });
       return [...newState];
+    case "REMOVE_MY_WRITINGS":
+      return [
+        ...state.filter((writing) => {
+          if (writing) {
+            return writing.id !== action.payload;
+          }
+          return writing;
+        }),
+      ];
     default:
       return state;
   }
