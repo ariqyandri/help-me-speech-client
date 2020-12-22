@@ -61,4 +61,5 @@ TO COME:
 ### [Server Repository](https://github.com/ariqyandri/help-me-speech-server)
 ---
 ## Screen Shots
-(https://res.cloudinary.com/doai9yryh/image/upload/v1608645908/Screenshot_from_2020-12-22_14-51-36_kne4jg.png)
+
+![home](https://res.cloudinary.com/doai9yryh/image/upload/v1608645908/Screenshot_from_2020-12-22_14-51-36_kne4jg.png)
