@@ -17,7 +17,7 @@ export default function DisplayWriting(props: Props) {
           By{" "}
           <Link
             style={{ color: "black" }}
-            to={`/profile/${props.aWriting.user.id}`}
+            to={`/profile/${props.aWriting.userId}`}
           >{`${props.aWriting.user.firstName} ${props.aWriting.user.lastName}`}</Link>
         </h6>
       </div>

@@ -28,8 +28,8 @@ export default function DisplayWritings(props: Props) {
           <Card.Subtitle className="mb-2 text-muted">
             By{" "}
             <Link
-              to={`/profile/${props.aWriting.user.id}`}
-              style={{ color: "black" }}
+              to={`/profile/${props.aWriting.userId}`}
+              style={{ color: "inherit" }}
             >
               {`${props.aWriting.user.firstName} ${props.aWriting.user.lastName}`}{" "}
             </Link>

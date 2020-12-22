@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import ProfileForm from "../../components/ProfileForm";
 import Loading from "../../components/Loading";
-import { Button, Spinner } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import { selectAppLoading } from "../../store/appState/selectors";
 import { pencilFill } from "../../config/icons";
 import ProfileDisplay from "../../components/ProfileDisplay";

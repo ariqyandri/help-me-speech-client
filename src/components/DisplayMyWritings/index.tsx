@@ -6,6 +6,7 @@ import { pencilFill } from "../../config/icons";
 import { selectAppLoading } from "../../store/appState/selectors";
 import DeleteButton from "../DeleteButton";
 import Loading from "../Loading";
+import MyWritingButtons from "../MyWritingButtons";
 import { Props } from "./types";
 
 export default function DisplayMyWritings(props: Props) {
@@ -35,13 +36,7 @@ export default function DisplayMyWritings(props: Props) {
               <Badge variant="dark-outline"> | {date.toDateString()}</Badge>
             </div>
             <div>
-              <Link to={`/mywriting/helpmepractice/${props.myWriting.id}`}>
-                <Button variant="warning">Practice!</Button>
-              </Link>{" "}
-              <Link to={`/mywriting/edit/${props.myWriting.id}`}>
-                <Button variant="outline-dark">{pencilFill()}</Button>
-              </Link>{" "}
-              <DeleteButton id={props.myWriting.id} type="writings" />
+              <MyWritingButtons id={props.myWriting.id} type="writings" />
             </div>
           </div>
         </Card.Body>
