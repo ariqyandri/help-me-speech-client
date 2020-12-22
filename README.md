@@ -59,3 +59,6 @@ TO COME:
 ### [Data-Base Model](https://dbdiagram.io/d/5fbcb38f3a78976d7b7d2a63)
 
 ### [Server Repository](https://github.com/ariqyandri/help-me-speech-server)
+---
+## Screen Shots
+(https://res.cloudinary.com/doai9yryh/image/upload/v1608645908/Screenshot_from_2020-12-22_14-51-36_kne4jg.png)
