@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import DisplayMyWritings from "../../components/DisplayMyWritings";
+import DisplayWritings from "../../components/DisplayWritings";
 import FilterByCategories from "../../components/FilterByCategories";
 import Loading from "../../components/Loading";
 import { selectAppLoading } from "../../store/appState/selectors";
@@ -30,6 +30,7 @@ export default function MyWritings() {
       history.push(`/mywritings/all`);
     }
   }, [dispatch, history, category, categoryId]);
+  console.log(myWritings);
   return (
     <div>
       <h1>My Writings</h1>
@@ -39,7 +40,7 @@ export default function MyWritings() {
           <Loading />
         ) : (
           myWritings.map((writing: Writing) => {
-            return <DisplayMyWritings key={writing.id} myWriting={writing} />;
+            return <DisplayWritings key={writing.id} aWriting={writing} />;
           })
         )}
       </div>
