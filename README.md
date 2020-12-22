@@ -63,3 +63,19 @@ TO COME:
 ## Screen Shots
 
 ![home](https://res.cloudinary.com/doai9yryh/image/upload/v1608645908/Screenshot_from_2020-12-22_14-51-36_kne4jg.png)
+
+![sign up](https://res.cloudinary.com/doai9yryh/image/upload/v1608645908/Screenshot_from_2020-12-22_14-52-20_cszufq.png)
+
+![profile](https://res.cloudinary.com/doai9yryh/image/upload/v1608645908/Screenshot_from_2020-12-22_14-50-47_wmsup4.png)
+
+![create writing](https://res.cloudinary.com/doai9yryh/image/upload/v1608645908/Screenshot_from_2020-12-22_14-51-00_dyfjpg.png)
+
+![writings](https://res.cloudinary.com/doai9yryh/image/upload/v1608645908/Screenshot_from_2020-12-22_14-50-27_hcrq1i.png)
+
+![my writings](https://res.cloudinary.com/doai9yryh/image/upload/v1608645909/Screenshot_from_2020-12-22_14-56-16_twc5zm.png)
+
+![writing](https://res.cloudinary.com/doai9yryh/image/upload/v1608645909/Screenshot_from_2020-12-22_14-50-42_a1xfve.png)
+
+![edit writing](https://res.cloudinary.com/doai9yryh/image/upload/v1608645910/Screenshot_from_2020-12-22_14-51-09_nnkcgi.png)
+
+![practice](https://res.cloudinary.com/doai9yryh/image/upload/v1608645915/Screenshot_from_2020-12-22_14-58-35_rg9vbz.png)
