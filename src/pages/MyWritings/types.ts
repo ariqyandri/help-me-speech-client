@@ -6,6 +6,7 @@ export type Writing = {
   imageUrl: string | null;
   videoUrl: string | null;
   userId: number;
+  user: User;
   categoryId: number;
   category: Category;
   description: string | null;
@@ -14,4 +15,9 @@ export type Writing = {
 };
 export type Category = {
   name: string;
+};
+export type User = {
+  id: number;
+  firstName: string;
+  lastName: string;
 };

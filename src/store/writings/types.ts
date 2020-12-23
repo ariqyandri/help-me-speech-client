@@ -28,4 +28,8 @@ export type Action =
     }
   | {
       type: "CREATE_DESCRIPTION";
+    }
+  | {
+      type: "REMOVE_MY_WRITINGS";
+      payload: number;
     };
