@@ -1,0 +1,30 @@
+.moreButton {
+  color: gray;
+}
+
+.moreButtonParent:hover .moreButton {
+  color: black;
+}
+
+.mwbLeft {
+  grid-area: "left";
+}
+
+.mwbMiddle {
+  grid-area: "middle";
+}
+
+.mwbRight {
+  grid-area: "right";
+  justify-self: start;
+}
+
+.myWritingButtons {
+  display: grid;
+  grid-template-columns: 33% 34% 33%;
+  grid-template-areas: "left middle right";
+}
+
+.writingPageButtons {
+  display: flex;
+}

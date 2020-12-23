@@ -16,15 +16,16 @@ export default function DisplayWritings(props: Props) {
   if (loading === true) {
     return <Loading />;
   }
+  const link =
+    user?.id === props.aWriting.userId
+      ? `/mywriting/view/${props.aWriting.id}`
+      : `/writing/view/${props.aWriting.id}`;
   return (
     <article>
       <Card border="dark" className="cardWritings hvr-grow">
         <Card.Body className="cardWritingsBody">
           <main>
-            <Link
-              to={`/writing/view/${props.aWriting.id}`}
-              style={{ textDecoration: "none", color: "black" }}
-            >
+            <Link to={link} style={{ textDecoration: "none", color: "black" }}>
               <Card.Title className="hvr-weight-text">
                 {props.aWriting.title}
               </Card.Title>
@@ -38,10 +39,7 @@ export default function DisplayWritings(props: Props) {
                 {`${props.aWriting.user.firstName} ${props.aWriting.user.lastName}`}{" "}
               </Link>
             </Card.Subtitle>
-            <Link
-              to={`/writing/view/${props.aWriting.id}`}
-              style={{ textDecoration: "none", color: "black" }}
-            >
+            <Link to={link} style={{ textDecoration: "none", color: "black" }}>
               <Card.Text className="cardWritingsText">
                 {props.aWriting.content}
               </Card.Text>{" "}
@@ -56,10 +54,7 @@ export default function DisplayWritings(props: Props) {
               {user?.id === props.aWriting.userId ? (
                 <MyWritingButtons id={props.aWriting.id} type="writings" />
               ) : (
-                <Link
-                  to={`/writing/view/${props.aWriting.id}`}
-                  style={{ color: "black", marginTop: "100px" }}
-                >
+                <Link to={link} style={{ color: "black", marginTop: "100px" }}>
                   <Button variant="outline-dark">Visit</Button>
                 </Link>
               )}

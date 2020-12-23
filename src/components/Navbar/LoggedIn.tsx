@@ -21,7 +21,6 @@ export default function LoggedIn() {
   return (
     <>
       <NavbarItem path="/mywritings" linkText="My Writings" />
-      <NavbarItem path="/mywriting/create" linkText="Create Writing" />
       <Dropdown>
         <Dropdown.Toggle
           variant="outline-light"
@@ -42,6 +41,13 @@ export default function LoggedIn() {
         <Dropdown.Menu align={"right"}>
           <Dropdown.Item disabled>{user.email}</Dropdown.Item>
           <Dropdown.Divider />
+          <Dropdown.Item
+            onClick={() => {
+              history.push("/mywritings");
+            }}
+          >
+            My Writings
+          </Dropdown.Item>
           <Dropdown.Item
             onClick={() => {
               history.push("/myprofile");

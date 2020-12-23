@@ -17,7 +17,7 @@ export default function CreateWriting() {
   const loading = useSelector(selectAppLoading);
   const history = useHistory();
   if (!token) {
-    history.push("/");
+    history.push("/login");
   }
   if (writing) {
     if (loading === false && requestId === writing.id) {

@@ -30,7 +30,6 @@ export default function MyWritings() {
       history.push(`/mywritings/all`);
     }
   }, [dispatch, history, category, categoryId]);
-  console.log(myWritings);
   return (
     <div>
       <h1>My Writings</h1>
