@@ -18,3 +18,14 @@
   flex-direction: column;
   justify-content: center;
 }
+
+.navbar-nav {
+  justify-content: center;
+}
+
+.mainNavbar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+}

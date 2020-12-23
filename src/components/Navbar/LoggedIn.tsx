@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 import { logOut } from "../../store/user/action";
 import NavbarItem from "./NavbarItem";
 import { Button, Dropdown, Image, Nav } from "react-bootstrap";
-import { plusCircleFill } from "../../config/icons";
+import { pencilBox } from "../../config/icons";
 
 export default function LoggedIn() {
   const history = useHistory();
@@ -21,7 +21,6 @@ export default function LoggedIn() {
 
   return (
     <>
-      <NavbarItem path="/mywritings" linkText="My Writings" />
       <div
         style={{
           display: "flex",
@@ -33,15 +32,17 @@ export default function LoggedIn() {
           }}
         >
           <Button
-            variant="success"
+            variant="warning"
             style={{
               paddingRight: "8px",
               boxShadow: "none",
+              background: "none",
+              border: "none",
             }}
             className="createWritingButton"
             onClick={() => history.push("/mywriting/create")}
           >
-            {plusCircleFill()}{" "}
+            <span>{pencilBox()}</span>{" "}
             <span className="createWriting">Create Writing</span>
           </Button>
         </Nav.Item>
@@ -56,7 +57,7 @@ export default function LoggedIn() {
             style={{
               background: "none",
               border: "none",
-              height: "50px",
+              height: "40px",
               padding: "0px",
               marginBottom: "5px",
               marginTop: "5px",
@@ -65,7 +66,7 @@ export default function LoggedIn() {
             <Image
               src={`${user.image}`}
               roundedCircle
-              style={{ height: "50px", width: "auto" }}
+              style={{ height: "40px", width: "auto" }}
             />
           </Dropdown.Toggle>
           <Dropdown.Menu align={"right"}>
