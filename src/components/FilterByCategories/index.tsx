@@ -1,10 +1,9 @@
 import React from "react";
-import { Button, ButtonGroup, ToggleButton } from "react-bootstrap";
+import { ButtonGroup, ToggleButton } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { selectCategories } from "../../store/categories/selector";
 import { Category, Props } from "./types";
 import "./FilterByCategories.css";
-import { Link } from "react-router-dom";
 
 export default function FilterByCategories(props: Props) {
   const categories = useSelector(selectCategories);
@@ -33,10 +32,7 @@ export default function FilterByCategories(props: Props) {
             {category.name}
           </ToggleButton>
         ))}
-      </ButtonGroup>{" "}
-      <Link to="/mywriting/create">
-        <Button variant="success">Create Writing</Button>
-      </Link>
+      </ButtonGroup>
     </>
   );
 }

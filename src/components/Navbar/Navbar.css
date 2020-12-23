@@ -1,0 +1,20 @@
+.createWriting {
+  max-width: 0;
+  -webkit-transition: max-width 0.5s;
+  transition: max-width 0.5s;
+  display: inline-block;
+  vertical-align: top;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.createWritingButton:hover .createWriting,
+.createWritingButton:focus .createWriting {
+  max-width: 7.5rem;
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
