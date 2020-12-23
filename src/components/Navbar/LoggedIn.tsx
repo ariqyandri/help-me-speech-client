@@ -74,13 +74,6 @@ export default function LoggedIn() {
             <Dropdown.Divider />
             <Dropdown.Item
               onClick={() => {
-                history.push("/mywritings");
-              }}
-            >
-              My Writings
-            </Dropdown.Item>
-            <Dropdown.Item
-              onClick={() => {
                 history.push("/myprofile");
               }}
             >
