@@ -12,7 +12,7 @@ export default function DeleteButton(props: Props) {
       <Button
         variant="danger"
         onClick={() => setModalShow(true)}
-        style={props.style === "none" ? null : props.style}
+        style={props.style?.value === "none" ? null : props.style}
         className={props.className === "none" ? null : props.className}
       >
         {trashFill()}

@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectUser } from "../../store/user/selectors";
 import { useHistory } from "react-router-dom";
 import { logOut } from "../../store/user/action";
-import NavbarItem from "./NavbarItem";
 import { Button, Dropdown, Image, Nav } from "react-bootstrap";
 import { pencilBox } from "../../config/icons";
 
